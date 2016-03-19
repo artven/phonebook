@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/logindialog">
+        <file>images/key.png</file>
+    </qresource>
+    <qresource prefix="/mainwindow">
+        <file>images/Contacts-80.png</file>
+        <file>images/search.png</file>
+        <file>images/Collaborator-96.png</file>
+        <file>images/User-96.png</file>
+        <file>images/Find User-96.png</file>
+        <file>images/Search Property-96.png</file>
+        <file>images/Add List-96.png</file>
+        <file>images/Password 1-96.png</file>
+        <file>images/Administrator-96.png</file>
+        <file>images/Edit File-96.png</file>
+        <file>images/Close Window-96.png</file>
+        <file>images/Edit User-96.png</file>
+        <file>images/Exit-96.png</file>
+        <file>images/key.png</file>
+        <file>images/Attach-96.png</file>
+        <file>images/Add User Group-96.png</file>
+    </qresource>
+</RCC>
