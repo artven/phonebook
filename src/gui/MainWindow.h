@@ -57,6 +57,9 @@ private:
     void addOperetorMenu();
     void addAdministratorMenu();
 
+    void switchUserMenu(QModelIndex idx);
+    void switchOperatorMenu(QModelIndex idx);
+    void switchAdministratorMenu(QModelIndex idx);
 
 };
 

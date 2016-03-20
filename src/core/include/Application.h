@@ -15,9 +15,9 @@
 #include "LoginDialog.h"
 #include "UserAccountDialog.h"
 
-class Application: public QApplication {
+class Application {
 public:
-    Application(int &argc, char **argv);
+    Application(QApplication& app);
     virtual ~Application();
     void start();
     void login();
@@ -32,8 +32,8 @@ private:
     MainWindow applicationWindow;
     LoginDialog loginDialog;
     UserAccountDialog newAccountDialog;
-
     UserRecord* user{nullptr};
+    QApplication& parentApplication;
 
     void setFusionStyle();
     void setDarkPallete();

@@ -5,8 +5,6 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
-
-
 MainWindow::MainWindow(QWidget *parent):
 QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -18,7 +16,6 @@ QMainWindow(parent), ui(new Ui::MainWindow) {
 
     QObject::connect(this->menuView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(onTreeViewItemDoubleCliced(QModelIndex)));
 }
-
 
 void MainWindow::addUserMenu() {
     this->menuModel->clear();
@@ -41,7 +38,6 @@ void MainWindow::addUserMenu() {
     this->menuModel->setItem(0, 0, userMenuRootItem);
     this->menuView->expandAll();
 }
-
 
 void MainWindow::addOperetorMenu() {
     this->menuModel->clear();
@@ -67,7 +63,6 @@ void MainWindow::addOperetorMenu() {
     this->menuView->expandAll();
 }
 
-
 void MainWindow::addAdministratorMenu() {
     this->menuModel->clear();
     QStandardItem* administratorRootItem = new QStandardItem(this->administratorIcon, "Administrator");
@@ -77,7 +72,7 @@ void MainWindow::addAdministratorMenu() {
     menuItems.push_back(new QStandardItem{this->addRecordIcon, "Dodaj wpis"});
     menuItems.push_back(new QStandardItem{this->browseUsersIcon, "Edytuj użytkowników"});
     menuItems.push_back(new QStandardItem{this->newUserRequestIcon, "Wnioski o nowe konta"});
-    menuItems.push_back(new QStandardItem{this->newPowerUserIcon, "Nowy operator/administrator"});
+    menuItems.push_back(new QStandardItem{this->newPowerUserIcon, "Nowy użytkownik"});
     menuItems.push_back(new QStandardItem{this->editSelfDataIcon, "Edytuj swoje dane"});
     menuItems.push_back(new QStandardItem{this->changePasswordIcon, "Zmień hasło"});
     menuItems.push_back(new QStandardItem{this->logutIcon, "Wyloguj się"});
@@ -93,14 +88,66 @@ void MainWindow::addAdministratorMenu() {
     this->menuView->expandAll();
 }
 
-
 MainWindow::~MainWindow() {
     delete ui;
 }
 
-
 void MainWindow::onTreeViewItemDoubleCliced(QModelIndex idx) {
-    std::cout << "dupa " << idx.row() << std::endl;
+    switch (this->mode) {
+        case WindowMode::userWindow:
+            this->switchUserMenu(idx);
+            break;
+        case WindowMode::operatorWindow:
+            this->switchOperatorMenu(idx);
+            break;
+        case WindowMode::administratorWindow:
+            this->switchAdministratorMenu(idx);
+            break;
+    }
+}
+
+void MainWindow::switchUserMenu(QModelIndex idx) {
+    if (idx.parent() != QModelIndex()) {
+        switch (idx.row()) {
+            case 0:
+                this->mainWidget->setCurrentIndex(0);
+                break;
+            case 1:
+                this->mainWidget->setCurrentIndex(1);
+                break;
+            case 2:
+                this->mainWidget->setCurrentIndex(5);
+                break;
+            case 3:
+                this->mainWidget->setCurrentIndex(6);
+                break;
+            case 4:
+                this->close();
+                break;
+            case 5:
+                this->close();
+                break;
+        }
+    }
+}
+
+void MainWindow::switchOperatorMenu(QModelIndex idx) {
+    if (idx.parent() != QModelIndex()) {
+        int pageIndex = idx.row();
+        if (pageIndex <= 3)
+            this->mainWidget->setCurrentIndex(pageIndex);
+        else if (pageIndex == 4)
+            this->mainWidget->setCurrentIndex(4);
+        else if (pageIndex == 5)
+            this->mainWidget->setCurrentIndex(6);
+        else if (pageIndex == 6)
+            this->close();
+        else if (pageIndex == 7)
+            this->close();
+    }
+}
+
+void MainWindow::switchAdministratorMenu(QModelIndex idx) {
     if (idx.parent() != QModelIndex()) {
         int pageIndex = idx.row();
         if (pageIndex <= 6)
@@ -109,9 +156,8 @@ void MainWindow::onTreeViewItemDoubleCliced(QModelIndex idx) {
             this->close();
         else if (pageIndex == 8)
             this->close();
-        }
+    }
 }
-
 
 void MainWindow::setWindowMode(WindowMode mode) {
     this->mode = mode;

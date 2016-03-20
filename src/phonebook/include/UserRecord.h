@@ -23,6 +23,7 @@ public:
     UserRecord(std::string input, char sep=',');
     UserRecord(const UserRecord&)= default;
     std::string toString(std::string sep=", ");
+    virtual ~UserRecord() {};
 
     unsigned int getId() const;
     std::string getLogin() const;

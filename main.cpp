@@ -4,7 +4,8 @@
 
 int main(int argc, char *argv[])
 {
-    Application app(argc, argv);
-    app.start();
+    QApplication app(argc, argv);
+    Application phonebookApplication(app);
+    phonebookApplication.start();
     return app.exec();
 }

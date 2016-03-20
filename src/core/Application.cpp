@@ -9,8 +9,8 @@
 
 #include "Application.h"
 
-Application::Application(int &argc, char **argv):
-QApplication(argc, argv), database{this->databaseName}, phones{database}, users{database} {
+Application::Application(QApplication& app):
+database{this->databaseName}, phones{database}, users{database}, parentApplication{app} {
     this->setFusionStyle();
     this->setDarkPallete();
 }
@@ -26,7 +26,7 @@ void Application::chooseWindowMode(UserRecord *user) {
 
 void Application::setFusionStyle() {
     QStyleFactory styleFactory;
-    this->setStyle(styleFactory.create("Fusion"));
+    this->parentApplication.setStyle(styleFactory.create("Fusion"));
 }
 
 void Application::setDarkPallete() {
@@ -129,6 +129,7 @@ void Application::start() {
         this->chooseWindowMode(this->user);
         this->showMainWindow();
     } else {
-       qTerminate();
+        // TODO lepsza opcja?
+        this->parentApplication.~QApplication();
     }
 }
