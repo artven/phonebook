@@ -12,8 +12,14 @@
 
 UserManager::UserManager(DatabaseInterface& database):
 database{database} {
-    this->createUsersTableInDatabase();
+    this->createUsersTable();
     this->createAdministratorAccount();
+    this->createRequestTable();
+}
+
+
+void UserManager::createUsersTable() {
+    this->database.executeQuery(this->createUsersTableQuery);
 }
 
 
@@ -26,8 +32,8 @@ void UserManager::createAdministratorAccount() {
 }
 
 
-void UserManager::createUsersTableInDatabase() {
-    this->database.executeQuery(this->createUsersTableQuery);
+void UserManager::createRequestTable() {
+    this->database.executeQuery(this->createRequestsTableQuery);
 }
 
 
@@ -165,4 +171,63 @@ void UserManager::addRequest(UserRecord user, std::string password) {
     if (!this->passwordHasValidLength(password))
         throw InvalidPasswordLengthException{};
 
+    if(this->isRequestInDatabase(user))
+        throw DuplicatedRequestException{};
+
+    auto query = this->createInsertRequestQuery(user, password);
+    this->database.executeQuery(query);
+}
+
+
+static std::vector<std::string> parseRequestString(std::string input, char sep='|') {
+    std::vector<std::string> result;
+    std::stringstream inputStream {input};
+    std::string item;
+    while(std::getline(inputStream, item, sep))
+        result.push_back(item);
+
+    return result;
+}
+
+
+std::list<std::vector<std::string>> UserManager::getAllRequests(std::string status) {
+    std::list<std::vector<std::string>> result;
+
+    auto query = this->createGetAllRequestsQuery(status);
+    auto queryResult = this->database.executeQuery(query);
+    for(auto record: queryResult) {
+        result.push_back(parseRequestString(record));
+    }
+
+    return result;
+}
+
+
+bool UserManager::isRequestInDatabase(UserRecord user) {
+    auto query = this->createFindRequestQuery(user);
+    auto res = this->database.executeQuery(query);
+    return (res.size() > 0);
+}
+
+
+void UserManager::acceptRequest(std::vector<std::string> request) {
+    auto id = request[0];
+    auto name = request[1];
+    auto email = request[2];
+    auto hash = request[3];
+    auto status = request[5];
+
+    if(status != "Nowy")
+        throw InvalidRequestStatusException{};
+
+    UserRecord newUser{0, name, email, UserRole::NormalUser};
+    if(!this->isRequestInDatabase(newUser))
+        throw RequestNotFoundException{};
+
+    auto changeStatusQuery = this->createChangeRequestStatusQuery("Zaakceptowany", id);
+    this->database.executeQuery(changeStatusQuery);
+
+
+    auto insertNewUserQuery = this->createInsertDirectUserQuery(newUser, hash);
+    this->database.executeQuery(insertNewUserQuery);
 }

@@ -210,3 +210,45 @@ TEST_F(UserManagerTest, throwsExceptionOnInvalidOldPassword) {
                  BadPasswordException);
 }
 
+
+TEST_F(UserManagerTest, canAddAccountRequest) {
+    UserRecord rec{0, "adam", "giza@onet.pl", UserRole::NormalUser};
+    std::string password{"safasf"};
+    this->manager->addRequest(rec, password);
+    ASSERT_EQ(this->manager->getAllRequests().size(), 1);
+}
+
+
+TEST_F(UserManagerTest, canAddFewAccountRequests) {
+    UserRecord r1{0, "adam", "giza@onet.pl", UserRole::NormalUser};
+    std::string p1{"safasf"};
+    UserRecord r2{0, "jankowal", "kowalski@gmail.com", UserRole::NormalUser};
+    std::string p2{"123123"};
+
+    this->manager->addRequest(r1, p1);
+    this->manager->addRequest(r2, p2);
+    ASSERT_EQ(this->manager->getAllRequests().size(), 2);
+}
+
+
+TEST_F(UserManagerTest, throwsExceptionOnDuplicatedRequest) {
+    UserRecord rec{0, "adam", "giza@onet.pl", UserRole::NormalUser};
+    std::string password{"safasf"};
+    this->manager->addRequest(rec, password);
+    ASSERT_THROW(this->manager->addRequest(rec, password), DuplicatedRequestException);
+}
+
+
+TEST_F(UserManagerTest, acceptsRequest) {
+    UserRecord rec{0, "adam", "giza@onet.pl", UserRole::NormalUser};
+    std::string password{"safasf"};
+    this->manager->addRequest(rec, password);
+    ASSERT_EQ(this->manager->getAllRequests().size(), 1);
+    auto req = *(this->manager->getAllRequests().begin());
+    this->manager->acceptRequest(req);
+    ASSERT_EQ(this->manager->getAllRequests("Nowy").size(), 0);
+    ASSERT_EQ(this->manager->getAllRequests("Zaakceptowany").size(), 1);
+    ASSERT_EQ(this->manager->getAllUsers().size(), 2);
+}
+
+

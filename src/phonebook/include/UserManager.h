@@ -6,6 +6,7 @@
 #define MAIN_PROGRAM_USERMANAGER_H
 
 #include <list>
+#include <vector>
 #include <string>
 #include <stdexcept>
 
@@ -25,20 +26,25 @@ public:
     void deleteUser(UserRecord user);
     void updateUser(UserRecord user);
     void changePassword(UserRecord user, std::string oldPassword, std::string newPassword);
+
     void addRequest(UserRecord user, std::string password);
+    std::list<std::vector<std::string>> getAllRequests(std::string status="");
+    void acceptRequest(std::vector<std::string> request);
 
 private:
     DatabaseInterface& database;
 
-    void createUsersTableInDatabase();
+    void createUsersTable();
     void createAdministratorAccount();
-    
+    void createRequestTable();
+
     std::string getUserPasswordHash(UserRecord user);
     bool passwordHasValidLength(std::string password);
-
-    bool isSimilarUserInDatabase(UserRecord user);
-    bool isUserInDatabase(UserRecord user);
     bool checkPassword(UserRecord user, std::string password);
+
+    bool isUserInDatabase(UserRecord user);
+    bool isSimilarUserInDatabase(UserRecord user);
+    bool isRequestInDatabase(UserRecord user);
 
 };
 
@@ -76,7 +82,25 @@ public:
 
 class DuplicatedUserException: public std::invalid_argument {
 public:
-    DuplicatedUserException() : invalid_argument("Użytkownik o podanych danych już istnieje w bazie!") { }
+    DuplicatedUserException() : invalid_argument{"Użytkownik o podanych danych już istnieje w bazie!"} { }
+};
+
+
+class DuplicatedRequestException: public std::invalid_argument {
+public:
+    DuplicatedRequestException(): invalid_argument{"Taki wniosek istnieje już w bazie!"} {}
+};
+
+
+class InvalidRequestStatusException : public std::invalid_argument {
+public:
+    InvalidRequestStatusException(): invalid_argument{"Niewłaściwy status wniosku!"} {}
+};
+
+
+class RequestNotFoundException: public std::invalid_argument {
+public:
+    RequestNotFoundException(): std::invalid_argument{"Nie znaleziono wniosku w bazie!"} {};
 };
 
 #endif //MAIN_PROGRAM_USERMANAGER_H

@@ -75,3 +75,46 @@ std::string UserDatabaseManager::calculateHash(std::string password) {
     auto str = password.c_str();
     return QCryptographicHash::hash(str, algorithm).toHex().toStdString();
 }
+
+std::string UserDatabaseManager::createInsertRequestQuery(const UserRecord &user, std::string password) {
+    auto login = user.getLogin();
+    auto email = user.getEmail();
+    auto role  = user.getRole();
+    auto hash = this->calculateHash(password);
+
+    auto formatedQuery = boost::format(this->insertRequestsTableQuery)
+                         % login % email % hash % role;
+
+    return std::string{formatedQuery.str().c_str()};
+}
+
+std::string UserDatabaseManager::createFindRequestQuery(const UserRecord &user) {
+    auto login = user.getLogin();
+    auto email = user.getEmail();
+
+    auto formatedQuery = boost::format(this->findRequestQuery) % login % email;
+
+    return std::string{formatedQuery.str().c_str()};
+}
+
+std::string UserDatabaseManager::createGetAllRequestsQuery(const std::string status) {
+    if (!status.length())
+        return std::string{"SELECT * FROM requests"};
+
+    auto formatedQuery = boost::format(this->getAllRequestsQuery) % status;
+    return std::string{formatedQuery.str().c_str()};
+}
+
+std::string UserDatabaseManager::createChangeRequestStatusQuery(std::string status, std::string id) {
+    auto formatedQuery = boost::format(this->changeRequestStatusQuery) % status % id;
+    return std::string{formatedQuery.str().c_str()};
+}
+
+std::string UserDatabaseManager::createInsertDirectUserQuery(const UserRecord &user, std::string hash) {
+    auto login = user.getLogin();
+    auto email = user.getEmail();
+    auto role  = user.getRole();
+
+    auto formatedQuery = boost::format(this->insertUserQueryTemplate) % login % email % hash % role;
+    return std::string {formatedQuery.str().c_str()};
+}
