@@ -13,20 +13,17 @@ QMainWindow(parent), ui(new Ui::MainWindow) {
     this->menuView = ui->menuTreeView;
     this->mainWidget = ui->stackedWidget;
     this->menuModel = new QStandardItemModel(1, 1, this);
-    //this->addUserMenu();
-    //this->addOperetorMenu();
-    this->addAdministratorMenu();
     this->menuModel->setHeaderData(0, Qt::Horizontal, "Menu");
-
     this->menuView->setModel(this->menuModel);
-    this->menuView->expandAll();
 
     QObject::connect(this->menuView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(onTreeViewItemDoubleCliced(QModelIndex)));
 }
 
 
 void MainWindow::addUserMenu() {
+    this->menuModel->clear();
     QStandardItem* userMenuRootItem = new QStandardItem{this->userIcon, "Użytkownik"};
+
     std::vector<QStandardItem*> userMenuItems;
     userMenuItems.push_back(new QStandardItem{this->browseRecordsIcon, "Przeglądaj bazę"});
     userMenuItems.push_back(new QStandardItem{this->addRecordIcon, "Dodaj wpis"});
@@ -42,10 +39,12 @@ void MainWindow::addUserMenu() {
     }
 
     this->menuModel->setItem(0, 0, userMenuRootItem);
+    this->menuView->expandAll();
 }
 
 
 void MainWindow::addOperetorMenu() {
+    this->menuModel->clear();
     QStandardItem* operatorRootItem = new QStandardItem(this->operatorIcon, "Operator");
 
     std::vector<QStandardItem*> menuItems;
@@ -65,10 +64,12 @@ void MainWindow::addOperetorMenu() {
     }
 
     this->menuModel->setItem(0, 0, operatorRootItem);
+    this->menuView->expandAll();
 }
 
 
 void MainWindow::addAdministratorMenu() {
+    this->menuModel->clear();
     QStandardItem* administratorRootItem = new QStandardItem(this->administratorIcon, "Administrator");
 
     std::vector<QStandardItem*> menuItems;
@@ -89,6 +90,7 @@ void MainWindow::addAdministratorMenu() {
     }
 
     this->menuModel->setItem(0, 0, administratorRootItem);
+    this->menuView->expandAll();
 }
 
 
@@ -108,4 +110,20 @@ void MainWindow::onTreeViewItemDoubleCliced(QModelIndex idx) {
         else if (pageIndex == 8)
             this->close();
         }
+}
+
+
+void MainWindow::setWindowMode(WindowMode mode) {
+    this->mode = mode;
+    switch (WindowMode::administratorWindow) {
+        case WindowMode::userWindow:
+            this->addUserMenu();
+            break;
+        case WindowMode::operatorWindow:
+            this->addOperetorMenu();
+            break;
+        case WindowMode::administratorWindow:
+            this->addAdministratorMenu();
+            break;
+    }
 }

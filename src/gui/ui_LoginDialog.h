@@ -58,9 +58,9 @@ public:
         LoginDialog->setMaximumSize(QSize(500, 190));
         LoginDialog->setFocusPolicy(Qt::TabFocus);
         QIcon icon;
-        icon.addFile(QStringLiteral(":/main/explorer.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/mainwindow/images/Contacts-80.png"), QSize(), QIcon::Normal, QIcon::Off);
         LoginDialog->setWindowIcon(icon);
-        LoginDialog->setModal(false);
+        LoginDialog->setModal(true);
         groupBox = new QGroupBox(LoginDialog);
         groupBox->setObjectName(QStringLiteral("groupBox"));
         groupBox->setGeometry(QRect(100, 11, 380, 160));

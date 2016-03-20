@@ -5,10 +5,9 @@
 #include <QStyleFactory>
 #include <QPalette>
 #include <QMessageBox>
+#include <iostream>
 
 #include "Application.h"
-#include "LoginDialog.h"
-
 
 Application::Application(int &argc, char **argv):
 QApplication(argc, argv), database{this->databaseName}, phones{database}, users{database} {
@@ -16,12 +15,19 @@ QApplication(argc, argv), database{this->databaseName}, phones{database}, users{
     this->setDarkPallete();
 }
 
+void Application::chooseWindowMode(UserRecord *user) {
+    if (user->isAdministrator())
+            applicationWindow.setWindowMode(WindowMode::administratorWindow);
+        else if (user->isOperator())
+            applicationWindow.setWindowMode(WindowMode::operatorWindow);
+        else
+            applicationWindow.setWindowMode(WindowMode::userWindow);
+}
 
 void Application::setFusionStyle() {
     QStyleFactory styleFactory;
     this->setStyle(styleFactory.create("Fusion"));
 }
-
 
 void Application::setDarkPallete() {
     QPalette darkPalette;
@@ -42,32 +48,34 @@ void Application::setDarkPallete() {
     qApp->setStyleSheet("QToolTip { color: #ffffff; background-color: #2a82da; border: 1px solid white; }");
 }
 
-
 void Application::login() {
-    LoginDialog dialog(nullptr);
-    dialog.exec();
+    bool operationFinished{false};
 
-    auto clickedButton = dialog.getResult();
-    switch(clickedButton) {
-        case LoginResult::ok:
-            QMessageBox::warning(nullptr, "Logowanie", "Wybrałeś OK.");
-            abort();
-            break;
+    do {
+        loginDialog.exec();
+        switch (loginDialog.getResult()) {
+            case LoginResult::ok:
+                try {
+                    auto user = this->users.login(loginDialog.getLogin(), loginDialog.getPassword());
+                    this->user = new UserRecord{user};
+                    operationFinished = true;
+                } catch (std::invalid_argument& exception) {
+                    QMessageBox::warning(&loginDialog, "Błąd logowania", exception.what());
+                    break;
+                }
+            case LoginResult::cancel:
+                operationFinished = true;
+                break;
+            case LoginResult::newAccount:
+                this->createNewAccount();
+                break;
+            case LoginResult::undefined:
+                QMessageBox::critical(nullptr, "Logowanie", "Coś się zjebało!");
+                break;
+        }
+    } while (!operationFinished);
 
-        case LoginResult::cancel:
-            QMessageBox::warning(nullptr, "Logowanie", "Wybrałeś anuluj.");
-            break;
-
-        case LoginResult::newAccount:
-            QMessageBox::warning(nullptr, "Logowanie", "Wybrałeś nowe konto.");
-            break;
-
-        case LoginResult::undefined:
-            QMessageBox::critical(nullptr, "Logowanie", "Coś się zjebało!");
-            break;
-    }
 }
-
 
 void Application::logout() {
 
@@ -75,4 +83,52 @@ void Application::logout() {
 
 void Application::showMainWindow() {
     this->applicationWindow.show();
+}
+
+Application::~Application() {
+    std::cout << "dupa" << std::endl;
+    if(this->user != nullptr)
+        delete this->user;
+}
+
+void Application::createNewAccount() {
+    bool operationFinished{false};
+    do {
+        newAccountDialog.exec();
+        switch (newAccountDialog.getResult()) {
+            case UserAccountDialogResult::ok: {
+
+                auto login = newAccountDialog.getLogin();
+                auto email = newAccountDialog.getEmail();
+                auto password = newAccountDialog.getPassword();
+                auto role = newAccountDialog.getUserRole();
+
+                try {
+                    UserRecord record{0, login, email, role};
+                    this->users.addRequest(record, password);
+                } catch (std::invalid_argument& exception) {
+                    QMessageBox::warning(nullptr, "Błąd", exception.what());
+                    break;
+                }
+
+                operationFinished = true;
+                break;
+            }
+            case UserAccountDialogResult::cancel: {
+                operationFinished = true;
+                break;
+            }
+        }
+    } while (!operationFinished);
+}
+
+void Application::start() {
+    this->login();
+
+    if (this->user != nullptr) {
+        this->chooseWindowMode(this->user);
+        this->showMainWindow();
+    } else {
+       qTerminate();
+    }
 }

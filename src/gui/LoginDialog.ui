@@ -35,11 +35,11 @@
    <string>Logowanie</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/main/explorer.png</normaloff>:/main/explorer.png</iconset>
+   <iconset resource="resources.qrc">
+    <normaloff>:/mainwindow/images/Contacts-80.png</normaloff>:/mainwindow/images/Contacts-80.png</iconset>
   </property>
   <property name="modal">
-   <bool>false</bool>
+   <bool>true</bool>
   </property>
   <widget class="QGroupBox" name="groupBox">
    <property name="geometry">

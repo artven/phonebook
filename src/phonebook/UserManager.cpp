@@ -96,7 +96,6 @@ UserRecord UserManager::findUserByLogin(std::string login) {
 }
 
 
-
 UserRecord UserManager::login(std::string login, std::string password) {
     UserRecord user = this->findUserByLogin(login);
 

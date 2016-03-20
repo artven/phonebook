@@ -29,7 +29,7 @@ QT_BEGIN_NAMESPACE
 class Ui_UserAccountDialog
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *loginLabel;
@@ -39,6 +39,14 @@ public:
     QLabel *emailLabel;
     QSpacerItem *horizontalSpacer_2;
     QLineEdit *emailLineEdit;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *passwordLabel;
+    QSpacerItem *horizontalSpacer_5;
+    QLineEdit *passwordLineEdit;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *repeatPasswordLabel;
+    QSpacerItem *horizontalSpacer_6;
+    QLineEdit *repeatPasswordLineEdit;
     QHBoxLayout *horizontalLayout_3;
     QLabel *roleLabel;
     QSpacerItem *horizontalSpacer_3;
@@ -53,17 +61,22 @@ public:
     {
         if (UserAccountDialog->objectName().isEmpty())
             UserAccountDialog->setObjectName(QStringLiteral("UserAccountDialog"));
-        UserAccountDialog->resize(497, 413);
-        widget = new QWidget(UserAccountDialog);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(40, 100, 331, 181));
-        verticalLayout = new QVBoxLayout(widget);
-        verticalLayout->setSpacing(0);
+        UserAccountDialog->setWindowModality(Qt::WindowModal);
+        UserAccountDialog->resize(394, 353);
+        UserAccountDialog->setFocusPolicy(Qt::TabFocus);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/mainwindow/images/Contacts-80.png"), QSize(), QIcon::Normal, QIcon::Off);
+        UserAccountDialog->setWindowIcon(icon);
+        UserAccountDialog->setModal(true);
+        layoutWidget = new QWidget(UserAccountDialog);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 10, 371, 331));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        loginLabel = new QLabel(widget);
+        loginLabel = new QLabel(layoutWidget);
         loginLabel->setObjectName(QStringLiteral("loginLabel"));
 
         horizontalLayout->addWidget(loginLabel);
@@ -72,7 +85,7 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        loginLineEdit = new QLineEdit(widget);
+        loginLineEdit = new QLineEdit(layoutWidget);
         loginLineEdit->setObjectName(QStringLiteral("loginLineEdit"));
         QSizePolicy sizePolicy(QSizePolicy::Ignored, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(1);
@@ -87,7 +100,7 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        emailLabel = new QLabel(widget);
+        emailLabel = new QLabel(layoutWidget);
         emailLabel->setObjectName(QStringLiteral("emailLabel"));
 
         horizontalLayout_2->addWidget(emailLabel);
@@ -96,7 +109,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
-        emailLineEdit = new QLineEdit(widget);
+        emailLineEdit = new QLineEdit(layoutWidget);
         emailLineEdit->setObjectName(QStringLiteral("emailLineEdit"));
         sizePolicy.setHeightForWidth(emailLineEdit->sizePolicy().hasHeightForWidth());
         emailLineEdit->setSizePolicy(sizePolicy);
@@ -106,9 +119,51 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        passwordLabel = new QLabel(layoutWidget);
+        passwordLabel->setObjectName(QStringLiteral("passwordLabel"));
+
+        horizontalLayout_5->addWidget(passwordLabel);
+
+        horizontalSpacer_5 = new QSpacerItem(112, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_5);
+
+        passwordLineEdit = new QLineEdit(layoutWidget);
+        passwordLineEdit->setObjectName(QStringLiteral("passwordLineEdit"));
+        sizePolicy.setHeightForWidth(passwordLineEdit->sizePolicy().hasHeightForWidth());
+        passwordLineEdit->setSizePolicy(sizePolicy);
+
+        horizontalLayout_5->addWidget(passwordLineEdit);
+
+
+        verticalLayout->addLayout(horizontalLayout_5);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        repeatPasswordLabel = new QLabel(layoutWidget);
+        repeatPasswordLabel->setObjectName(QStringLiteral("repeatPasswordLabel"));
+
+        horizontalLayout_6->addWidget(repeatPasswordLabel);
+
+        horizontalSpacer_6 = new QSpacerItem(58, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_6);
+
+        repeatPasswordLineEdit = new QLineEdit(layoutWidget);
+        repeatPasswordLineEdit->setObjectName(QStringLiteral("repeatPasswordLineEdit"));
+        sizePolicy.setHeightForWidth(repeatPasswordLineEdit->sizePolicy().hasHeightForWidth());
+        repeatPasswordLineEdit->setSizePolicy(sizePolicy);
+
+        horizontalLayout_6->addWidget(repeatPasswordLineEdit);
+
+
+        verticalLayout->addLayout(horizontalLayout_6);
+
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        roleLabel = new QLabel(widget);
+        roleLabel = new QLabel(layoutWidget);
         roleLabel->setObjectName(QStringLiteral("roleLabel"));
 
         horizontalLayout_3->addWidget(roleLabel);
@@ -117,13 +172,15 @@ public:
 
         horizontalLayout_3->addItem(horizontalSpacer_3);
 
-        roleComboBox = new QComboBox(widget);
+        roleComboBox = new QComboBox(layoutWidget);
         roleComboBox->setObjectName(QStringLiteral("roleComboBox"));
+        roleComboBox->setEnabled(false);
         QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(49);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(roleComboBox->sizePolicy().hasHeightForWidth());
         roleComboBox->setSizePolicy(sizePolicy1);
+        roleComboBox->setEditable(false);
 
         horizontalLayout_3->addWidget(roleComboBox);
 
@@ -140,12 +197,12 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_4);
 
-        cancelPushButton = new QPushButton(widget);
+        cancelPushButton = new QPushButton(layoutWidget);
         cancelPushButton->setObjectName(QStringLiteral("cancelPushButton"));
 
         horizontalLayout_4->addWidget(cancelPushButton);
 
-        okPushButton = new QPushButton(widget);
+        okPushButton = new QPushButton(layoutWidget);
         okPushButton->setObjectName(QStringLiteral("okPushButton"));
 
         horizontalLayout_4->addWidget(okPushButton);
@@ -153,6 +210,12 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_4);
 
+        QWidget::setTabOrder(loginLineEdit, emailLineEdit);
+        QWidget::setTabOrder(emailLineEdit, passwordLineEdit);
+        QWidget::setTabOrder(passwordLineEdit, repeatPasswordLineEdit);
+        QWidget::setTabOrder(repeatPasswordLineEdit, roleComboBox);
+        QWidget::setTabOrder(roleComboBox, okPushButton);
+        QWidget::setTabOrder(okPushButton, cancelPushButton);
 
         retranslateUi(UserAccountDialog);
 
@@ -164,6 +227,8 @@ public:
         UserAccountDialog->setWindowTitle(QApplication::translate("UserAccountDialog", "Dialog", 0));
         loginLabel->setText(QApplication::translate("UserAccountDialog", "Nazwa u\305\274ytkownika", 0));
         emailLabel->setText(QApplication::translate("UserAccountDialog", "Email", 0));
+        passwordLabel->setText(QApplication::translate("UserAccountDialog", "Has\305\202o", 0));
+        repeatPasswordLabel->setText(QApplication::translate("UserAccountDialog", "Powt\303\263rz has\305\202o", 0));
         roleLabel->setText(QApplication::translate("UserAccountDialog", "Poziom uprawnie\305\204", 0));
         cancelPushButton->setText(QApplication::translate("UserAccountDialog", "Anuluj", 0));
         okPushButton->setText(QApplication::translate("UserAccountDialog", "Ok", 0));

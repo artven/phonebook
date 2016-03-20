@@ -8,6 +8,13 @@
 #include <QIcon>
 #include <QStackedWidget>
 
+enum class WindowMode {
+    userWindow,
+    operatorWindow,
+    administratorWindow
+};
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -18,6 +25,7 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+    void setWindowMode(WindowMode mode);
     ~MainWindow();
 
 private slots:
@@ -29,6 +37,8 @@ private:
     QTreeView* menuView;
     QStandardItemModel* menuModel;
     QStackedWidget* mainWidget;
+    WindowMode mode{WindowMode::userWindow};
+
 
     QIcon userIcon{QPixmap{":/mainwindow/images/User-96.png"}};
     QIcon operatorIcon{QPixmap{":/mainwindow/images/Collaborator-96.png"}};

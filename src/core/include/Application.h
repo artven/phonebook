@@ -12,11 +12,14 @@
 #include "PhoneBookAPI.h"
 #include "UserManager.h"
 #include "MainWindow.h"
-
+#include "LoginDialog.h"
+#include "UserAccountDialog.h"
 
 class Application: public QApplication {
 public:
     Application(int &argc, char **argv);
+    virtual ~Application();
+    void start();
     void login();
     void logout();
     void showMainWindow();
@@ -27,11 +30,16 @@ private:
     PhoneBookAPI phones;
     UserManager users;
     MainWindow applicationWindow;
+    LoginDialog loginDialog;
+    UserAccountDialog newAccountDialog;
 
     UserRecord* user{nullptr};
 
     void setFusionStyle();
     void setDarkPallete();
+    void createNewAccount();
+
+    void chooseWindowMode(UserRecord *user);
 };
 
 
