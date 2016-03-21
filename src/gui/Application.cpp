@@ -15,11 +15,6 @@ database{this->databaseName}, phones{database}, users{database}, parentApplicati
     this->setDarkPallete();
 }
 
-/*
-void Application::chooseWindowMode(UserRecord *user) {
-
-}*/
-
 void Application::setFusionStyle() {
     QStyleFactory styleFactory;
     this->parentApplication.setStyle(styleFactory.create("Fusion"));
@@ -45,8 +40,12 @@ void Application::setDarkPallete() {
 }
 
 void Application::login() {
-    bool operationFinished{false};
+    if(this->user) {
+        delete this->user;
+        this->user = nullptr;
+    }
 
+    bool operationFinished{false};
     do {
         loginDialog.exec();
         switch (loginDialog.getResult()) {
@@ -71,10 +70,6 @@ void Application::login() {
         }
     } while (!operationFinished);
 
-}
-
-void Application::logout() {
-    //TODO
 }
 
 Application::~Application() {
@@ -178,4 +173,8 @@ void Application::rejectRequest(std::vector<std::string> request) {
 
 void Application::acceptRequest(std::vector<std::string> request) {
     this->users.acceptRequest(request);
+}
+
+void Application::changePassword(std::string newPassword, std::string oldPassword) {
+    this->users.changePassword(*(this->user), oldPassword, newPassword);
 }

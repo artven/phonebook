@@ -18,8 +18,10 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
@@ -27,6 +29,7 @@
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QTreeView>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -70,6 +73,24 @@ public:
     QLabel *label_6;
     QWidget *page_7;
     QLabel *label_7;
+    QGroupBox *groupBox_2;
+    QWidget *widget2;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_4;
+    QLabel *oldPasswordLabel;
+    QSpacerItem *horizontalSpacer_4;
+    QLineEdit *oldPasswordLineEdit;
+    QHBoxLayout *horizontalLayout_5;
+    QLabel *newPasswordLabel;
+    QSpacerItem *horizontalSpacer_5;
+    QLineEdit *newPasswordLineEdit;
+    QHBoxLayout *horizontalLayout_6;
+    QLabel *repeatPassowrLabel;
+    QSpacerItem *horizontalSpacer_6;
+    QLineEdit *repeatNewPasswordLineEdit;
+    QHBoxLayout *horizontalLayout_7;
+    QSpacerItem *horizontalSpacer_7;
+    QPushButton *okPasswordChangePushButton;
     QMenuBar *menuBar;
     QStatusBar *statusBar;
 
@@ -260,7 +281,98 @@ public:
         page_7->setObjectName(QStringLiteral("page_7"));
         label_7 = new QLabel(page_7);
         label_7->setObjectName(QStringLiteral("label_7"));
-        label_7->setGeometry(QRect(140, 110, 341, 121));
+        label_7->setGeometry(QRect(10, 10, 341, 121));
+        groupBox_2 = new QGroupBox(page_7);
+        groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
+        groupBox_2->setGeometry(QRect(140, 90, 461, 211));
+        widget2 = new QWidget(groupBox_2);
+        widget2->setObjectName(QStringLiteral("widget2"));
+        widget2->setGeometry(QRect(20, 40, 391, 161));
+        verticalLayout = new QVBoxLayout(widget2);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setSpacing(6);
+        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
+        oldPasswordLabel = new QLabel(widget2);
+        oldPasswordLabel->setObjectName(QStringLiteral("oldPasswordLabel"));
+
+        horizontalLayout_4->addWidget(oldPasswordLabel);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_4);
+
+        oldPasswordLineEdit = new QLineEdit(widget2);
+        oldPasswordLineEdit->setObjectName(QStringLiteral("oldPasswordLineEdit"));
+
+        horizontalLayout_4->addWidget(oldPasswordLineEdit);
+
+
+        verticalLayout->addLayout(horizontalLayout_4);
+
+        horizontalLayout_5 = new QHBoxLayout();
+        horizontalLayout_5->setSpacing(6);
+        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        newPasswordLabel = new QLabel(widget2);
+        newPasswordLabel->setObjectName(QStringLiteral("newPasswordLabel"));
+
+        horizontalLayout_5->addWidget(newPasswordLabel);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_5);
+
+        newPasswordLineEdit = new QLineEdit(widget2);
+        newPasswordLineEdit->setObjectName(QStringLiteral("newPasswordLineEdit"));
+
+        horizontalLayout_5->addWidget(newPasswordLineEdit);
+
+
+        verticalLayout->addLayout(horizontalLayout_5);
+
+        horizontalLayout_6 = new QHBoxLayout();
+        horizontalLayout_6->setSpacing(6);
+        horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
+        repeatPassowrLabel = new QLabel(widget2);
+        repeatPassowrLabel->setObjectName(QStringLiteral("repeatPassowrLabel"));
+
+        horizontalLayout_6->addWidget(repeatPassowrLabel);
+
+        horizontalSpacer_6 = new QSpacerItem(134, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_6->addItem(horizontalSpacer_6);
+
+        repeatNewPasswordLineEdit = new QLineEdit(widget2);
+        repeatNewPasswordLineEdit->setObjectName(QStringLiteral("repeatNewPasswordLineEdit"));
+        QSizePolicy sizePolicy2(QSizePolicy::Ignored, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(1);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(repeatNewPasswordLineEdit->sizePolicy().hasHeightForWidth());
+        repeatNewPasswordLineEdit->setSizePolicy(sizePolicy2);
+
+        horizontalLayout_6->addWidget(repeatNewPasswordLineEdit);
+
+
+        verticalLayout->addLayout(horizontalLayout_6);
+
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setSpacing(6);
+        horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer_7);
+
+        okPasswordChangePushButton = new QPushButton(widget2);
+        okPasswordChangePushButton->setObjectName(QStringLiteral("okPasswordChangePushButton"));
+
+        horizontalLayout_7->addWidget(okPasswordChangePushButton);
+
+
+        verticalLayout->addLayout(horizontalLayout_7);
+
         stackedWidget->addWidget(page_7);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
@@ -273,7 +385,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(3);
+        stackedWidget->setCurrentIndex(6);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -296,7 +408,12 @@ public:
         requestsLabel->setText(QApplication::translate("MainWindow", "Wnioski o nowe konta", 0));
         label_5->setText(QApplication::translate("MainWindow", "nowy operator", 0));
         label_6->setText(QApplication::translate("MainWindow", "Edycja danych", 0));
-        label_7->setText(QApplication::translate("MainWindow", "zmie\305\204 has\305\202o", 0));
+        label_7->setText(QString());
+        groupBox_2->setTitle(QApplication::translate("MainWindow", "Zmiana has\305\202a", 0));
+        oldPasswordLabel->setText(QApplication::translate("MainWindow", "Stare has\305\202o", 0));
+        newPasswordLabel->setText(QApplication::translate("MainWindow", "Nowe has\305\202o", 0));
+        repeatPassowrLabel->setText(QApplication::translate("MainWindow", "Powt\303\263rz has\305\202o", 0));
+        okPasswordChangePushButton->setText(QApplication::translate("MainWindow", "OK", 0));
     } // retranslateUi
 
 };

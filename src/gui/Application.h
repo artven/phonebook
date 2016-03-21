@@ -21,6 +21,7 @@ public:
     virtual ~Application();
     void start();
     virtual void showMainWindow()=0;
+    virtual void logout()=0;
 
 protected:
     QStandardItemModel* getAllRequests();
@@ -29,6 +30,7 @@ protected:
     QStandardItemModel* getRejectedRequests();
     void acceptRequest(std::vector<std::string> request);
     void rejectRequest(std::vector<std::string> request);
+    void changePassword(std::string newPassword, std::string oldPassword);
 
 private:
     const std::string databaseName{"database.db"};
@@ -43,7 +45,7 @@ private:
     void setFusionStyle();
     void setDarkPallete();
     void login();
-    void logout();
+
     void createNewAccount();
     virtual void chooseWindowMode(UserRecord *user)=0;
 

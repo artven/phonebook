@@ -11,6 +11,7 @@
 #include <QRadioButton>
 #include <QToolButton>
 #include <QTableView>
+#include <QLineEdit>
 
 #include "Application.h"
 
@@ -33,6 +34,7 @@ public:
     void setWindowMode(WindowMode mode);
     virtual void showMainWindow();
     virtual void chooseWindowMode(UserRecord *user);
+    virtual void logout();
     ~MainWindow();
 
 private slots:
@@ -41,6 +43,7 @@ private slots:
     void onRequestsTableViewRowClicked(QModelIndex idx);
     void onAcceptRequestToolButtonClicked();
     void onRejectRequestToolButtonClicked();
+    void onChangePasswordClicked();
 
 private:
 
@@ -67,6 +70,14 @@ private:
     void addOperetorMenu();
     void addAdministratorMenu();
 
+    void setBrowseDatabasePage();
+    void setAddRecordPage();
+    void setEditUsersPage();
+    void setRequestsPage();
+    void setNewUserPage();
+    void setEditPersonalData();
+    void setChangePasswordPage();
+
     void switchUserMenu(QModelIndex idx);
     void switchOperatorMenu(QModelIndex idx);
     void switchAdministratorMenu(QModelIndex idx);
@@ -87,6 +98,13 @@ private:
     void showNewRequests();
     void showAcceptedRequests();
     void showRejectedRequests();
+
+    //chagne password page
+    QLineEdit* oldPasswordLabel;
+    QLineEdit* newPasswordLabel;
+    QLineEdit* repeatPasswordLabel;
+    QPushButton* okChangePasswordButton;
+
 };
 
 #endif // MAINWINDOW_H

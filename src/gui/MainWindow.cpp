@@ -32,6 +32,14 @@ QMainWindow{parent}, Application{app}, ui{new Ui::MainWindow} {
     QObject::connect(this->requestsTableView, SIGNAL(clicked(QModelIndex)), this, SLOT(onRequestsTableViewRowClicked(QModelIndex)));
     QObject::connect(this->acceptRequestToolButton, SIGNAL(clicked()), this, SLOT(onAcceptRequestToolButtonClicked()));
     QObject::connect(this->rejectRequestToolButton, SIGNAL(clicked()), this, SLOT(onRejectRequestToolButtonClicked()));
+    this->setBrowseDatabasePage();
+
+    //change password
+    this->oldPasswordLabel = ui->oldPasswordLineEdit;
+    this->newPasswordLabel = ui->newPasswordLineEdit;
+    this->repeatPasswordLabel = ui->repeatNewPasswordLineEdit;
+    this->okChangePasswordButton = ui->okPasswordChangePushButton;
+    QObject::connect(this->okChangePasswordButton, SIGNAL(clicked()), this, SLOT(onChangePasswordClicked()));
 }
 
 void MainWindow::addUserMenu() {
@@ -123,23 +131,55 @@ void MainWindow::onTreeViewItemDoubleCliced(QModelIndex idx) {
     }
 }
 
+
+void MainWindow::setBrowseDatabasePage() {
+    this->mainWidget->setCurrentIndex(0);
+}
+
+void MainWindow::setAddRecordPage() {
+    this->mainWidget->setCurrentIndex(1);
+}
+
+void MainWindow::setEditUsersPage() {
+    this->mainWidget->setCurrentIndex(2);
+}
+
+void MainWindow::setRequestsPage() {
+    this->mainWidget->setCurrentIndex(3);
+}
+
+void MainWindow::setNewUserPage() {
+    this->mainWidget->setCurrentIndex(4);
+}
+
+void MainWindow::setEditPersonalData() {
+    this->mainWidget->setCurrentIndex(5);
+}
+
+void MainWindow::setChangePasswordPage() {
+    this->oldPasswordLabel->clear();
+    this->newPasswordLabel->clear();
+    this->repeatPasswordLabel->clear();
+    this->mainWidget->setCurrentIndex(6);
+}
+
 void MainWindow::switchUserMenu(QModelIndex idx) {
     if (idx.parent() != QModelIndex()) {
         switch (idx.row()) {
             case 0:
-                this->mainWidget->setCurrentIndex(0);
+                this->setBrowseDatabasePage();
                 break;
             case 1:
-                this->mainWidget->setCurrentIndex(1);
+                this->setAddRecordPage();
                 break;
             case 2:
-                this->mainWidget->setCurrentIndex(5);
+                this->setEditPersonalData();
                 break;
             case 3:
-                this->mainWidget->setCurrentIndex(6);
+                this->setChangePasswordPage();
                 break;
             case 4:
-                this->close();
+                this->logout();
                 break;
             case 5:
                 this->close();
@@ -150,30 +190,66 @@ void MainWindow::switchUserMenu(QModelIndex idx) {
 
 void MainWindow::switchOperatorMenu(QModelIndex idx) {
     if (idx.parent() != QModelIndex()) {
-        int pageIndex = idx.row();
-        if (pageIndex <= 3)
-            this->mainWidget->setCurrentIndex(pageIndex);
-        else if (pageIndex == 4)
-            this->mainWidget->setCurrentIndex(4);
-        else if (pageIndex == 5)
-            this->mainWidget->setCurrentIndex(6);
-        else if (pageIndex == 6)
-            this->close();
-        else if (pageIndex == 7)
-            this->close();
+        switch (idx.row()) {
+            case 0:
+                this->setBrowseDatabasePage();
+                break;
+            case 1:
+                this->setAddRecordPage();
+                break;
+            case 2:
+                this->setEditUsersPage();
+                break;
+            case 3:
+                this->setRequestsPage();
+                break;
+            case 4:
+                this->setNewUserPage();
+                break;
+            case 5:
+                this->setChangePasswordPage();
+                break;
+            case 6:
+                this->logout();
+                break;
+            case 7:
+                this->close();
+                break;
+        }
     }
 }
 
 void MainWindow::switchAdministratorMenu(QModelIndex idx) {
-    if (idx.parent() != QModelIndex()) {
-        int pageIndex = idx.row();
-        if (pageIndex <= 6)
-            this->mainWidget->setCurrentIndex(pageIndex);
-        else if (pageIndex == 7)
-            this->close();
-        else if (pageIndex == 8)
-            this->close();
-    }
+    if (idx.parent() != QModelIndex())
+        switch (idx.row()) {
+            case 0:
+                this->setBrowseDatabasePage();
+                break;
+            case 1:
+                this->setAddRecordPage();
+                break;
+            case 2:
+                this->setEditUsersPage();
+                break;
+            case 3:
+                this->setRequestsPage();
+                break;
+            case 4:
+                this->setNewUserPage();
+                break;
+            case 5:
+                this->setEditPersonalData();
+                break;
+            case 6:
+                this->setChangePasswordPage();
+                break;
+            case 7:
+                this->logout();
+                break;
+            case 8:
+                this->close();
+                break;
+        }
 }
 
 void MainWindow::setWindowMode(WindowMode mode) {
@@ -312,4 +388,26 @@ void MainWindow::onRejectRequestToolButtonClicked() {
         QMessageBox::warning(this, "Błąd!", exception.what());
     }
     this->showNewRequests();
+}
+
+void MainWindow::logout() {
+    this->close();
+    this->start();
+}
+
+void MainWindow::onChangePasswordClicked() {
+    auto oldPassword = this->oldPasswordLabel->text().toStdString();
+    auto newPassword = this->newPasswordLabel->text().toStdString();
+    auto repeatPassword = this->repeatPasswordLabel->text().toStdString();
+    if (newPassword != repeatPassword) {
+        QMessageBox::warning(this, "Błąd!", "Podane nowe hasła nie są identyczne!");
+    } else {
+        try {
+            this->changePassword(newPassword, oldPassword);
+            QMessageBox::information(this, "Info", "Hasło zostało zmienione. Zostanie wylogowany.");
+            this->logout();
+        } catch (std::invalid_argument& exception) {
+            QMessageBox::warning(this, "Błąd!", exception.what());
+        }
+    }
 }
