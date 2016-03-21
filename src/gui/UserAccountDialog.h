@@ -32,8 +32,8 @@ public:
     std::string getPassword();
     std::string getRepeatPassword();
     UserRole getUserRole();
-
     UserAccountDialogResult getResult();
+    void clear();
 
 private:
     Ui::UserAccountDialog *ui;

@@ -49,15 +49,7 @@ std::string UserAccountDialog::getRepeatPassword() {
 }
 
 UserRole UserAccountDialog::getUserRole() {
-    auto selectedItem = this->roleComboBox->currentIndex();
-    auto item = this->roleComboBox->itemData(selectedItem);
-
-    if (item == "użytkownik")
-        return UserRole::NormalUser;
-    else if (item == "operator")
-        return UserRole::Operator;
-    else
-        return UserRole::Admministrator;
+    return UserRole::NormalUser;
 }
 
 void UserAccountDialog::onOkButtonClicked() {
@@ -97,4 +89,11 @@ void UserAccountDialog::enablePasswordMask() {
     this->repeatPasswordLineEdit->setEchoMode(QLineEdit::Password);
     this->repeatPasswordLineEdit->setInputMethodHints(Qt::ImhHiddenText| Qt::ImhNoPredictiveText|Qt::ImhNoAutoUppercase);
 
+}
+
+void UserAccountDialog::clear() {
+    this->loginLineEdit->clear();
+    this->passwordLineEdit->clear();
+    this->passwordLineEdit->clear();
+    this->repeatPasswordLineEdit->clear();
 }

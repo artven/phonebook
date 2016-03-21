@@ -224,7 +224,7 @@ public:
 
     void retranslateUi(QDialog *UserAccountDialog)
     {
-        UserAccountDialog->setWindowTitle(QApplication::translate("UserAccountDialog", "Dialog", 0));
+        UserAccountDialog->setWindowTitle(QApplication::translate("UserAccountDialog", "Nowe konto", 0));
         loginLabel->setText(QApplication::translate("UserAccountDialog", "Nazwa u\305\274ytkownika", 0));
         emailLabel->setText(QApplication::translate("UserAccountDialog", "Email", 0));
         passwordLabel->setText(QApplication::translate("UserAccountDialog", "Has\305\202o", 0));

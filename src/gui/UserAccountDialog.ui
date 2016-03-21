@@ -17,7 +17,7 @@
    <enum>Qt::TabFocus</enum>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Nowe konto</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">

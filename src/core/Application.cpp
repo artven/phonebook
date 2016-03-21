@@ -93,15 +93,16 @@ Application::~Application() {
 
 void Application::createNewAccount() {
     bool operationFinished{false};
+    this->newAccountDialog.clear();
     do {
-        newAccountDialog.exec();
+        this->newAccountDialog.exec();
         switch (newAccountDialog.getResult()) {
             case UserAccountDialogResult::ok: {
 
-                auto login = newAccountDialog.getLogin();
-                auto email = newAccountDialog.getEmail();
-                auto password = newAccountDialog.getPassword();
-                auto role = newAccountDialog.getUserRole();
+                auto login = this->newAccountDialog.getLogin();
+                auto email = this->newAccountDialog.getEmail();
+                auto password = this->newAccountDialog.getPassword();
+                auto role = this->newAccountDialog.getUserRole();
 
                 try {
                     UserRecord record{0, login, email, role};
