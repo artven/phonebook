@@ -230,3 +230,21 @@ void UserManager::acceptRequest(std::vector<std::string> request) {
     auto insertNewUserQuery = this->createInsertDirectUserQuery(newUser, hash);
     this->database.executeQuery(insertNewUserQuery);
 }
+
+void UserManager::rejectRequest(std::vector<std::string> request) {
+    auto id = request[0];
+    auto name = request[1];
+    auto email = request[2];
+    auto hash = request[3];
+    auto status = request[5];
+
+    if(status != "Nowy")
+        throw InvalidRequestStatusException{};
+
+    UserRecord newUser{0, name, email, UserRole::NormalUser};
+    if(!this->isRequestInDatabase(newUser))
+        throw RequestNotFoundException{};
+
+    auto changeStatusQuery = this->createChangeRequestStatusQuery("Odrzucony", id);
+    this->database.executeQuery(changeStatusQuery);
+}

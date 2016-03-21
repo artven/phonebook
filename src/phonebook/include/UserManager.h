@@ -30,6 +30,7 @@ public:
     void addRequest(UserRecord user, std::string password);
     std::list<std::vector<std::string>> getAllRequests(std::string status="");
     void acceptRequest(std::vector<std::string> request);
+    void rejectRequest(std::vector<std::string> request);
 
 private:
     DatabaseInterface& database;

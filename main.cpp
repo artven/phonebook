@@ -1,11 +1,8 @@
-#include <iostream>
+#include "MainWindow.h"
 
-#include "Application.h"
-
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    Application phonebookApplication(app);
-    phonebookApplication.start();
+    MainWindow window(app);
+    window.start();
     return app.exec();
 }

@@ -12,6 +12,7 @@ SET(gui_HEADERS
         ui_MainWindow.h
         UserAccountDialog.h
         ui_UserAccountDialog.h
+        Application.h
 )
 
 SET(gui_SOURCES
@@ -19,6 +20,7 @@ SET(gui_SOURCES
         LoginDialog.cpp
         MainWindow.cpp
         UserAccountDialog.cpp
+        Application.cpp
 )
 
 QT5_WRAP_CPP(gui_SOURCES ${gui_HEADERS})
@@ -33,4 +35,4 @@ QT5_WRAP_UI(UI
 QT5_ADD_RESOURCES(gui_RESOURCES resources.qrc)
 
 add_library(gui STATIC ${gui_HEADERS} ${gui_SOURCES} ${gui_RESOURCES})
-target_link_libraries(gui Qt5::Core Qt5::Widgets Qt5::Gui ${gui_RESOURCES})
+target_link_libraries(gui phonebook Qt5::Core Qt5::Widgets Qt5::Gui ${gui_RESOURCES})

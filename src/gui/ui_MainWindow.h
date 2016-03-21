@@ -14,13 +14,18 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableView>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QWidget>
 
@@ -31,7 +36,6 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QFrame *frame;
-    QHBoxLayout *horizontalLayout;
     QTreeView *menuTreeView;
     QStackedWidget *stackedWidget;
     QWidget *page;
@@ -40,8 +44,26 @@ public:
     QLabel *label_2;
     QWidget *page_3;
     QLabel *label_3;
-    QWidget *page_4;
-    QLabel *label_4;
+    QWidget *requestsPage;
+    QTableView *requestsTableView;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_2;
+    QToolButton *accceptRequestToolButton;
+    QToolButton *rejectRequestToolButton;
+    QWidget *widget1;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
+    QGroupBox *groupBox;
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout_3;
+    QSpacerItem *horizontalSpacer_3;
+    QRadioButton *newRequestsRadioButton;
+    QRadioButton *acceptedRadioButton;
+    QRadioButton *rejectedRequestsRadioButton;
+    QRadioButton *allRequestsRadioButton;
+    QSpacerItem *horizontalSpacer_2;
+    QToolButton *showRequestsToolButton;
+    QLabel *requestsLabel;
     QWidget *page_5;
     QLabel *label_5;
     QWidget *page_6;
@@ -55,7 +77,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1100, 500);
+        MainWindow->resize(1057, 500);
         QIcon icon;
         icon.addFile(QStringLiteral(":/mainwindow/images/Contacts-80.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
@@ -64,13 +86,9 @@ public:
         frame = new QFrame(centralWidget);
         frame->setObjectName(QStringLiteral("frame"));
         frame->setGeometry(QRect(0, 0, 1091, 611));
-        horizontalLayout = new QHBoxLayout(frame);
-        horizontalLayout->setSpacing(0);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
         menuTreeView = new QTreeView(frame);
         menuTreeView->setObjectName(QStringLiteral("menuTreeView"));
+        menuTreeView->setGeometry(QRect(10, 10, 300, 431));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -83,11 +101,9 @@ public:
         menuTreeView->setFocusPolicy(Qt::NoFocus);
         menuTreeView->setItemsExpandable(false);
         menuTreeView->header()->setVisible(false);
-
-        horizontalLayout->addWidget(menuTreeView);
-
         stackedWidget = new QStackedWidget(frame);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
+        stackedWidget->setGeometry(QRect(320, 0, 771, 611));
         sizePolicy.setHeightForWidth(stackedWidget->sizePolicy().hasHeightForWidth());
         stackedWidget->setSizePolicy(sizePolicy);
         stackedWidget->setFrameShape(QFrame::Panel);
@@ -115,12 +131,119 @@ public:
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(160, 90, 421, 141));
         stackedWidget->addWidget(page_3);
-        page_4 = new QWidget();
-        page_4->setObjectName(QStringLiteral("page_4"));
-        label_4 = new QLabel(page_4);
-        label_4->setObjectName(QStringLiteral("label_4"));
-        label_4->setGeometry(QRect(110, 90, 441, 181));
-        stackedWidget->addWidget(page_4);
+        requestsPage = new QWidget();
+        requestsPage->setObjectName(QStringLiteral("requestsPage"));
+        requestsTableView = new QTableView(requestsPage);
+        requestsTableView->setObjectName(QStringLiteral("requestsTableView"));
+        requestsTableView->setGeometry(QRect(10, 120, 700, 250));
+        requestsTableView->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
+        requestsTableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        requestsTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+        requestsTableView->setGridStyle(Qt::DashDotLine);
+        requestsTableView->setSortingEnabled(true);
+        requestsTableView->horizontalHeader()->setCascadingSectionResizes(true);
+        requestsTableView->horizontalHeader()->setMinimumSectionSize(150);
+        requestsTableView->verticalHeader()->setVisible(false);
+        widget = new QWidget(requestsPage);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(210, 390, 317, 34));
+        horizontalLayout_2 = new QHBoxLayout(widget);
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
+        accceptRequestToolButton = new QToolButton(widget);
+        accceptRequestToolButton->setObjectName(QStringLiteral("accceptRequestToolButton"));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/mainwindow/images/Checked-96.png"), QSize(), QIcon::Normal, QIcon::Off);
+        accceptRequestToolButton->setIcon(icon1);
+        accceptRequestToolButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+
+        horizontalLayout_2->addWidget(accceptRequestToolButton);
+
+        rejectRequestToolButton = new QToolButton(widget);
+        rejectRequestToolButton->setObjectName(QStringLiteral("rejectRequestToolButton"));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/mainwindow/images/Do Not Disturb-96.png"), QSize(), QIcon::Normal, QIcon::Off);
+        rejectRequestToolButton->setIcon(icon2);
+        rejectRequestToolButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+
+        horizontalLayout_2->addWidget(rejectRequestToolButton);
+
+        widget1 = new QWidget(requestsPage);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        widget1->setGeometry(QRect(0, 40, 711, 71));
+        horizontalLayout = new QHBoxLayout(widget1);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        groupBox = new QGroupBox(widget1);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        QSizePolicy sizePolicy1(QSizePolicy::Ignored, QSizePolicy::Ignored);
+        sizePolicy1.setHorizontalStretch(1);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(groupBox->sizePolicy().hasHeightForWidth());
+        groupBox->setSizePolicy(sizePolicy1);
+        groupBox->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        groupBox->setFlat(true);
+        layoutWidget = new QWidget(groupBox);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(0, 20, 431, 31));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget);
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_3);
+
+        newRequestsRadioButton = new QRadioButton(layoutWidget);
+        newRequestsRadioButton->setObjectName(QStringLiteral("newRequestsRadioButton"));
+        newRequestsRadioButton->setChecked(true);
+
+        horizontalLayout_3->addWidget(newRequestsRadioButton);
+
+        acceptedRadioButton = new QRadioButton(layoutWidget);
+        acceptedRadioButton->setObjectName(QStringLiteral("acceptedRadioButton"));
+
+        horizontalLayout_3->addWidget(acceptedRadioButton);
+
+        rejectedRequestsRadioButton = new QRadioButton(layoutWidget);
+        rejectedRequestsRadioButton->setObjectName(QStringLiteral("rejectedRequestsRadioButton"));
+
+        horizontalLayout_3->addWidget(rejectedRequestsRadioButton);
+
+        allRequestsRadioButton = new QRadioButton(layoutWidget);
+        allRequestsRadioButton->setObjectName(QStringLiteral("allRequestsRadioButton"));
+
+        horizontalLayout_3->addWidget(allRequestsRadioButton);
+
+
+        horizontalLayout->addWidget(groupBox);
+
+        horizontalSpacer_2 = new QSpacerItem(83, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+        showRequestsToolButton = new QToolButton(widget1);
+        showRequestsToolButton->setObjectName(QStringLiteral("showRequestsToolButton"));
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/mainwindow/images/search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        showRequestsToolButton->setIcon(icon3);
+        showRequestsToolButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+
+        horizontalLayout->addWidget(showRequestsToolButton);
+
+        requestsLabel = new QLabel(requestsPage);
+        requestsLabel->setObjectName(QStringLiteral("requestsLabel"));
+        requestsLabel->setGeometry(QRect(1, 11, 143, 17));
+        stackedWidget->addWidget(requestsPage);
         page_5 = new QWidget();
         page_5->setObjectName(QStringLiteral("page_5"));
         label_5 = new QLabel(page_5);
@@ -139,13 +262,10 @@ public:
         label_7->setObjectName(QStringLiteral("label_7"));
         label_7->setGeometry(QRect(140, 110, 341, 121));
         stackedWidget->addWidget(page_7);
-
-        horizontalLayout->addWidget(stackedWidget);
-
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1100, 25));
+        menuBar->setGeometry(QRect(0, 0, 1057, 25));
         MainWindow->setMenuBar(menuBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -153,7 +273,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -165,7 +285,15 @@ public:
         label->setText(QApplication::translate("MainWindow", "Przegl\304\205danie bazy danych", 0));
         label_2->setText(QApplication::translate("MainWindow", "Dodawanie nowego wpisu do ksi\304\205\305\274ki telefonicznej", 0));
         label_3->setText(QApplication::translate("MainWindow", "Edytuj u\305\274ytkownik\303\263w", 0));
-        label_4->setText(QApplication::translate("MainWindow", "Wnioski o nowe konta", 0));
+        accceptRequestToolButton->setText(QApplication::translate("MainWindow", "Zakceptuj wniosek", 0));
+        rejectRequestToolButton->setText(QApplication::translate("MainWindow", "Odrzu\304\207 wniosek", 0));
+        groupBox->setTitle(QApplication::translate("MainWindow", "Status wniosku", 0));
+        newRequestsRadioButton->setText(QApplication::translate("MainWindow", "nowy", 0));
+        acceptedRadioButton->setText(QApplication::translate("MainWindow", "zaakceptowany", 0));
+        rejectedRequestsRadioButton->setText(QApplication::translate("MainWindow", "odrzucony", 0));
+        allRequestsRadioButton->setText(QApplication::translate("MainWindow", "wszystkie", 0));
+        showRequestsToolButton->setText(QApplication::translate("MainWindow", "Poka\305\274 wnioski", 0));
+        requestsLabel->setText(QApplication::translate("MainWindow", "Wnioski o nowe konta", 0));
         label_5->setText(QApplication::translate("MainWindow", "nowy operator", 0));
         label_6->setText(QApplication::translate("MainWindow", "Edycja danych", 0));
         label_7->setText(QApplication::translate("MainWindow", "zmie\305\204 has\305\202o", 0));

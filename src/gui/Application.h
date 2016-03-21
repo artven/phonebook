@@ -6,30 +6,35 @@
 #define MAIN_PROGRAM_APPLICATION_H
 
 #include <QApplication>
+#include <QStandardItemModel>
 #include <string>
 
-#include "SqliteDatabase.h"
 #include "PhoneBookAPI.h"
 #include "UserManager.h"
-#include "MainWindow.h"
 #include "LoginDialog.h"
 #include "UserAccountDialog.h"
+#include "SqliteDatabase.h"
 
 class Application {
 public:
     Application(QApplication& app);
     virtual ~Application();
     void start();
-    void login();
-    void logout();
-    void showMainWindow();
+    virtual void showMainWindow()=0;
+
+protected:
+    QStandardItemModel* getAllRequests();
+    QStandardItemModel* getNewRequests();
+    QStandardItemModel* getAcceptedRequests();
+    QStandardItemModel* getRejectedRequests();
+    void acceptRequest(std::vector<std::string> request);
+    void rejectRequest(std::vector<std::string> request);
 
 private:
     const std::string databaseName{"database.db"};
     SQLiteDatabase database;
     PhoneBookAPI phones;
     UserManager users;
-    MainWindow applicationWindow;
     LoginDialog loginDialog;
     UserAccountDialog newAccountDialog;
     UserRecord* user{nullptr};
@@ -37,9 +42,12 @@ private:
 
     void setFusionStyle();
     void setDarkPallete();
+    void login();
+    void logout();
     void createNewAccount();
+    virtual void chooseWindowMode(UserRecord *user)=0;
 
-    void chooseWindowMode(UserRecord *user);
+    QStandardItemModel *convertRequestToModel(std::list<std::vector<std::string>> &requests);
 };
 
 

@@ -1,12 +1,13 @@
 #include <QStandardItem>
 #include <vector>
 #include <iostream>
+#include <QMessageBox>
 
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
 
-MainWindow::MainWindow(QWidget *parent):
-QMainWindow(parent), ui(new Ui::MainWindow) {
+MainWindow::MainWindow(QApplication& app,QWidget *parent):
+QMainWindow{parent}, Application{app}, ui{new Ui::MainWindow} {
     ui->setupUi(this);
     this->menuView = ui->menuTreeView;
     this->mainWidget = ui->stackedWidget;
@@ -15,6 +16,22 @@ QMainWindow(parent), ui(new Ui::MainWindow) {
     this->menuView->setModel(this->menuModel);
 
     QObject::connect(this->menuView, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(onTreeViewItemDoubleCliced(QModelIndex)));
+
+    //requests page
+    this->allRequestsRadioButton = ui->allRequestsRadioButton;
+    this->acceptedRequestsRadioButton = ui->acceptedRadioButton;
+    this->newRequestsRadioButton = ui->newRequestsRadioButton;
+    this->rejectedRequestsRadioButton = ui->rejectedRequestsRadioButton;
+    this->showRequestsToolButton = ui->showRequestsToolButton;
+    this->acceptRequestToolButton = ui->accceptRequestToolButton;
+    this->rejectRequestToolButton = ui->rejectRequestToolButton;
+    this->requestsTableView = ui->requestsTableView;
+    this->acceptRequestToolButton->setEnabled(false);
+    this->rejectRequestToolButton->setEnabled(false);
+    QObject::connect(this->showRequestsToolButton, SIGNAL(clicked()), this, SLOT(onShowRequestsToolButtonClicked()));
+    QObject::connect(this->requestsTableView, SIGNAL(clicked(QModelIndex)), this, SLOT(onRequestsTableViewRowClicked(QModelIndex)));
+    QObject::connect(this->acceptRequestToolButton, SIGNAL(clicked()), this, SLOT(onAcceptRequestToolButtonClicked()));
+    QObject::connect(this->rejectRequestToolButton, SIGNAL(clicked()), this, SLOT(onRejectRequestToolButtonClicked()));
 }
 
 void MainWindow::addUserMenu() {
@@ -161,7 +178,7 @@ void MainWindow::switchAdministratorMenu(QModelIndex idx) {
 
 void MainWindow::setWindowMode(WindowMode mode) {
     this->mode = mode;
-    switch (WindowMode::administratorWindow) {
+    switch (this->mode) {
         case WindowMode::userWindow:
             this->addUserMenu();
             break;
@@ -172,4 +189,127 @@ void MainWindow::setWindowMode(WindowMode mode) {
             this->addAdministratorMenu();
             break;
     }
+}
+
+void MainWindow::onShowRequestsToolButtonClicked() {
+    if (this->allRequestsRadioButton->isChecked())
+        this->showAllRequests();
+    if (this->newRequestsRadioButton->isChecked())
+        this->showNewRequests();
+    if (this->acceptedRequestsRadioButton->isChecked())
+        this->showAcceptedRequests();
+    if (this->rejectedRequestsRadioButton->isChecked())
+        this->showRejectedRequests();
+
+    if(this->reguestsTableModel)
+        this->addRequestsTableHeaders();
+}
+
+void MainWindow::showAllRequests() {
+    if (this->reguestsTableModel)
+        this->reguestsTableModel->clear();
+    auto newModel = this->getAllRequests();
+    if (newModel) {
+        this->reguestsTableModel = newModel;
+        this->requestsTableView->setModel(newModel);
+    }
+}
+
+void MainWindow::showNewRequests() {
+    if (this->reguestsTableModel)
+        this->reguestsTableModel->clear();
+    auto newModel = this->getNewRequests();
+    if (newModel) {
+        this->reguestsTableModel = newModel;
+        this->requestsTableView->setModel(newModel);
+    }
+}
+
+void MainWindow::showAcceptedRequests() {
+    if (this->reguestsTableModel)
+        this->reguestsTableModel->clear();
+    auto newModel = this->getAcceptedRequests();
+    if (newModel) {
+        this->reguestsTableModel = newModel;
+        this->requestsTableView->setModel(newModel);
+    }
+}
+
+void MainWindow::showRejectedRequests() {
+    if (this->reguestsTableModel)
+        this->reguestsTableModel->clear();
+    auto newModel = this->getRejectedRequests();
+    if(newModel) {
+        this->reguestsTableModel = newModel;
+        this->requestsTableView->setModel(newModel);
+    }
+}
+
+void MainWindow::showMainWindow() {
+    this->show();
+}
+
+void MainWindow::chooseWindowMode(UserRecord *user) {
+    if (user->isAdministrator())
+        this->setWindowMode(WindowMode::administratorWindow);
+    else if (user->isOperator())
+        this->setWindowMode(WindowMode::operatorWindow);
+    else
+        this->setWindowMode(WindowMode::userWindow);
+}
+
+void MainWindow::addRequestsTableHeaders() {
+    this->reguestsTableModel->setHeaderData(0,Qt::Horizontal, "Id");
+    this->reguestsTableModel->setHeaderData(1,Qt::Horizontal, "Login");
+    this->reguestsTableModel->setHeaderData(2,Qt::Horizontal, "Email");
+    this->reguestsTableModel->setHeaderData(3,Qt::Horizontal, "Skrót hasła");
+    this->reguestsTableModel->setHeaderData(4,Qt::Horizontal, "Uprawnienia");
+    this->reguestsTableModel->setHeaderData(5,Qt::Horizontal, "Status");
+    this->reguestsTableModel->setHeaderData(6,Qt::Horizontal, "Data");
+}
+
+void MainWindow::onRequestsTableViewRowClicked(QModelIndex idx) {
+    idx = this->reguestsTableModel->index(idx.row(), 5);
+    auto status = this->reguestsTableModel->data(idx).toString().toStdString();
+    if (status == "Nowy") {
+        this->acceptRequestToolButton->setEnabled(true);
+        this->rejectRequestToolButton->setEnabled(true);
+    } else {
+        this->acceptRequestToolButton->setEnabled(false);
+        this->rejectRequestToolButton->setEnabled(false);
+    }
+}
+
+void MainWindow::onAcceptRequestToolButtonClicked() {
+    std::vector<std::string> request;
+    auto idx = this->requestsTableView->currentIndex();
+    for(int i=0; i<7; i++) {
+        auto cellIndex = this->reguestsTableModel->index(idx.row(), i);
+        auto cellValue = this->reguestsTableModel->data(cellIndex).toString().toStdString();
+        request.push_back(cellValue);
+    }
+
+    try {
+        this->acceptRequest(request);
+    } catch (std::invalid_argument& exception) {
+        QMessageBox::warning(this, "Błąd!", exception.what());
+    }
+    this->showNewRequests();
+}
+
+void MainWindow::onRejectRequestToolButtonClicked() {
+    std::vector<std::string> request;
+    auto idx = this->requestsTableView->currentIndex();
+    for(int i=0; i<7; i++) {
+        auto cellIndex = this->reguestsTableModel->index(idx.row(), i);
+        auto cellValue = this->reguestsTableModel->data(cellIndex).toString().toStdString();
+        request.push_back(cellValue);
+    }
+
+    try {
+        this->rejectRequest(request);
+    } catch (std::invalid_argument& exception) {
+        QMessageBox::warning(this, "Błąd!", exception.what());
+    }
+    this->showNewRequests();
 }

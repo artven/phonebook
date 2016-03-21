@@ -15,14 +15,10 @@ database{this->databaseName}, phones{database}, users{database}, parentApplicati
     this->setDarkPallete();
 }
 
+/*
 void Application::chooseWindowMode(UserRecord *user) {
-    if (user->isAdministrator())
-            applicationWindow.setWindowMode(WindowMode::administratorWindow);
-        else if (user->isOperator())
-            applicationWindow.setWindowMode(WindowMode::operatorWindow);
-        else
-            applicationWindow.setWindowMode(WindowMode::userWindow);
-}
+
+}*/
 
 void Application::setFusionStyle() {
     QStyleFactory styleFactory;
@@ -78,15 +74,10 @@ void Application::login() {
 }
 
 void Application::logout() {
-
-}
-
-void Application::showMainWindow() {
-    this->applicationWindow.show();
+    //TODO
 }
 
 Application::~Application() {
-    std::cout << "dupa" << std::endl;
     if(this->user != nullptr)
         delete this->user;
 }
@@ -133,4 +124,58 @@ void Application::start() {
         // TODO lepsza opcja?
         this->parentApplication.~QApplication();
     }
+}
+
+QStandardItemModel* Application::getAllRequests() {
+    auto requests = this->users.getAllRequests();
+    return convertRequestToModel(requests);
+}
+
+QStandardItemModel* Application::getNewRequests() {
+    auto requests = this->users.getAllRequests("Nowy");
+    return convertRequestToModel(requests);
+}
+
+QStandardItemModel* Application::getAcceptedRequests() {
+    auto requests = this->users.getAllRequests("Zaakceptowany");
+    return convertRequestToModel(requests);
+}
+
+QStandardItemModel *Application::getRejectedRequests() {
+    auto requests = this->users.getAllRequests("Odrzucony");
+    return convertRequestToModel(requests);
+}
+
+QStandardItemModel *Application::convertRequestToModel(std::list<std::vector<std::string>> &requests) {
+    auto rows = requests.size();
+
+    if(rows == 0)
+        return nullptr;
+
+    auto cols = (*requests.begin()).size();
+    if(cols == 0)
+        return nullptr;
+
+    QStandardItemModel* model = new QStandardItemModel{rows, cols};
+
+    auto req = requests.begin();
+    for(int row=0; row<rows; row++) {
+        for(int col=0; col<cols; col++) {
+            auto elem = (*req)[col];
+            QStandardItem* item = new QStandardItem{elem.c_str()};
+            item->setEditable(false);
+            model->setItem(row, col, item);
+        }
+        req++;
+    }
+
+    return model;
+}
+
+void Application::rejectRequest(std::vector<std::string> request) {
+    this->users.rejectRequest(request);
+}
+
+void Application::acceptRequest(std::vector<std::string> request) {
+    this->users.acceptRequest(request);
 }

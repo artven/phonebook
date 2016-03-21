@@ -27,188 +27,384 @@
       <height>611</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <property name="spacing">
+    <widget class="QTreeView" name="menuTreeView">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>300</width>
+       <height>431</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>300</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::NoFocus</enum>
+     </property>
+     <property name="itemsExpandable">
+      <bool>false</bool>
+     </property>
+     <attribute name="headerVisible">
+      <bool>false</bool>
+     </attribute>
+    </widget>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>0</y>
+       <width>771</width>
+       <height>611</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Panel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <property name="lineWidth">
       <number>0</number>
      </property>
-     <property name="leftMargin">
+     <property name="midLineWidth">
       <number>0</number>
      </property>
-     <property name="topMargin">
-      <number>0</number>
+     <property name="currentIndex">
+      <number>3</number>
      </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QTreeView" name="menuTreeView">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>300</width>
-         <height>0</height>
-        </size>
+     <widget class="QWidget" name="page">
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>40</y>
+         <width>561</width>
+         <height>231</height>
+        </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <pointsize>15</pointsize>
         </font>
        </property>
-       <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
+       <property name="text">
+        <string>Przeglądanie bazy danych</string>
        </property>
-       <property name="itemsExpandable">
-        <bool>false</bool>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_2">
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>100</y>
+         <width>431</width>
+         <height>131</height>
+        </rect>
        </property>
-       <attribute name="headerVisible">
+       <property name="text">
+        <string>Dodawanie nowego wpisu do książki telefonicznej</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_3">
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>160</x>
+         <y>90</y>
+         <width>421</width>
+         <height>141</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Edytuj użytkowników</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="requestsPage">
+      <widget class="QTableView" name="requestsTableView">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>700</width>
+         <height>250</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::AdjustIgnored</enum>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::DashDotLine</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderCascadingSectionResizes">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>150</number>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
         <bool>false</bool>
        </attribute>
       </widget>
-     </item>
-     <item>
-      <widget class="QStackedWidget" name="stackedWidget">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>390</y>
+         <width>317</width>
+         <height>34</height>
+        </rect>
        </property>
-       <property name="frameShape">
-        <enum>QFrame::Panel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Sunken</enum>
-       </property>
-       <property name="lineWidth">
-        <number>0</number>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <widget class="QWidget" name="page">
-        <widget class="QLabel" name="label">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>40</y>
-           <width>561</width>
-           <height>231</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>15</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Przeglądanie bazy danych</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="page_2">
-        <widget class="QLabel" name="label_2">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>100</y>
-           <width>431</width>
-           <height>131</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Dodawanie nowego wpisu do książki telefonicznej</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="page_3">
-        <widget class="QLabel" name="label_3">
-         <property name="geometry">
-          <rect>
-           <x>160</x>
-           <y>90</y>
-           <width>421</width>
-           <height>141</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Edytuj użytkowników</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="page_4">
-        <widget class="QLabel" name="label_4">
-         <property name="geometry">
-          <rect>
-           <x>110</x>
-           <y>90</y>
-           <width>441</width>
-           <height>181</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Wnioski o nowe konta</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="page_5">
-        <widget class="QLabel" name="label_5">
-         <property name="geometry">
-          <rect>
-           <x>120</x>
-           <y>110</y>
-           <width>211</width>
-           <height>91</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>nowy operator</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="page_6">
-        <widget class="QLabel" name="label_6">
-         <property name="geometry">
-          <rect>
-           <x>80</x>
-           <y>130</y>
-           <width>201</width>
-           <height>91</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Edycja danych</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="QWidget" name="page_7">
-        <widget class="QLabel" name="label_7">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>110</y>
-           <width>341</width>
-           <height>121</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>zmień hasło</string>
-         </property>
-        </widget>
-       </widget>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QToolButton" name="accceptRequestToolButton">
+          <property name="text">
+           <string>Zakceptuj wniosek</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/mainwindow/images/Checked-96.png</normaloff>:/mainwindow/images/Checked-96.png</iconset>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="rejectRequestToolButton">
+          <property name="text">
+           <string>Odrzuć wniosek</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/mainwindow/images/Do Not Disturb-96.png</normaloff>:/mainwindow/images/Do Not Disturb-96.png</iconset>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
-     </item>
-    </layout>
+      <widget class="QWidget" name="">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>40</y>
+         <width>711</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="title">
+           <string>Status wniosku</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>20</y>
+             <width>431</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="newRequestsRadioButton">
+              <property name="text">
+               <string>nowy</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="acceptedRadioButton">
+              <property name="text">
+               <string>zaakceptowany</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="rejectedRequestsRadioButton">
+              <property name="text">
+               <string>odrzucony</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="allRequestsRadioButton">
+              <property name="text">
+               <string>wszystkie</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+        <item>
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>83</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QToolButton" name="showRequestsToolButton">
+          <property name="text">
+           <string>Pokaż wnioski</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/mainwindow/images/search.png</normaloff>:/mainwindow/images/search.png</iconset>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QLabel" name="requestsLabel">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>11</y>
+         <width>143</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Wnioski o nowe konta</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_5">
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>110</y>
+         <width>211</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>nowy operator</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_6">
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>130</y>
+         <width>201</width>
+         <height>91</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Edycja danych</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="page_7">
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>110</y>
+         <width>341</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>zmień hasło</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
