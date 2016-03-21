@@ -69,3 +69,13 @@ void LoginDialog::onAccountPushButtonClicked() {
     this->clickedButton = LoginResult::newAccount;
     this->close();
 }
+
+int LoginDialog::exec() {
+    this->clear();
+    return QDialog::exec();
+}
+
+void LoginDialog::clear() {
+    this->loginLineEdit->clear();
+    this->passwordLineEdit->clear();
+}

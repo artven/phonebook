@@ -95,7 +95,7 @@
        <item>
         <widget class="QLabel" name="loginLabel">
          <property name="text">
-          <string>Nazwa użtykownika:</string>
+          <string>Nazwa użytkownika:</string>
          </property>
         </widget>
        </item>

@@ -34,6 +34,9 @@ public:
     std::string getLogin();
     std::string getPassword();
 
+
+    virtual int exec() override;
+
 private:
     QApplication* parentApplication;
     Ui::LoginDialog *ui;
@@ -54,6 +57,8 @@ public slots:
     void onOkPushButtonClicked();
     void onCancelPushButtonClicked();
     void onAccountPushButtonClicked();
+
+    void clear();
 };
 
 #endif // LOGINDIALOG_H

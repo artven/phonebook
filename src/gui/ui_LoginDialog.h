@@ -151,7 +151,7 @@ public:
     {
         LoginDialog->setWindowTitle(QApplication::translate("LoginDialog", "Logowanie", 0));
         groupBox->setTitle(QApplication::translate("LoginDialog", "  Podaj nazw\304\231 u\305\274ytkownika i has\305\202o:", 0));
-        loginLabel->setText(QApplication::translate("LoginDialog", "Nazwa u\305\274tykownika:", 0));
+        loginLabel->setText(QApplication::translate("LoginDialog", "Nazwa u\305\274ytkownika:", 0));
         passwordLabel->setText(QApplication::translate("LoginDialog", "Has\305\202o:", 0));
         accountPushButton->setText(QApplication::translate("LoginDialog", "Nowe konto", 0));
         cancelPushButton->setText(QApplication::translate("LoginDialog", "Anuluj", 0));
