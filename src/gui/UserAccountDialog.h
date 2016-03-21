@@ -33,6 +33,9 @@ public:
     std::string getRepeatPassword();
     UserRole getUserRole();
     UserAccountDialogResult getResult();
+
+    virtual int exec() override;
+
     void clear();
 
 private:

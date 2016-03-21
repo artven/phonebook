@@ -94,6 +94,10 @@ void UserAccountDialog::enablePasswordMask() {
 void UserAccountDialog::clear() {
     this->loginLineEdit->clear();
     this->passwordLineEdit->clear();
-    this->passwordLineEdit->clear();
     this->repeatPasswordLineEdit->clear();
+}
+
+int UserAccountDialog::exec() {
+    this->clear();
+    return QDialog::exec();
 }
