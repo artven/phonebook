@@ -40,6 +40,19 @@ QMainWindow{parent}, Application{app}, ui{new Ui::MainWindow} {
     this->repeatPasswordLabel = ui->repeatNewPasswordLineEdit;
     this->okChangePasswordButton = ui->okPasswordChangePushButton;
     QObject::connect(this->okChangePasswordButton, SIGNAL(clicked()), this, SLOT(onChangePasswordClicked()));
+
+    //add record
+    this->nameLineEdit = ui->nameLineEdit;
+    this->surnameLineEdit = ui->surnameLineEdit;
+    this->addressLineEdit = ui->addressLineEdit;
+    this->cityLineEdit = ui->cityLineEdit;
+    this->phoneLineEdit = ui->phoneLineEdit;
+    this->mobileLineEdit = ui->mobileLineEdit;
+    this->emailLineEdit = ui->emailLineEdit;
+    this->okAddRecordPushButton = ui->okAddRecordPushButton;
+    this->clearAddRecordPushButton = ui->clearAddRecordPushButton;
+    QObject::connect(this->okAddRecordPushButton, SIGNAL(clicked()), this, SLOT(onAddRecordClicked()));
+    QObject::connect(this->clearAddRecordPushButton, SIGNAL(clicked()), this, SLOT(onClearRecordClicked()));
 }
 
 void MainWindow::addUserMenu() {
@@ -137,6 +150,7 @@ void MainWindow::setBrowseDatabasePage() {
 }
 
 void MainWindow::setAddRecordPage() {
+    this->clearAddRecordPage();
     this->mainWidget->setCurrentIndex(1);
 }
 
@@ -404,10 +418,43 @@ void MainWindow::onChangePasswordClicked() {
     } else {
         try {
             this->changePassword(newPassword, oldPassword);
-            QMessageBox::information(this, "Info", "Hasło zostało zmienione. Zostanie wylogowany.");
+            QMessageBox::information(this, "Info", "Hasło zostało zmienione. Zostaniesz wylogowany.");
             this->logout();
         } catch (std::invalid_argument& exception) {
             QMessageBox::warning(this, "Błąd!", exception.what());
         }
     }
+}
+
+void MainWindow::onAddRecordClicked() {
+    auto name = this->nameLineEdit->text().toStdString();
+    auto surname = this->surnameLineEdit->text().toStdString();
+    auto address = this->addressLineEdit->text().toStdString();
+    auto city = this->cityLineEdit->text().toStdString();
+    auto phone = this->phoneLineEdit->text().toStdString();
+    auto mobile = this->mobileLineEdit->text().toStdString();
+    auto email = this->emailLineEdit->text().toStdString();
+
+    try {
+        PhoneBookRecord newRecord{0, name, surname, address, city, phone, mobile, email};
+        this->addRecord(newRecord);
+        QMessageBox::information(this, "Sukces", "Rekord został dodany do bazy!");
+        this->clearAddRecordPage();
+    } catch (std::invalid_argument& exception) {
+        QMessageBox::warning(this, "Błąd", exception.what());
+    }
+}
+
+void MainWindow::onClearRecordClicked() {
+    this->clearAddRecordPage();
+}
+
+void MainWindow::clearAddRecordPage() {
+    this->nameLineEdit->clear();
+    this->surnameLineEdit->clear();
+    this->addressLineEdit->clear();
+    this->cityLineEdit->clear();
+    this->phoneLineEdit->clear();
+    this->mobileLineEdit->clear();
+    this->emailLineEdit->clear();
 }

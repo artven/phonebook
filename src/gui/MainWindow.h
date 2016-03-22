@@ -44,6 +44,8 @@ private slots:
     void onAcceptRequestToolButtonClicked();
     void onRejectRequestToolButtonClicked();
     void onChangePasswordClicked();
+    void onAddRecordClicked();
+    void onClearRecordClicked();
 
 private:
 
@@ -105,6 +107,18 @@ private:
     QLineEdit* repeatPasswordLabel;
     QPushButton* okChangePasswordButton;
 
+    //add record page
+    QLineEdit* nameLineEdit;
+    QLineEdit* surnameLineEdit;
+    QLineEdit* addressLineEdit;
+    QLineEdit* cityLineEdit;
+    QLineEdit* phoneLineEdit;
+    QLineEdit* mobileLineEdit;
+    QLineEdit* emailLineEdit;
+    QPushButton* okAddRecordPushButton;
+    QPushButton* clearAddRecordPushButton;
+
+    void clearAddRecordPage();
 };
 
 #endif // MAINWINDOW_H

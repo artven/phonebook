@@ -178,3 +178,7 @@ void Application::acceptRequest(std::vector<std::string> request) {
 void Application::changePassword(std::string newPassword, std::string oldPassword) {
     this->users.changePassword(*(this->user), oldPassword, newPassword);
 }
+
+void Application::addRecord(PhoneBookRecord &record) {
+    this->phones.insert(record);
+}
