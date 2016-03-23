@@ -13,6 +13,7 @@ SET(gui_HEADERS
         UserAccountDialog.h
         ui_UserAccountDialog.h
         Application.h
+        SearchDialog.h
 )
 
 SET(gui_SOURCES
@@ -21,6 +22,7 @@ SET(gui_SOURCES
         MainWindow.cpp
         UserAccountDialog.cpp
         Application.cpp
+        SearchDialog.cpp
 )
 
 QT5_WRAP_CPP(gui_SOURCES ${gui_HEADERS})
@@ -30,6 +32,7 @@ QT5_WRAP_UI(UI
         LoginDialog.ui
         MainWindow.ui
         UserAccountDialog.ui
+        SearchDialog.ui
 )
 
 QT5_ADD_RESOURCES(gui_RESOURCES resources.qrc)

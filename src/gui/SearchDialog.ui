@@ -10,18 +10,21 @@
     <height>150</height>
    </rect>
   </property>
+  <property name="focusPolicy">
+   <enum>Qt::TabFocus</enum>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="modal">
    <bool>true</bool>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>808</width>
+     <width>815</width>
      <height>107</height>
     </rect>
    </property>
@@ -479,7 +482,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Email:</string>
+           <string>  Email:</string>
           </property>
          </widget>
         </item>
@@ -545,7 +548,7 @@
          <enum>QLayout::SetFixedSize</enum>
         </property>
         <item>
-         <widget class="QPushButton" name="okAddRecordPushButton">
+         <widget class="QPushButton" name="cancelPushButton">
           <property name="text">
            <string>Anuluj</string>
           </property>
@@ -565,6 +568,17 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>nameLineEdit</tabstop>
+  <tabstop>surnameLineEdit</tabstop>
+  <tabstop>addressLineEdit</tabstop>
+  <tabstop>cityLineEdit</tabstop>
+  <tabstop>phoneLineEdit</tabstop>
+  <tabstop>mobileLineEdit</tabstop>
+  <tabstop>emailLineEdit</tabstop>
+  <tabstop>searchPushButton</tabstop>
+  <tabstop>cancelPushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

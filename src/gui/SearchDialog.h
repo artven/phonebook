@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QLineEdit>
+#include <string>
 
 namespace Ui {
 class SearchDialog;
@@ -21,13 +22,24 @@ public:
     ~SearchDialog();
 
     SearchDialogResult getResult();
+    std::string getName();
+    std::string getSurname();
+    std::string getAddress();
+    std::string getCity();
+    std::string getPhone();
+    std::string getMobile();
+    std::string getEmail();
+
+private slots:
+    void onSearchButtonClicked();
+    void onCancelButtonClicked();
 
 private:
     Ui::SearchDialog *ui;
-    SearchDialog result;
+    SearchDialogResult result;
     QLineEdit* name;
     QLineEdit* surname;
-    QLineEdit* surname;
+    QLineEdit* address;
     QLineEdit* city;
     QLineEdit* phone;
     QLineEdit* mobile;

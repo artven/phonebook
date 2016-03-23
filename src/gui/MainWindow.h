@@ -143,6 +143,8 @@ private:
     QStandardItemModel* phonesModel{nullptr};
 
     void clearSearchPhonesPage();
+
+    void addPhonesTableHeaders();
 };
 
 #endif // MAINWINDOW_H

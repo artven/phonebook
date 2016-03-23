@@ -186,3 +186,48 @@ void Application::addRecord(PhoneBookRecord &record) {
 void Application::addUser(UserRecord &user, std::string password) {
     this->users.add(user, password);
 }
+
+QStandardItemModel* Application::getAllPhones() {
+    auto recordsList = this->phones.getAllRecords();
+    auto model = this->getModelFromList(recordsList);
+    return model;
+}
+
+QStandardItemModel *Application::searchPhones(std::string name, std::string surname, std::string address,
+                                              std::string city, std::string email, std::string phone,
+                                              std::string mobile, unsigned int id) {
+    auto recordList = this->phones.getRecords(name, surname, address, city, email, phone, mobile);
+    auto model = this->getModelFromList(recordList);
+    return model;
+}
+
+QStandardItemModel *Application::getModelFromList(std::list<PhoneBookRecord> recordsList) {
+    if (recordsList.size()) {
+        auto rowsCount = recordsList.size();
+        QStandardItemModel* newModel = new QStandardItemModel{rowsCount, 8};
+
+        auto recordPtr = recordsList.begin();
+        for (int row =0; row < rowsCount; row++) {
+            auto record = *recordPtr;
+            std::vector<std::string> recordValues;
+            recordValues.push_back(std::to_string(record.getId()));
+            recordValues.push_back(record.getName());
+            recordValues.push_back(record.getSurname());
+            recordValues.push_back(record.getAddress());
+            recordValues.push_back(record.getCity());
+            recordValues.push_back(record.getPhoneNumber());
+            recordValues.push_back(record.getMobilePhoneNumber());
+            recordValues.push_back(record.getEmail());
+
+            for(int col=0; col<8; col++) {
+                QStandardItem* item = new QStandardItem{recordValues[col].c_str()};
+                newModel->setItem(row, col, item);
+            }
+
+            recordPtr++;
+        }
+
+        return newModel;
+    } else
+        return nullptr;
+}

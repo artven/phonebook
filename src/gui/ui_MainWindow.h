@@ -209,6 +209,13 @@ public:
         phonesTableView = new QTableView(page);
         phonesTableView->setObjectName(QStringLiteral("phonesTableView"));
         phonesTableView->setGeometry(QRect(20, 140, 711, 341));
+        phonesTableView->setGridStyle(Qt::DashLine);
+        phonesTableView->setSortingEnabled(true);
+        phonesTableView->horizontalHeader()->setCascadingSectionResizes(false);
+        phonesTableView->horizontalHeader()->setDefaultSectionSize(140);
+        phonesTableView->horizontalHeader()->setHighlightSections(true);
+        phonesTableView->verticalHeader()->setVisible(false);
+        phonesTableView->verticalHeader()->setHighlightSections(false);
         showAllPhonesToolButton = new QToolButton(page);
         showAllPhonesToolButton->setObjectName(QStringLiteral("showAllPhonesToolButton"));
         showAllPhonesToolButton->setGeometry(QRect(30, 80, 215, 25));

@@ -14,7 +14,7 @@
    <string>Książka telefoniczna</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset>
     <normaloff>:/mainwindow/images/Contacts-80.png</normaloff>:/mainwindow/images/Contacts-80.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -91,7 +91,7 @@
       <number>0</number>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="page">
       <widget class="QLabel" name="label">
@@ -121,6 +121,27 @@
          <height>341</height>
         </rect>
        </property>
+       <property name="gridStyle">
+        <enum>Qt::DashLine</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderCascadingSectionResizes">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>140</number>
+       </attribute>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
       </widget>
       <widget class="QToolButton" name="showAllPhonesToolButton">
        <property name="geometry">
@@ -537,7 +558,7 @@
            <string>Zakceptuj wniosek</string>
           </property>
           <property name="icon">
-           <iconset resource="resources.qrc">
+           <iconset>
             <normaloff>:/mainwindow/images/Checked-96.png</normaloff>:/mainwindow/images/Checked-96.png</iconset>
           </property>
           <property name="toolButtonStyle">
@@ -551,7 +572,7 @@
            <string>Odrzuć wniosek</string>
           </property>
           <property name="icon">
-           <iconset resource="resources.qrc">
+           <iconset>
             <normaloff>:/mainwindow/images/Do Not Disturb-96.png</normaloff>:/mainwindow/images/Do Not Disturb-96.png</iconset>
           </property>
           <property name="toolButtonStyle">
@@ -684,7 +705,7 @@
            <string>Pokaż wnioski</string>
           </property>
           <property name="icon">
-           <iconset resource="resources.qrc">
+           <iconset>
             <normaloff>:/mainwindow/images/search.png</normaloff>:/mainwindow/images/search.png</iconset>
           </property>
           <property name="toolButtonStyle">
@@ -1123,8 +1144,6 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

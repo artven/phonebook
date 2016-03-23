@@ -5,6 +5,7 @@
 
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "SearchDialog.h"
 
 MainWindow::MainWindow(QApplication& app,QWidget *parent):
 QMainWindow{parent}, Application{app}, ui{new Ui::MainWindow} {
@@ -77,6 +78,10 @@ QMainWindow{parent}, Application{app}, ui{new Ui::MainWindow} {
     this->searchPhonesValuesToolButton = ui->searchPhonesValuesToolButton;
     this->clearPhonesValuesToolButton = ui->clearPhonesValuesToolButton;
     this->phonesTableView = ui->phonesTableView;
+
+    QObject::connect(this->showAllPhonesToolButton, SIGNAL(clicked()), this, SLOT(onShowAllPhoneClicked()));
+    QObject::connect(this->clearPhonesValuesToolButton, SIGNAL(clicked()), this, SLOT(onClearPhonecClicked()));
+    QObject::connect(this->searchPhonesValuesToolButton, SIGNAL(clicked()), this, SLOT(onSearchPhoneClicked()));
 }
 
 void MainWindow::addUserMenu() {
@@ -529,11 +534,36 @@ void MainWindow::clearAddNewUserPage() {
 }
 
 void MainWindow::onShowAllPhoneClicked() {
-
+    auto newPhonesModel = this->getAllPhones();
+    if (newPhonesModel) {
+        this->clearSearchPhonesPage();
+        this->phonesModel = newPhonesModel;
+        this->phonesTableView->setModel(newPhonesModel);
+        this->addPhonesTableHeaders();
+    } else {
+        QMessageBox::warning(this, "Błąd!", "Brak rekordów w bazie!");
+    }
 }
 
 void MainWindow::onSearchPhoneClicked() {
-
+    SearchDialog dlg;
+    dlg.exec();
+    if (dlg.getResult() == SearchDialogResult::ok) {
+        auto name = dlg.getName();
+        auto surname = dlg.getSurname();
+        auto address = dlg.getAddress();
+        auto city = dlg.getCity();
+        auto phone = dlg.getPhone();
+        auto mobile = dlg.getMobile();
+        auto email = dlg.getEmail();
+        auto model = this->searchPhones(name, surname, address, city, email, phone, mobile);
+        if (model) {
+            this->clearSearchPhonesPage();
+            this->phonesModel = model;
+            this->phonesTableView->setModel(model);
+        } else
+            QMessageBox::warning(this, "Błąd!", "Nie znaleziono żadnego rekordu!");
+    }
 }
 
 void MainWindow::onClearPhonecClicked() {
@@ -543,4 +573,17 @@ void MainWindow::onClearPhonecClicked() {
 void MainWindow::clearSearchPhonesPage() {
     if (this->phonesModel)
         this->phonesModel->clear();
+}
+
+void MainWindow::addPhonesTableHeaders() {
+    if (this->phonesModel) {
+        this->phonesModel->setHeaderData(0, Qt::Horizontal, "Id");
+        this->phonesModel->setHeaderData(1, Qt::Horizontal, "Imie");
+        this->phonesModel->setHeaderData(2, Qt::Horizontal, "Nazwisko");
+        this->phonesModel->setHeaderData(3, Qt::Horizontal, "Adres");
+        this->phonesModel->setHeaderData(4, Qt::Horizontal, "Miasto");
+        this->phonesModel->setHeaderData(5, Qt::Horizontal, "Telefon stancjonarny");
+        this->phonesModel->setHeaderData(6, Qt::Horizontal, "Komórka");
+        this->phonesModel->setHeaderData(7, Qt::Horizontal, "Email");
+    }
 }

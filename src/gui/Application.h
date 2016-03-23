@@ -33,6 +33,9 @@ protected:
     void changePassword(std::string newPassword, std::string oldPassword);
     void addRecord(PhoneBookRecord& record);
     void addUser(UserRecord& user, std::string password);
+    QStandardItemModel* getAllPhones();
+    QStandardItemModel* searchPhones(std::string name="", std::string surname="", std::string address="", std::string city="",
+                                     std::string email="", std::string phone="", std::string mobile="", unsigned int id=0);
 
 private:
     const std::string databaseName{"database.db"};
@@ -52,6 +55,8 @@ private:
     virtual void chooseWindowMode(UserRecord *user)=0;
 
     QStandardItemModel *convertRequestToModel(std::list<std::vector<std::string>> &requests);
+
+    QStandardItemModel *getModelFromList(std::list<PhoneBookRecord> list);
 };
 
 

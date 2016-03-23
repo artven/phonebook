@@ -16,19 +16,22 @@ SOURCES += main.cpp\
     ChangePasswordDialog.cpp \
     LoginDialog.cpp \
     MainWindow.cpp \
-    UserAccountDialog.cpp
+    UserAccountDialog.cpp \
+    SearchDialogcpp.cpp
 
 HEADERS  += \
     ChangePasswordDialog.h \
     LoginDialog.h \
     UserAccountDialog.h \
-    MainWindow.h
+    MainWindow.h \
+    SearchDialog.h
 
 FORMS    += \
     ChangePasswordDialog.ui \
     LoginDialog.ui \
     MainWindow.ui \
-    UserAccountDialog.ui
+    UserAccountDialog.ui \
+    SearchDialog.ui
 
 RESOURCES += \
     resources.qrc
