@@ -32,6 +32,7 @@ protected:
     void rejectRequest(std::vector<std::string> request);
     void changePassword(std::string newPassword, std::string oldPassword);
     void addRecord(PhoneBookRecord& record);
+    void addUser(UserRecord& user, std::string password);
 
 private:
     const std::string databaseName{"database.db"};

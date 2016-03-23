@@ -53,6 +53,25 @@ QMainWindow{parent}, Application{app}, ui{new Ui::MainWindow} {
     this->clearAddRecordPushButton = ui->clearAddRecordPushButton;
     QObject::connect(this->okAddRecordPushButton, SIGNAL(clicked()), this, SLOT(onAddRecordClicked()));
     QObject::connect(this->clearAddRecordPushButton, SIGNAL(clicked()), this, SLOT(onClearRecordClicked()));
+
+    auto pal = this->menuView->palette();
+    pal.setColor(QPalette::Base, QColor(53,53,53));
+    this->menuView->setPalette(pal);
+
+    this->loginNewUserLineEdit = ui->loginNewUserLineEdit;
+    this->emailNewUserLineEdit = ui->emailNewUserLineEdit;
+    this->passwordNewUserLineEdit = ui->passwordNewUserLineEdit;
+    this->repeatPasswordNewUserLineEdit = ui->repeatPasswordLineEdit;
+    this->roleNewUserComboBox = ui->roleNewUserComboBox;
+    this->okNewUserPushButton = ui->addNewUserPushButton;
+    this->clearNewUserPushButton = ui->clearNewUserPushButton;
+
+    this->roleNewUserComboBox->addItem("Użytkownik");
+    this->roleNewUserComboBox->addItem("Operator");
+    this->roleNewUserComboBox->addItem("Administrator");
+
+    QObject::connect(this->clearNewUserPushButton, SIGNAL(clicked()), this, SLOT(onClearNewUserClicked()));
+    QObject::connect(this->okNewUserPushButton, SIGNAL(clicked()), this, SLOT(onAddNewUserClicked()));
 }
 
 void MainWindow::addUserMenu() {
@@ -163,6 +182,7 @@ void MainWindow::setRequestsPage() {
 }
 
 void MainWindow::setNewUserPage() {
+    this->clearAddNewUserPage();
     this->mainWidget->setCurrentIndex(4);
 }
 
@@ -457,4 +477,47 @@ void MainWindow::clearAddRecordPage() {
     this->phoneLineEdit->clear();
     this->mobileLineEdit->clear();
     this->emailLineEdit->clear();
+}
+
+void MainWindow::onAddNewUserClicked() {
+    auto login = this->loginNewUserLineEdit->text().toStdString();
+    auto email = this->emailNewUserLineEdit->text().toStdString();
+    auto password = this->passwordNewUserLineEdit->text().toStdString();
+    auto repeatPassword = this->repeatPasswordNewUserLineEdit->text().toStdString();
+    auto comboBoxText = this->roleNewUserComboBox->currentText().toStdString();
+
+    std::cout << comboBoxText << std::endl;
+    UserRole r;
+    if (comboBoxText == "Użytkownik")
+        r = UserRole::NormalUser;
+    else if (comboBoxText == "Operator")
+        r = UserRole::Operator;
+    else if (comboBoxText == "Administrator")
+        r = UserRole::Admministrator;
+
+    if(password != repeatPassword) {
+        QMessageBox::warning(this, "Błąd!", "Podane hasła nie są identyczne");
+    } else {
+        try {
+            UserRecord newUser{0, login, email, r};
+            this->addUser(newUser, password);
+            QMessageBox::information(this, "Sukces!", "Nowy użytkownik został dodany do bazy");
+            this->clearAddNewUserPage();
+        } catch (std::invalid_argument& exception) {
+            QMessageBox::warning(this, "Błąd", exception.what());
+        }
+    }
+
+}
+
+void MainWindow::onClearNewUserClicked() {
+    this->clearAddNewUserPage();
+}
+
+void MainWindow::clearAddNewUserPage() {
+    this->loginNewUserLineEdit->clear();
+    this->emailNewUserLineEdit->clear();
+    this->passwordNewUserLineEdit->clear();
+    this->repeatPasswordNewUserLineEdit->clear();
+    this->roleNewUserComboBox->setCurrentIndex(0);
 }

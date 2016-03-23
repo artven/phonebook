@@ -182,3 +182,7 @@ void Application::changePassword(std::string newPassword, std::string oldPasswor
 void Application::addRecord(PhoneBookRecord &record) {
     this->phones.insert(record);
 }
+
+void Application::addUser(UserRecord &user, std::string password) {
+    this->users.add(user, password);
+}

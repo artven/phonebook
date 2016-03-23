@@ -46,6 +46,9 @@ private slots:
     void onChangePasswordClicked();
     void onAddRecordClicked();
     void onClearRecordClicked();
+    void onAddNewUserClicked();
+    void onClearNewUserClicked();
+
 
 private:
 
@@ -119,6 +122,18 @@ private:
     QPushButton* clearAddRecordPushButton;
 
     void clearAddRecordPage();
+
+    //add user page
+    QLineEdit* loginNewUserLineEdit;
+    QLineEdit* emailNewUserLineEdit;
+    QLineEdit* passwordNewUserLineEdit;
+    QLineEdit* repeatPasswordNewUserLineEdit;
+    QComboBox* roleNewUserComboBox;
+    QPushButton* okNewUserPushButton;
+    QPushButton* clearNewUserPushButton;
+
+
+    void clearAddNewUserPage();
 };
 
 #endif // MAINWINDOW_H
