@@ -72,6 +72,11 @@ QMainWindow{parent}, Application{app}, ui{new Ui::MainWindow} {
 
     QObject::connect(this->clearNewUserPushButton, SIGNAL(clicked()), this, SLOT(onClearNewUserClicked()));
     QObject::connect(this->okNewUserPushButton, SIGNAL(clicked()), this, SLOT(onAddNewUserClicked()));
+
+    this->showAllPhonesToolButton = ui->showAllPhonesToolButton;
+    this->searchPhonesValuesToolButton = ui->searchPhonesValuesToolButton;
+    this->clearPhonesValuesToolButton = ui->clearPhonesValuesToolButton;
+    this->phonesTableView = ui->phonesTableView;
 }
 
 void MainWindow::addUserMenu() {
@@ -165,6 +170,7 @@ void MainWindow::onTreeViewItemDoubleCliced(QModelIndex idx) {
 
 
 void MainWindow::setBrowseDatabasePage() {
+    this->clearSearchPhonesPage();
     this->mainWidget->setCurrentIndex(0);
 }
 
@@ -520,4 +526,21 @@ void MainWindow::clearAddNewUserPage() {
     this->passwordNewUserLineEdit->clear();
     this->repeatPasswordNewUserLineEdit->clear();
     this->roleNewUserComboBox->setCurrentIndex(0);
+}
+
+void MainWindow::onShowAllPhoneClicked() {
+
+}
+
+void MainWindow::onSearchPhoneClicked() {
+
+}
+
+void MainWindow::onClearPhonecClicked() {
+    this->clearSearchPhonesPage();
+}
+
+void MainWindow::clearSearchPhonesPage() {
+    if (this->phonesModel)
+        this->phonesModel->clear();
 }

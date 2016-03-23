@@ -44,6 +44,10 @@ public:
     QStackedWidget *stackedWidget;
     QWidget *page;
     QLabel *label;
+    QTableView *phonesTableView;
+    QToolButton *showAllPhonesToolButton;
+    QToolButton *searchPhonesValuesToolButton;
+    QToolButton *clearPhonesValuesToolButton;
     QWidget *NewRecordPage;
     QGroupBox *groupBox_3;
     QWidget *layoutWidget;
@@ -105,7 +109,7 @@ public:
     QLabel *requestsLabel;
     QWidget *newUserPage;
     QGroupBox *groupBox_4;
-    QWidget *widget;
+    QWidget *layoutWidget4;
     QVBoxLayout *verticalLayout_5;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_16;
@@ -137,7 +141,7 @@ public:
     QWidget *changePasswordPage;
     QLabel *label_7;
     QGroupBox *groupBox_2;
-    QWidget *layoutWidget4;
+    QWidget *layoutWidget5;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_4;
     QLabel *oldPasswordLabel;
@@ -198,10 +202,22 @@ public:
         page->setObjectName(QStringLiteral("page"));
         label = new QLabel(page);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(110, 40, 561, 231));
+        label->setGeometry(QRect(10, 50, 561, 21));
         QFont font1;
         font1.setPointSize(15);
         label->setFont(font1);
+        phonesTableView = new QTableView(page);
+        phonesTableView->setObjectName(QStringLiteral("phonesTableView"));
+        phonesTableView->setGeometry(QRect(20, 140, 711, 341));
+        showAllPhonesToolButton = new QToolButton(page);
+        showAllPhonesToolButton->setObjectName(QStringLiteral("showAllPhonesToolButton"));
+        showAllPhonesToolButton->setGeometry(QRect(30, 80, 215, 25));
+        searchPhonesValuesToolButton = new QToolButton(page);
+        searchPhonesValuesToolButton->setObjectName(QStringLiteral("searchPhonesValuesToolButton"));
+        searchPhonesValuesToolButton->setGeometry(QRect(250, 80, 215, 25));
+        clearPhonesValuesToolButton = new QToolButton(page);
+        clearPhonesValuesToolButton->setObjectName(QStringLiteral("clearPhonesValuesToolButton"));
+        clearPhonesValuesToolButton->setGeometry(QRect(470, 80, 215, 25));
         stackedWidget->addWidget(page);
         NewRecordPage = new QWidget();
         NewRecordPage->setObjectName(QStringLiteral("NewRecordPage"));
@@ -529,10 +545,10 @@ public:
         groupBox_4 = new QGroupBox(newUserPage);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
         groupBox_4->setGeometry(QRect(80, 110, 601, 291));
-        widget = new QWidget(groupBox_4);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(60, 40, 481, 231));
-        verticalLayout_5 = new QVBoxLayout(widget);
+        layoutWidget4 = new QWidget(groupBox_4);
+        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
+        layoutWidget4->setGeometry(QRect(60, 40, 481, 231));
+        verticalLayout_5 = new QVBoxLayout(layoutWidget4);
         verticalLayout_5->setSpacing(6);
         verticalLayout_5->setContentsMargins(11, 11, 11, 11);
         verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
@@ -543,7 +559,7 @@ public:
         horizontalLayout_16 = new QHBoxLayout();
         horizontalLayout_16->setSpacing(6);
         horizontalLayout_16->setObjectName(QStringLiteral("horizontalLayout_16"));
-        label_13 = new QLabel(widget);
+        label_13 = new QLabel(layoutWidget4);
         label_13->setObjectName(QStringLiteral("label_13"));
 
         horizontalLayout_16->addWidget(label_13);
@@ -552,7 +568,7 @@ public:
 
         horizontalLayout_16->addItem(horizontalSpacer_16);
 
-        loginNewUserLineEdit = new QLineEdit(widget);
+        loginNewUserLineEdit = new QLineEdit(layoutWidget4);
         loginNewUserLineEdit->setObjectName(QStringLiteral("loginNewUserLineEdit"));
         sizePolicy1.setHeightForWidth(loginNewUserLineEdit->sizePolicy().hasHeightForWidth());
         loginNewUserLineEdit->setSizePolicy(sizePolicy1);
@@ -565,7 +581,7 @@ public:
         horizontalLayout_17 = new QHBoxLayout();
         horizontalLayout_17->setSpacing(6);
         horizontalLayout_17->setObjectName(QStringLiteral("horizontalLayout_17"));
-        label_14 = new QLabel(widget);
+        label_14 = new QLabel(layoutWidget4);
         label_14->setObjectName(QStringLiteral("label_14"));
 
         horizontalLayout_17->addWidget(label_14);
@@ -574,7 +590,7 @@ public:
 
         horizontalLayout_17->addItem(horizontalSpacer_17);
 
-        emailNewUserLineEdit = new QLineEdit(widget);
+        emailNewUserLineEdit = new QLineEdit(layoutWidget4);
         emailNewUserLineEdit->setObjectName(QStringLiteral("emailNewUserLineEdit"));
         sizePolicy1.setHeightForWidth(emailNewUserLineEdit->sizePolicy().hasHeightForWidth());
         emailNewUserLineEdit->setSizePolicy(sizePolicy1);
@@ -587,7 +603,7 @@ public:
         horizontalLayout_18 = new QHBoxLayout();
         horizontalLayout_18->setSpacing(6);
         horizontalLayout_18->setObjectName(QStringLiteral("horizontalLayout_18"));
-        label_15 = new QLabel(widget);
+        label_15 = new QLabel(layoutWidget4);
         label_15->setObjectName(QStringLiteral("label_15"));
 
         horizontalLayout_18->addWidget(label_15);
@@ -596,7 +612,7 @@ public:
 
         horizontalLayout_18->addItem(horizontalSpacer_18);
 
-        passwordNewUserLineEdit = new QLineEdit(widget);
+        passwordNewUserLineEdit = new QLineEdit(layoutWidget4);
         passwordNewUserLineEdit->setObjectName(QStringLiteral("passwordNewUserLineEdit"));
         sizePolicy1.setHeightForWidth(passwordNewUserLineEdit->sizePolicy().hasHeightForWidth());
         passwordNewUserLineEdit->setSizePolicy(sizePolicy1);
@@ -609,7 +625,7 @@ public:
         horizontalLayout_19 = new QHBoxLayout();
         horizontalLayout_19->setSpacing(6);
         horizontalLayout_19->setObjectName(QStringLiteral("horizontalLayout_19"));
-        label_16 = new QLabel(widget);
+        label_16 = new QLabel(layoutWidget4);
         label_16->setObjectName(QStringLiteral("label_16"));
 
         horizontalLayout_19->addWidget(label_16);
@@ -618,7 +634,7 @@ public:
 
         horizontalLayout_19->addItem(horizontalSpacer_19);
 
-        repeatPasswordLineEdit = new QLineEdit(widget);
+        repeatPasswordLineEdit = new QLineEdit(layoutWidget4);
         repeatPasswordLineEdit->setObjectName(QStringLiteral("repeatPasswordLineEdit"));
         sizePolicy1.setHeightForWidth(repeatPasswordLineEdit->sizePolicy().hasHeightForWidth());
         repeatPasswordLineEdit->setSizePolicy(sizePolicy1);
@@ -631,7 +647,7 @@ public:
         horizontalLayout_20 = new QHBoxLayout();
         horizontalLayout_20->setSpacing(6);
         horizontalLayout_20->setObjectName(QStringLiteral("horizontalLayout_20"));
-        label_17 = new QLabel(widget);
+        label_17 = new QLabel(layoutWidget4);
         label_17->setObjectName(QStringLiteral("label_17"));
 
         horizontalLayout_20->addWidget(label_17);
@@ -640,7 +656,7 @@ public:
 
         horizontalLayout_20->addItem(horizontalSpacer_20);
 
-        roleNewUserComboBox = new QComboBox(widget);
+        roleNewUserComboBox = new QComboBox(layoutWidget4);
         roleNewUserComboBox->setObjectName(QStringLiteral("roleNewUserComboBox"));
         sizePolicy2.setHeightForWidth(roleNewUserComboBox->sizePolicy().hasHeightForWidth());
         roleNewUserComboBox->setSizePolicy(sizePolicy2);
@@ -660,12 +676,12 @@ public:
 
         horizontalLayout_21->addItem(horizontalSpacer_21);
 
-        clearNewUserPushButton = new QPushButton(widget);
+        clearNewUserPushButton = new QPushButton(layoutWidget4);
         clearNewUserPushButton->setObjectName(QStringLiteral("clearNewUserPushButton"));
 
         horizontalLayout_21->addWidget(clearNewUserPushButton);
 
-        addNewUserPushButton = new QPushButton(widget);
+        addNewUserPushButton = new QPushButton(layoutWidget4);
         addNewUserPushButton->setObjectName(QStringLiteral("addNewUserPushButton"));
 
         horizontalLayout_21->addWidget(addNewUserPushButton);
@@ -688,10 +704,10 @@ public:
         groupBox_2 = new QGroupBox(changePasswordPage);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setGeometry(QRect(140, 90, 461, 211));
-        layoutWidget4 = new QWidget(groupBox_2);
-        layoutWidget4->setObjectName(QStringLiteral("layoutWidget4"));
-        layoutWidget4->setGeometry(QRect(20, 40, 391, 161));
-        verticalLayout = new QVBoxLayout(layoutWidget4);
+        layoutWidget5 = new QWidget(groupBox_2);
+        layoutWidget5->setObjectName(QStringLiteral("layoutWidget5"));
+        layoutWidget5->setGeometry(QRect(20, 40, 391, 161));
+        verticalLayout = new QVBoxLayout(layoutWidget5);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
@@ -699,7 +715,7 @@ public:
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setSpacing(6);
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        oldPasswordLabel = new QLabel(layoutWidget4);
+        oldPasswordLabel = new QLabel(layoutWidget5);
         oldPasswordLabel->setObjectName(QStringLiteral("oldPasswordLabel"));
 
         horizontalLayout_4->addWidget(oldPasswordLabel);
@@ -708,7 +724,7 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer_4);
 
-        oldPasswordLineEdit = new QLineEdit(layoutWidget4);
+        oldPasswordLineEdit = new QLineEdit(layoutWidget5);
         oldPasswordLineEdit->setObjectName(QStringLiteral("oldPasswordLineEdit"));
 
         horizontalLayout_4->addWidget(oldPasswordLineEdit);
@@ -719,7 +735,7 @@ public:
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        newPasswordLabel = new QLabel(layoutWidget4);
+        newPasswordLabel = new QLabel(layoutWidget5);
         newPasswordLabel->setObjectName(QStringLiteral("newPasswordLabel"));
 
         horizontalLayout_5->addWidget(newPasswordLabel);
@@ -728,7 +744,7 @@ public:
 
         horizontalLayout_5->addItem(horizontalSpacer_5);
 
-        newPasswordLineEdit = new QLineEdit(layoutWidget4);
+        newPasswordLineEdit = new QLineEdit(layoutWidget5);
         newPasswordLineEdit->setObjectName(QStringLiteral("newPasswordLineEdit"));
 
         horizontalLayout_5->addWidget(newPasswordLineEdit);
@@ -739,7 +755,7 @@ public:
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setSpacing(6);
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        repeatPassowrLabel = new QLabel(layoutWidget4);
+        repeatPassowrLabel = new QLabel(layoutWidget5);
         repeatPassowrLabel->setObjectName(QStringLiteral("repeatPassowrLabel"));
 
         horizontalLayout_6->addWidget(repeatPassowrLabel);
@@ -748,7 +764,7 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_6);
 
-        repeatNewPasswordLineEdit = new QLineEdit(layoutWidget4);
+        repeatNewPasswordLineEdit = new QLineEdit(layoutWidget5);
         repeatNewPasswordLineEdit->setObjectName(QStringLiteral("repeatNewPasswordLineEdit"));
         QSizePolicy sizePolicy4(QSizePolicy::Ignored, QSizePolicy::Fixed);
         sizePolicy4.setHorizontalStretch(1);
@@ -768,7 +784,7 @@ public:
 
         horizontalLayout_7->addItem(horizontalSpacer_7);
 
-        okPasswordChangePushButton = new QPushButton(layoutWidget4);
+        okPasswordChangePushButton = new QPushButton(layoutWidget5);
         okPasswordChangePushButton->setObjectName(QStringLiteral("okPasswordChangePushButton"));
 
         horizontalLayout_7->addWidget(okPasswordChangePushButton);
@@ -788,7 +804,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(4);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -798,6 +814,9 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Ksi\304\205\305\274ka telefoniczna", 0));
         label->setText(QApplication::translate("MainWindow", "Przegl\304\205danie bazy danych", 0));
+        showAllPhonesToolButton->setText(QApplication::translate("MainWindow", "Poka\305\274 wszystkie", 0));
+        searchPhonesValuesToolButton->setText(QApplication::translate("MainWindow", "Wyszukiwanie zaawansowane", 0));
+        clearPhonesValuesToolButton->setText(QApplication::translate("MainWindow", "Wyczy\305\233\304\207", 0));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "Dodaj wpis do ksi\304\205\305\274ki telefonicznej:", 0));
         label_4->setText(QApplication::translate("MainWindow", "Imi\304\231", 0));
 #ifndef QT_NO_TOOLTIP

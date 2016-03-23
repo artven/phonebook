@@ -48,7 +48,9 @@ private slots:
     void onClearRecordClicked();
     void onAddNewUserClicked();
     void onClearNewUserClicked();
-
+    void onShowAllPhoneClicked();
+    void onSearchPhoneClicked();
+    void onClearPhonecClicked();
 
 private:
 
@@ -131,9 +133,16 @@ private:
     QComboBox* roleNewUserComboBox;
     QPushButton* okNewUserPushButton;
     QPushButton* clearNewUserPushButton;
-
-
     void clearAddNewUserPage();
+
+    //browse phones page
+    QToolButton* showAllPhonesToolButton;
+    QToolButton* searchPhonesValuesToolButton;
+    QToolButton* clearPhonesValuesToolButton;
+    QTableView* phonesTableView;
+    QStandardItemModel* phonesModel{nullptr};
+
+    void clearSearchPhonesPage();
 };
 
 #endif // MAINWINDOW_H
