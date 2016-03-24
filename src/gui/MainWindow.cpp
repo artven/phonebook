@@ -91,7 +91,6 @@ void MainWindow::addUserMenu() {
     std::vector<QStandardItem*> userMenuItems;
     userMenuItems.push_back(new QStandardItem{this->browseRecordsIcon, "Przeglądaj bazę"});
     userMenuItems.push_back(new QStandardItem{this->addRecordIcon, "Dodaj wpis"});
-    userMenuItems.push_back(new QStandardItem{this->editSelfDataIcon, "Edytuj swoje dane"});
     userMenuItems.push_back(new QStandardItem{this->changePasswordIcon, "Zmień hasło"});
     userMenuItems.push_back(new QStandardItem{this->logutIcon, "Wyloguj się"});
     userMenuItems.push_back(new QStandardItem{this->exitIcon, "Wyjdź"});
@@ -115,7 +114,6 @@ void MainWindow::addOperetorMenu() {
     menuItems.push_back(new QStandardItem{this->addRecordIcon, "Dodaj wpis"});
     menuItems.push_back(new QStandardItem{this->browseUsersIcon, "Edytuj użytkowników"});
     menuItems.push_back(new QStandardItem{this->newUserRequestIcon, "Wnioski o nowe konta"});
-    menuItems.push_back(new QStandardItem{this->editSelfDataIcon, "Edytuj swoje dane"});
     menuItems.push_back(new QStandardItem{this->changePasswordIcon, "Zmień hasło"});
     menuItems.push_back(new QStandardItem{this->logutIcon, "Wyloguj się"});
     menuItems.push_back(new QStandardItem{this->exitIcon, "Wyjdź"});
@@ -140,7 +138,6 @@ void MainWindow::addAdministratorMenu() {
     menuItems.push_back(new QStandardItem{this->browseUsersIcon, "Edytuj użytkowników"});
     menuItems.push_back(new QStandardItem{this->newUserRequestIcon, "Wnioski o nowe konta"});
     menuItems.push_back(new QStandardItem{this->newPowerUserIcon, "Nowy użytkownik"});
-    menuItems.push_back(new QStandardItem{this->editSelfDataIcon, "Edytuj swoje dane"});
     menuItems.push_back(new QStandardItem{this->changePasswordIcon, "Zmień hasło"});
     menuItems.push_back(new QStandardItem{this->logutIcon, "Wyloguj się"});
     menuItems.push_back(new QStandardItem{this->exitIcon, "Wyjdź"});
@@ -218,15 +215,12 @@ void MainWindow::switchUserMenu(QModelIndex idx) {
                 this->setAddRecordPage();
                 break;
             case 2:
-                this->setEditPersonalData();
-                break;
-            case 3:
                 this->setChangePasswordPage();
                 break;
-            case 4:
+            case 3:
                 this->logout();
                 break;
-            case 5:
+            case 4:
                 this->close();
                 break;
         }
@@ -283,15 +277,12 @@ void MainWindow::switchAdministratorMenu(QModelIndex idx) {
                 this->setNewUserPage();
                 break;
             case 5:
-                this->setEditPersonalData();
-                break;
-            case 6:
                 this->setChangePasswordPage();
                 break;
-            case 7:
+            case 6:
                 this->logout();
                 break;
-            case 8:
+            case 7:
                 this->close();
                 break;
         }

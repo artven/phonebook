@@ -143,8 +143,15 @@ private:
     QStandardItemModel* phonesModel{nullptr};
 
     void clearSearchPhonesPage();
-
     void addPhonesTableHeaders();
+
+    //edit users page
+    QToolButton* showAllUsersToolButton;
+    QToolButton* searchUsersToolButton;
+    QToolButton* editUserToolButton;
+    QToolButton* saveUserPushButton;
+    QLineEdit* searchUserLoginLineEdit;
+
 };
 
 #endif // MAINWINDOW_H

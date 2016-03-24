@@ -42,7 +42,7 @@ public:
     QFrame *frame;
     QTreeView *menuTreeView;
     QStackedWidget *stackedWidget;
-    QWidget *page;
+    QWidget *browseRecords;
     QLabel *label;
     QTableView *phonesTableView;
     QToolButton *showAllPhonesToolButton;
@@ -85,8 +85,26 @@ public:
     QSpacerItem *horizontalSpacer_15;
     QPushButton *clearAddRecordPushButton;
     QPushButton *okAddRecordPushButton;
-    QWidget *page_3;
+    QWidget *browseUsersPage;
     QLabel *label_3;
+    QTreeView *userTableView;
+    QToolButton *showAllUsersToolButton;
+    QToolButton *searchUsersToolButton;
+    QLabel *label_5;
+    QLineEdit *searchUserLoginLineEdit;
+    QPushButton *pushButton;
+    QToolButton *editUserToolButton;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_25;
+    QHBoxLayout *horizontalLayout_22;
+    QLabel *label_18;
+    QLineEdit *lineEdit;
+    QHBoxLayout *horizontalLayout_23;
+    QLabel *label_19;
+    QLineEdit *lineEdit_2;
+    QHBoxLayout *horizontalLayout_24;
+    QLabel *label_20;
+    QComboBox *comboBox;
     QWidget *requestsPage;
     QTableView *requestsTableView;
     QWidget *layoutWidget1;
@@ -165,7 +183,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1057, 500);
+        MainWindow->resize(1057, 511);
         QIcon icon;
         icon.addFile(QStringLiteral(":/mainwindow/images/Contacts-80.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
@@ -191,22 +209,22 @@ public:
         menuTreeView->header()->setVisible(false);
         stackedWidget = new QStackedWidget(frame);
         stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
-        stackedWidget->setGeometry(QRect(310, -40, 771, 611));
+        stackedWidget->setGeometry(QRect(310, -50, 771, 611));
         sizePolicy.setHeightForWidth(stackedWidget->sizePolicy().hasHeightForWidth());
         stackedWidget->setSizePolicy(sizePolicy);
         stackedWidget->setFrameShape(QFrame::Panel);
         stackedWidget->setFrameShadow(QFrame::Sunken);
         stackedWidget->setLineWidth(0);
         stackedWidget->setMidLineWidth(0);
-        page = new QWidget();
-        page->setObjectName(QStringLiteral("page"));
-        label = new QLabel(page);
+        browseRecords = new QWidget();
+        browseRecords->setObjectName(QStringLiteral("browseRecords"));
+        label = new QLabel(browseRecords);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 50, 561, 21));
         QFont font1;
         font1.setPointSize(15);
         label->setFont(font1);
-        phonesTableView = new QTableView(page);
+        phonesTableView = new QTableView(browseRecords);
         phonesTableView->setObjectName(QStringLiteral("phonesTableView"));
         phonesTableView->setGeometry(QRect(20, 140, 711, 341));
         phonesTableView->setGridStyle(Qt::DashLine);
@@ -216,16 +234,16 @@ public:
         phonesTableView->horizontalHeader()->setHighlightSections(true);
         phonesTableView->verticalHeader()->setVisible(false);
         phonesTableView->verticalHeader()->setHighlightSections(false);
-        showAllPhonesToolButton = new QToolButton(page);
+        showAllPhonesToolButton = new QToolButton(browseRecords);
         showAllPhonesToolButton->setObjectName(QStringLiteral("showAllPhonesToolButton"));
         showAllPhonesToolButton->setGeometry(QRect(30, 80, 215, 25));
-        searchPhonesValuesToolButton = new QToolButton(page);
+        searchPhonesValuesToolButton = new QToolButton(browseRecords);
         searchPhonesValuesToolButton->setObjectName(QStringLiteral("searchPhonesValuesToolButton"));
         searchPhonesValuesToolButton->setGeometry(QRect(250, 80, 215, 25));
-        clearPhonesValuesToolButton = new QToolButton(page);
+        clearPhonesValuesToolButton = new QToolButton(browseRecords);
         clearPhonesValuesToolButton->setObjectName(QStringLiteral("clearPhonesValuesToolButton"));
         clearPhonesValuesToolButton->setGeometry(QRect(470, 80, 215, 25));
-        stackedWidget->addWidget(page);
+        stackedWidget->addWidget(browseRecords);
         NewRecordPage = new QWidget();
         NewRecordPage->setObjectName(QStringLiteral("NewRecordPage"));
         groupBox_3 = new QGroupBox(NewRecordPage);
@@ -426,12 +444,103 @@ public:
         verticalLayout_3->addLayout(horizontalLayout_15);
 
         stackedWidget->addWidget(NewRecordPage);
-        page_3 = new QWidget();
-        page_3->setObjectName(QStringLiteral("page_3"));
-        label_3 = new QLabel(page_3);
+        browseUsersPage = new QWidget();
+        browseUsersPage->setObjectName(QStringLiteral("browseUsersPage"));
+        label_3 = new QLabel(browseUsersPage);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(160, 90, 421, 141));
-        stackedWidget->addWidget(page_3);
+        label_3->setGeometry(QRect(20, 60, 421, 31));
+        userTableView = new QTreeView(browseUsersPage);
+        userTableView->setObjectName(QStringLiteral("userTableView"));
+        userTableView->setGeometry(QRect(10, 170, 721, 251));
+        showAllUsersToolButton = new QToolButton(browseUsersPage);
+        showAllUsersToolButton->setObjectName(QStringLiteral("showAllUsersToolButton"));
+        showAllUsersToolButton->setGeometry(QRect(20, 100, 141, 25));
+        searchUsersToolButton = new QToolButton(browseUsersPage);
+        searchUsersToolButton->setObjectName(QStringLiteral("searchUsersToolButton"));
+        searchUsersToolButton->setGeometry(QRect(490, 100, 151, 25));
+        label_5 = new QLabel(browseUsersPage);
+        label_5->setObjectName(QStringLiteral("label_5"));
+        label_5->setGeometry(QRect(230, 100, 91, 20));
+        searchUserLoginLineEdit = new QLineEdit(browseUsersPage);
+        searchUserLoginLineEdit->setObjectName(QStringLiteral("searchUserLoginLineEdit"));
+        searchUserLoginLineEdit->setGeometry(QRect(340, 100, 131, 27));
+        pushButton = new QPushButton(browseUsersPage);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(180, 430, 150, 26));
+        pushButton->setMinimumSize(QSize(150, 0));
+        pushButton->setMaximumSize(QSize(150, 16777215));
+        editUserToolButton = new QToolButton(browseUsersPage);
+        editUserToolButton->setObjectName(QStringLiteral("editUserToolButton"));
+        editUserToolButton->setGeometry(QRect(20, 430, 150, 25));
+        editUserToolButton->setMinimumSize(QSize(150, 0));
+        editUserToolButton->setMaximumSize(QSize(150, 16777215));
+        widget = new QWidget(browseUsersPage);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(30, 460, 700, 31));
+        horizontalLayout_25 = new QHBoxLayout(widget);
+        horizontalLayout_25->setSpacing(6);
+        horizontalLayout_25->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_25->setObjectName(QStringLiteral("horizontalLayout_25"));
+        horizontalLayout_25->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout_22 = new QHBoxLayout();
+        horizontalLayout_22->setSpacing(6);
+        horizontalLayout_22->setObjectName(QStringLiteral("horizontalLayout_22"));
+        label_18 = new QLabel(widget);
+        label_18->setObjectName(QStringLiteral("label_18"));
+        label_18->setMinimumSize(QSize(80, 0));
+        label_18->setMaximumSize(QSize(80, 16777215));
+
+        horizontalLayout_22->addWidget(label_18);
+
+        lineEdit = new QLineEdit(widget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setMinimumSize(QSize(150, 0));
+        lineEdit->setMaximumSize(QSize(150, 16777215));
+
+        horizontalLayout_22->addWidget(lineEdit);
+
+
+        horizontalLayout_25->addLayout(horizontalLayout_22);
+
+        horizontalLayout_23 = new QHBoxLayout();
+        horizontalLayout_23->setSpacing(6);
+        horizontalLayout_23->setObjectName(QStringLiteral("horizontalLayout_23"));
+        label_19 = new QLabel(widget);
+        label_19->setObjectName(QStringLiteral("label_19"));
+        label_19->setMinimumSize(QSize(50, 0));
+        label_19->setMaximumSize(QSize(50, 16777215));
+
+        horizontalLayout_23->addWidget(label_19);
+
+        lineEdit_2 = new QLineEdit(widget);
+        lineEdit_2->setObjectName(QStringLiteral("lineEdit_2"));
+        lineEdit_2->setMinimumSize(QSize(150, 0));
+        lineEdit_2->setMaximumSize(QSize(150, 16777215));
+
+        horizontalLayout_23->addWidget(lineEdit_2);
+
+
+        horizontalLayout_25->addLayout(horizontalLayout_23);
+
+        horizontalLayout_24 = new QHBoxLayout();
+        horizontalLayout_24->setSpacing(6);
+        horizontalLayout_24->setObjectName(QStringLiteral("horizontalLayout_24"));
+        label_20 = new QLabel(widget);
+        label_20->setObjectName(QStringLiteral("label_20"));
+
+        horizontalLayout_24->addWidget(label_20);
+
+        comboBox = new QComboBox(widget);
+        comboBox->setObjectName(QStringLiteral("comboBox"));
+        comboBox->setMinimumSize(QSize(150, 0));
+        comboBox->setMaximumSize(QSize(150, 16777215));
+
+        horizontalLayout_24->addWidget(comboBox);
+
+
+        horizontalLayout_25->addLayout(horizontalLayout_24);
+
+        stackedWidget->addWidget(browseUsersPage);
         requestsPage = new QWidget();
         requestsPage->setObjectName(QStringLiteral("requestsPage"));
         requestsTableView = new QTableView(requestsPage);
@@ -811,7 +920,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -844,6 +953,14 @@ public:
         clearAddRecordPushButton->setText(QApplication::translate("MainWindow", "Wyczy\305\233\304\207", 0));
         okAddRecordPushButton->setText(QApplication::translate("MainWindow", "Dodaj", 0));
         label_3->setText(QApplication::translate("MainWindow", "Edytuj u\305\274ytkownik\303\263w", 0));
+        showAllUsersToolButton->setText(QApplication::translate("MainWindow", "Poka\305\274 wszystkich", 0));
+        searchUsersToolButton->setText(QApplication::translate("MainWindow", "Szukaj", 0));
+        label_5->setText(QApplication::translate("MainWindow", "Podaj login", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "Zapisz", 0));
+        editUserToolButton->setText(QApplication::translate("MainWindow", "Edytuj", 0));
+        label_18->setText(QApplication::translate("MainWindow", "Login:", 0));
+        label_19->setText(QApplication::translate("MainWindow", "Has\305\202o:", 0));
+        label_20->setText(QApplication::translate("MainWindow", "Uprawnienia", 0));
         accceptRequestToolButton->setText(QApplication::translate("MainWindow", "Zakceptuj wniosek", 0));
         rejectRequestToolButton->setText(QApplication::translate("MainWindow", "Odrzu\304\207 wniosek", 0));
         groupBox->setTitle(QApplication::translate("MainWindow", "Status wniosku", 0));
