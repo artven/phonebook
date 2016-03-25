@@ -93,6 +93,8 @@ QMainWindow{parent}, Application{app}, ui{new Ui::MainWindow} {
     QObject::connect(this->showAllUsersToolButton, SIGNAL(clicked()), this, SLOT(onShowAllUsersToolButton()));
     QObject::connect(this->usersTableView, SIGNAL(clicked(QModelIndex)), this, SLOT(onUserTableclicked(QModelIndex)));
     QObject::connect(this->saveUserPushButton, SIGNAL(clicked()), this, SLOT(onSaveUserClicked()));
+
+    this->addValidators();
 }
 
 void MainWindow::addUserMenu() {
@@ -645,4 +647,16 @@ void MainWindow::onSaveUserClicked() {
     } catch (std::invalid_argument& exception) {
         QMessageBox::warning(this, "Błąd!", exception.what());
     }
+}
+
+void MainWindow::addValidators() {
+    this->changePasswordPageValidators();
+}
+
+void MainWindow::changePasswordPageValidators() {
+    QRegExp regexp(R"#(\w{4,})#");
+    QRegExpValidator* validator = new QRegExpValidator(regexp);
+    this->oldPasswordLabel->setValidator(validator);
+    this->newPasswordLabel->setValidator(validator);
+    this->repeatPasswordLabel->setValidator(validator);
 }

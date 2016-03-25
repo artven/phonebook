@@ -158,8 +158,10 @@ private:
     QLineEdit* userIdLineEdit;
 
     void clearUsersPage();
-
     void addUserTableHeaders();
+    void addValidators();
+    void changePasswordPageValidators();
+
 };
 
 #endif // MAINWINDOW_H
