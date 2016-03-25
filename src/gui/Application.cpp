@@ -231,3 +231,41 @@ QStandardItemModel *Application::getModelFromList(std::list<PhoneBookRecord> rec
     } else
         return nullptr;
 }
+
+QStandardItemModel* Application::getAllUsers() {
+    auto usersList = this->users.getAllUsers();
+    auto rowsCount = usersList.size();
+    if (rowsCount) {
+        QStandardItemModel* model = new QStandardItemModel{rowsCount, 4};
+        auto recordPtr = usersList.begin();
+        for(int row=0; row<rowsCount; row++) {
+
+            QStandardItem* id = new QStandardItem{std::to_string((*recordPtr).getId()).c_str()};
+            QStandardItem* login = new QStandardItem{(*recordPtr).getLogin().c_str()};
+            QStandardItem* email = new QStandardItem{(*recordPtr).getEmail().c_str()};
+            QStandardItem* role = new QStandardItem{(*recordPtr).getRole().c_str()};
+
+            id->setEditable(false);
+            login->setEditable(false);
+            email->setEditable(false);
+            role->setEditable(false);
+
+            model->setItem(row, 0, id);
+            model->setItem(row, 1, login);
+            model->setItem(row, 2, email);
+            model->setItem(row, 3, role);
+
+            recordPtr++;
+        }
+        return model;
+    } else
+        return nullptr;
+}
+
+void Application::updateUser(UserRecord &user) {
+    this->users.updateUser(user);
+}
+
+QStandardItemModel *Application::getUsersByLogin(std::string login) {
+    return nullptr;
+}

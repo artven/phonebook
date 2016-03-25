@@ -82,6 +82,25 @@ QMainWindow{parent}, Application{app}, ui{new Ui::MainWindow} {
     QObject::connect(this->showAllPhonesToolButton, SIGNAL(clicked()), this, SLOT(onShowAllPhoneClicked()));
     QObject::connect(this->clearPhonesValuesToolButton, SIGNAL(clicked()), this, SLOT(onClearPhonecClicked()));
     QObject::connect(this->searchPhonesValuesToolButton, SIGNAL(clicked()), this, SLOT(onSearchPhoneClicked()));
+
+    this->showAllUsersToolButton = ui->showAllUsersToolButton;
+    this->saveUserPushButton = ui->saveUserToolButton;
+    this->usersTableView = ui->usersTableView;
+    this->userLoginLabel = ui->userLoginLabel;
+    this->userLoginLineEdit = ui->userLoginLineEdit;
+    this->userEmailLabel = ui->userEmailLabel;
+    this->userEmailLineEdit = ui->userEmailLineEdit;
+    this->userRoleLabel = ui->userRoleLabel;
+    this->userRoleComboBox = ui->userRoleComboBox;
+    this->userIdLineEdit = ui->userIdLineEdit ;
+
+    this->userRoleComboBox->addItem("Użytkownik");
+    this->userRoleComboBox->addItem("Operator");
+    this->userRoleComboBox->addItem("Administrator");
+
+    QObject::connect(this->showAllUsersToolButton, SIGNAL(clicked()), this, SLOT(onShowAllUsersToolButton()));
+    QObject::connect(this->usersTableView, SIGNAL(clicked(QModelIndex)), this, SLOT(onUserTableclicked(QModelIndex)));
+    QObject::connect(this->saveUserPushButton, SIGNAL(clicked()), this, SLOT(onSaveUserClicked()));
 }
 
 void MainWindow::addUserMenu() {
@@ -192,10 +211,6 @@ void MainWindow::setRequestsPage() {
 void MainWindow::setNewUserPage() {
     this->clearAddNewUserPage();
     this->mainWidget->setCurrentIndex(4);
-}
-
-void MainWindow::setEditPersonalData() {
-    this->mainWidget->setCurrentIndex(5);
 }
 
 void MainWindow::setChangePasswordPage() {
@@ -576,5 +591,84 @@ void MainWindow::addPhonesTableHeaders() {
         this->phonesModel->setHeaderData(5, Qt::Horizontal, "Telefon stancjonarny");
         this->phonesModel->setHeaderData(6, Qt::Horizontal, "Komórka");
         this->phonesModel->setHeaderData(7, Qt::Horizontal, "Email");
+    }
+}
+
+void MainWindow::onShowAllUsersToolButton() {
+    auto newModel = this->getAllUsers();
+    if (newModel != nullptr) {
+        this->clearUsersPage();
+        this->usersModel = newModel;
+        this->usersTableView->setModel(newModel);
+        this->addUserTableHeaders();
+    }
+
+}
+
+void MainWindow::clearUsersPage() {
+    if (this->usersModel != nullptr)
+        this->usersModel->clear();
+    this->searchUserLoginLineEdit->clear();
+    this->userLoginLineEdit->clear();
+    this->userEmailLineEdit->clear();
+
+}
+
+void MainWindow::addUserTableHeaders() {
+    if (this->usersModel != nullptr) {
+        this->usersModel->setHeaderData(0, Qt::Horizontal, "Id");
+        this->usersModel->setHeaderData(1, Qt::Horizontal, "Login");
+        this->usersModel->setHeaderData(2, Qt::Horizontal, "Email");
+        this->usersModel->setHeaderData(3, Qt::Horizontal, "Uprawnienia");
+    }
+}
+
+void MainWindow::onUserTableclicked(QModelIndex idx) {
+    auto row = idx.row();
+
+    auto idIndex = this->usersModel->index(idx.row(), 0);
+    auto id = this->usersModel->data(idIndex).toString();
+    auto loginIndex = this->usersModel->index(idx.row(), 1);
+    auto login = this->usersModel->data(loginIndex).toString();
+    auto emailIndex = this->usersModel->index(idx.row(), 2);
+    auto email = this->usersModel->data(emailIndex).toString();
+    auto roleIndex = this->usersModel->index(idx.row(), 3);
+    auto role = this->usersModel->data(roleIndex).toString();
+
+    this->userIdLineEdit->setText(id);
+    this->userLoginLineEdit->setText(login);
+    this->userEmailLineEdit->setText(email);
+
+    if (role == "administrator") {
+        this->userRoleComboBox->setCurrentIndex(2);
+    } else if (role == "operator") {
+        this->userRoleComboBox->setCurrentIndex(1);
+    } else {
+        this->userRoleComboBox->setCurrentIndex(0);
+    };
+}
+
+void MainWindow::onSaveUserClicked() {
+    auto id = this->userIdLineEdit->text().toInt();
+    auto login = this->userLoginLineEdit->text().toStdString();
+    auto email = this->userEmailLineEdit->text().toStdString();
+    auto comboBoxValue = this->userRoleComboBox->currentText().toStdString();
+
+    UserRole role;
+    if (comboBoxValue == "Administrator") {
+        role = UserRole::Admministrator;
+    } else if (comboBoxValue == "Operator") {
+        role = UserRole::Operator;
+    } else {
+        role = UserRole::NormalUser;
+    }
+
+    try {
+        UserRecord user{id, login, email, role};
+        this->updateUser(user);
+        QMessageBox::information(this, "Ok", "Rekord zmieniono poprawnie!");
+        this->clearUsersPage();
+    } catch (std::invalid_argument& exception) {
+        QMessageBox::warning(this, "Błąd!", exception.what());
     }
 }

@@ -51,6 +51,9 @@ private slots:
     void onShowAllPhoneClicked();
     void onSearchPhoneClicked();
     void onClearPhonecClicked();
+    void onShowAllUsersToolButton();
+    void onUserTableclicked(QModelIndex idx);
+    void onSaveUserClicked();
 
 private:
 
@@ -151,7 +154,19 @@ private:
     QToolButton* editUserToolButton;
     QToolButton* saveUserPushButton;
     QLineEdit* searchUserLoginLineEdit;
+    QTableView* usersTableView;
+    QStandardItemModel* usersModel{nullptr};
+    QLabel* userLoginLabel;
+    QLineEdit* userLoginLineEdit;
+    QLabel* userEmailLabel;
+    QLineEdit* userEmailLineEdit;
+    QLabel* userRoleLabel;
+    QComboBox* userRoleComboBox;
+    QLineEdit* userIdLineEdit;
 
+    void clearUsersPage();
+
+    void addUserTableHeaders();
 };
 
 #endif // MAINWINDOW_H

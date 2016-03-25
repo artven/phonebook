@@ -36,6 +36,9 @@ protected:
     QStandardItemModel* getAllPhones();
     QStandardItemModel* searchPhones(std::string name="", std::string surname="", std::string address="", std::string city="",
                                      std::string email="", std::string phone="", std::string mobile="", unsigned int id=0);
+    QStandardItemModel* getAllUsers();
+    QStandardItemModel* getUsersByLogin(std::string login);
+    void updateUser(UserRecord& user);
 
 private:
     const std::string databaseName{"database.db"};
@@ -50,13 +53,10 @@ private:
     void setFusionStyle();
     void setDarkPallete();
     void login();
-
     void createNewAccount();
     virtual void chooseWindowMode(UserRecord *user)=0;
-
-    QStandardItemModel *convertRequestToModel(std::list<std::vector<std::string>> &requests);
-
-    QStandardItemModel *getModelFromList(std::list<PhoneBookRecord> list);
+    QStandardItemModel* convertRequestToModel(std::list<std::vector<std::string>> &requests);
+    QStandardItemModel* getModelFromList(std::list<PhoneBookRecord> list);
 };
 
 
