@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QApplication>
+#include <QComboBox>
 #include <string>
 
 

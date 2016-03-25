@@ -150,18 +150,11 @@ private:
 
     //edit users page
     QToolButton* showAllUsersToolButton;
-    QToolButton* searchUsersToolButton;
-    QToolButton* editUserToolButton;
     QToolButton* saveUserPushButton;
-    QLineEdit* searchUserLoginLineEdit;
     QTableView* usersTableView;
     QStandardItemModel* usersModel{nullptr};
-    QLabel* userLoginLabel;
     QLineEdit* userLoginLineEdit;
-    QLabel* userEmailLabel;
     QLineEdit* userEmailLineEdit;
-    QLabel* userRoleLabel;
-    QComboBox* userRoleComboBox;
     QLineEdit* userIdLineEdit;
 
     void clearUsersPage();

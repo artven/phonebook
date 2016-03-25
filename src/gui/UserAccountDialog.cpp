@@ -15,11 +15,14 @@ QDialog(parent), ui(new Ui::UserAccountDialog) {
     this->passwordLineEdit = ui->passwordLineEdit;
     this->repeatPasswordLineEdit = ui->repeatPasswordLineEdit;
     this->roleComboBox = ui->roleComboBox;
-
+    this->roleLabel = ui->roleLabel;
     this->roleComboBox->addItem("użytkownik");
     this->roleComboBox->addItem("operator");
     this->roleComboBox->addItem("administrator");
     this->roleComboBox->setEnabled(false);
+
+    this->roleComboBox->hide();
+    this->roleLabel->hide();
 
     QObject::connect(this->okPushButton, SIGNAL(clicked()), this, SLOT(onOkButtonClicked()));
     QObject::connect(this->cancelPushButton, SIGNAL(clicked()), this, SLOT(onCancelButtonClicked()));

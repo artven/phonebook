@@ -6,6 +6,7 @@
 #include <QComboBox>
 #include <QPushButton>
 #include <string>
+#include <QtWidgets/qlabel.h>
 
 #include "UserRecord.h"
 
@@ -49,6 +50,7 @@ private:
     QLineEdit* passwordLineEdit;
     QLineEdit* repeatPasswordLineEdit;
     QComboBox* roleComboBox;
+    QLabel* roleLabel;
 
     UserAccountDialogResult result;
 

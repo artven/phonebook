@@ -86,17 +86,9 @@ QMainWindow{parent}, Application{app}, ui{new Ui::MainWindow} {
     this->showAllUsersToolButton = ui->showAllUsersToolButton;
     this->saveUserPushButton = ui->saveUserToolButton;
     this->usersTableView = ui->usersTableView;
-    this->userLoginLabel = ui->userLoginLabel;
     this->userLoginLineEdit = ui->userLoginLineEdit;
-    this->userEmailLabel = ui->userEmailLabel;
     this->userEmailLineEdit = ui->userEmailLineEdit;
-    this->userRoleLabel = ui->userRoleLabel;
-    this->userRoleComboBox = ui->userRoleComboBox;
     this->userIdLineEdit = ui->userIdLineEdit ;
-
-    this->userRoleComboBox->addItem("Użytkownik");
-    this->userRoleComboBox->addItem("Operator");
-    this->userRoleComboBox->addItem("Administrator");
 
     QObject::connect(this->showAllUsersToolButton, SIGNAL(clicked()), this, SLOT(onShowAllUsersToolButton()));
     QObject::connect(this->usersTableView, SIGNAL(clicked(QModelIndex)), this, SLOT(onUserTableclicked(QModelIndex)));
@@ -588,7 +580,7 @@ void MainWindow::addPhonesTableHeaders() {
         this->phonesModel->setHeaderData(2, Qt::Horizontal, "Nazwisko");
         this->phonesModel->setHeaderData(3, Qt::Horizontal, "Adres");
         this->phonesModel->setHeaderData(4, Qt::Horizontal, "Miasto");
-        this->phonesModel->setHeaderData(5, Qt::Horizontal, "Telefon stancjonarny");
+        this->phonesModel->setHeaderData(5, Qt::Horizontal, "Telefon");
         this->phonesModel->setHeaderData(6, Qt::Horizontal, "Komórka");
         this->phonesModel->setHeaderData(7, Qt::Horizontal, "Email");
     }
@@ -608,10 +600,9 @@ void MainWindow::onShowAllUsersToolButton() {
 void MainWindow::clearUsersPage() {
     if (this->usersModel != nullptr)
         this->usersModel->clear();
-    this->searchUserLoginLineEdit->clear();
     this->userLoginLineEdit->clear();
     this->userEmailLineEdit->clear();
-
+    this->userIdLineEdit->clear();
 }
 
 void MainWindow::addUserTableHeaders() {
@@ -639,32 +630,15 @@ void MainWindow::onUserTableclicked(QModelIndex idx) {
     this->userLoginLineEdit->setText(login);
     this->userEmailLineEdit->setText(email);
 
-    if (role == "administrator") {
-        this->userRoleComboBox->setCurrentIndex(2);
-    } else if (role == "operator") {
-        this->userRoleComboBox->setCurrentIndex(1);
-    } else {
-        this->userRoleComboBox->setCurrentIndex(0);
-    };
 }
 
 void MainWindow::onSaveUserClicked() {
     auto id = this->userIdLineEdit->text().toInt();
     auto login = this->userLoginLineEdit->text().toStdString();
     auto email = this->userEmailLineEdit->text().toStdString();
-    auto comboBoxValue = this->userRoleComboBox->currentText().toStdString();
-
-    UserRole role;
-    if (comboBoxValue == "Administrator") {
-        role = UserRole::Admministrator;
-    } else if (comboBoxValue == "Operator") {
-        role = UserRole::Operator;
-    } else {
-        role = UserRole::NormalUser;
-    }
 
     try {
-        UserRecord user{id, login, email, role};
+        UserRecord user{id, login, email, UserRole::NormalUser};
         this->updateUser(user);
         QMessageBox::information(this, "Ok", "Rekord zmieniono poprawnie!");
         this->clearUsersPage();

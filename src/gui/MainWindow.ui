@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1254</width>
-    <height>733</height>
+    <width>1100</width>
+    <height>570</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,10 +21,10 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>20</y>
-      <width>891</width>
-      <height>611</height>
+      <x>350</x>
+      <y>10</y>
+      <width>750</width>
+      <height>600</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -46,106 +46,134 @@
      <number>0</number>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="browseRecords">
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>50</y>
-        <width>561</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>15</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Przeglądanie bazy danych</string>
-      </property>
-     </widget>
-     <widget class="QTableView" name="phonesTableView">
+     <widget class="QGroupBox" name="groupBox_5">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>140</y>
-        <width>711</width>
-        <height>341</height>
+        <y>20</y>
+        <width>700</width>
+        <height>500</height>
        </rect>
       </property>
-      <property name="gridStyle">
-       <enum>Qt::DashLine</enum>
+      <property name="title">
+       <string>Przeglądaj książkę telefoniczną</string>
       </property>
-      <property name="sortingEnabled">
-       <bool>true</bool>
-      </property>
-      <attribute name="horizontalHeaderCascadingSectionResizes">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>140</number>
-      </attribute>
-      <attribute name="horizontalHeaderHighlightSections">
-       <bool>true</bool>
-      </attribute>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-      <attribute name="verticalHeaderHighlightSections">
-       <bool>false</bool>
-      </attribute>
-     </widget>
-     <widget class="QToolButton" name="showAllPhonesToolButton">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>80</y>
-        <width>215</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Pokaż wszystkie</string>
-      </property>
-     </widget>
-     <widget class="QToolButton" name="searchPhonesValuesToolButton">
-      <property name="geometry">
-       <rect>
-        <x>250</x>
-        <y>80</y>
-        <width>215</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Wyszukiwanie zaawansowane</string>
-      </property>
-     </widget>
-     <widget class="QToolButton" name="clearPhonesValuesToolButton">
-      <property name="geometry">
-       <rect>
-        <x>470</x>
-        <y>80</y>
-        <width>215</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Wyczyść</string>
-      </property>
+      <widget class="QTableView" name="phonesTableView">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>120</y>
+         <width>600</width>
+         <height>341</height>
+        </rect>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::DashLine</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderCascadingSectionResizes">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>150</number>
+       </attribute>
+       <attribute name="horizontalHeaderHighlightSections">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderHighlightSections">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+      <widget class="QFrame" name="browseButtonsFrame">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>50</y>
+         <width>481</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_24">
+        <property name="spacing">
+         <number>10</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="showAllPhonesToolButton">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Pokaż wszystkie</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="searchPhonesValuesToolButton">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Wyszukiwanie</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="clearPhonesValuesToolButton">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Wyczyść</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="NewRecordPage">
+    <widget class="QWidget" name="newRecordPage">
      <widget class="QGroupBox" name="groupBox_3">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>40</y>
-        <width>461</width>
-        <height>341</height>
+        <x>130</x>
+        <y>60</y>
+        <width>500</width>
+        <height>350</height>
        </rect>
       </property>
       <property name="title">
@@ -154,7 +182,7 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>30</x>
+         <x>40</x>
          <y>40</y>
          <width>411</width>
          <height>278</height>
@@ -448,102 +476,112 @@
      </widget>
     </widget>
     <widget class="QWidget" name="browseUsersPage">
-     <widget class="QLabel" name="label_3">
+     <widget class="QGroupBox" name="groupBox_6">
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>70</y>
-        <width>421</width>
-        <height>31</height>
+        <y>20</y>
+        <width>701</width>
+        <height>471</height>
        </rect>
       </property>
-      <property name="text">
+      <property name="title">
        <string>Edytuj użytkowników</string>
       </property>
-     </widget>
-     <widget class="QTableView" name="usersTableView">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>160</y>
-        <width>721</width>
-        <height>251</height>
-       </rect>
-      </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::SingleSelection</enum>
-      </property>
-      <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectRows</enum>
-      </property>
-      <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>150</number>
-      </attribute>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-     </widget>
-     <widget class="QToolButton" name="showAllUsersToolButton">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>100</y>
-        <width>141</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Pokaż wszystkich</string>
-      </property>
-     </widget>
-     <widget class="QToolButton" name="saveUserToolButton">
-      <property name="geometry">
-       <rect>
-        <x>230</x>
-        <y>500</y>
-        <width>150</width>
-        <height>26</height>
-       </rect>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>150</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>150</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Zapisz</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>460</y>
-        <width>788</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_25">
-       <item>
+      <widget class="QToolButton" name="showAllUsersToolButton">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>30</y>
+         <width>141</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Pokaż wszystkich</string>
+       </property>
+      </widget>
+      <widget class="QTableView" name="usersTableView">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>60</y>
+         <width>600</width>
+         <height>251</height>
+        </rect>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>150</number>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_7">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>320</y>
+         <width>651</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Edytuj użytkownika</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>30</y>
+          <width>171</width>
+          <height>29</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_26">
+         <item>
+          <widget class="QLabel" name="label_18">
+           <property name="text">
+            <string>Id:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="userIdLineEdit">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>30</y>
+          <width>221</width>
+          <height>29</height>
+         </rect>
+        </property>
         <layout class="QHBoxLayout" name="horizontalLayout_22">
          <item>
           <widget class="QLabel" name="userLoginLabel">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>50</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>100</width>
+             <width>50</width>
              <height>16777215</height>
             </size>
            </property>
@@ -569,20 +607,28 @@
           </widget>
          </item>
         </layout>
-       </item>
-       <item>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>30</y>
+          <width>211</width>
+          <height>29</height>
+         </rect>
+        </property>
         <layout class="QHBoxLayout" name="horizontalLayout_23">
          <item>
           <widget class="QLabel" name="userEmailLabel">
            <property name="minimumSize">
             <size>
-             <width>100</width>
+             <width>50</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>100</width>
+             <width>50</width>
              <height>16777215</height>
             </size>
            </property>
@@ -608,301 +654,229 @@
           </widget>
          </item>
         </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_24">
+       </widget>
+       <widget class="QToolButton" name="saveUserToolButton">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>70</y>
+          <width>150</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Zapisz</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="requestsPage">
+     <widget class="QGroupBox" name="groupBox_8">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>701</width>
+        <height>450</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Przeglądaj wnioski</string>
+      </property>
+      <widget class="QTableView" name="requestsTableView">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>650</width>
+         <height>250</height>
+        </rect>
+       </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QAbstractScrollArea::AdjustIgnored</enum>
+       </property>
+       <property name="selectionMode">
+        <enum>QAbstractItemView::SingleSelection</enum>
+       </property>
+       <property name="selectionBehavior">
+        <enum>QAbstractItemView::SelectRows</enum>
+       </property>
+       <property name="gridStyle">
+        <enum>Qt::DashDotLine</enum>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
+       </property>
+       <attribute name="horizontalHeaderCascadingSectionResizes">
+        <bool>true</bool>
+       </attribute>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>150</number>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="layoutWidget_4">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>400</y>
+         <width>317</width>
+         <height>34</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QToolButton" name="accceptRequestToolButton">
+          <property name="text">
+           <string>Zakceptuj wniosek</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/mainwindow/images/Checked-96.png</normaloff>:/mainwindow/images/Checked-96.png</iconset>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="rejectRequestToolButton">
+          <property name="text">
+           <string>Odrzuć wniosek</string>
+          </property>
+          <property name="icon">
+           <iconset resource="resources.qrc">
+            <normaloff>:/mainwindow/images/Do Not Disturb-96.png</normaloff>:/mainwindow/images/Do Not Disturb-96.png</iconset>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>50</y>
+         <width>435</width>
+         <height>69</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>Status wniosku</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="layoutWidget_6">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>20</y>
+          <width>431</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QLabel" name="userRoleLabel">
-           <property name="minimumSize">
+          <spacer name="horizontalSpacer_3">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
             <size>
-             <width>100</width>
-             <height>0</height>
+             <width>17</width>
+             <height>20</height>
             </size>
            </property>
-           <property name="maximumSize">
-            <size>
-             <width>100</width>
-             <height>16777215</height>
-            </size>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="newRequestsRadioButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>1</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
            </property>
            <property name="text">
-            <string>Uprawnienia</string>
+            <string>nowy</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="userRoleComboBox">
-           <property name="minimumSize">
-            <size>
-             <width>150</width>
-             <height>0</height>
-            </size>
+          <widget class="QRadioButton" name="acceptedRadioButton">
+           <property name="text">
+            <string>zaakceptowany</string>
            </property>
-           <property name="maximumSize">
-            <size>
-             <width>150</width>
-             <height>16777215</height>
-            </size>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="rejectedRequestsRadioButton">
+           <property name="text">
+            <string>odrzucony</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="allRequestsRadioButton">
+           <property name="text">
+            <string>wszystkie</string>
            </property>
           </widget>
          </item>
         </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_3">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>500</y>
-        <width>171</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_26">
-       <item>
-        <widget class="QLabel" name="label_18">
-         <property name="text">
-          <string>Id:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="userIdLineEdit">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <zorder>layoutWidget_2</zorder>
-     <zorder>layoutWidget_3</zorder>
-     <zorder>label_3</zorder>
-     <zorder>usersTableView</zorder>
-     <zorder>showAllUsersToolButton</zorder>
-     <zorder>saveUserToolButton</zorder>
-    </widget>
-    <widget class="QWidget" name="requestsPage">
-     <widget class="QTableView" name="requestsTableView">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>120</y>
-        <width>700</width>
-        <height>250</height>
-       </rect>
-      </property>
-      <property name="sizeAdjustPolicy">
-       <enum>QAbstractScrollArea::AdjustIgnored</enum>
-      </property>
-      <property name="selectionMode">
-       <enum>QAbstractItemView::SingleSelection</enum>
-      </property>
-      <property name="selectionBehavior">
-       <enum>QAbstractItemView::SelectRows</enum>
-      </property>
-      <property name="gridStyle">
-       <enum>Qt::DashDotLine</enum>
-      </property>
-      <property name="sortingEnabled">
-       <bool>true</bool>
-      </property>
-      <attribute name="horizontalHeaderCascadingSectionResizes">
-       <bool>true</bool>
-      </attribute>
-      <attribute name="horizontalHeaderMinimumSectionSize">
-       <number>150</number>
-      </attribute>
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_4">
-      <property name="geometry">
-       <rect>
-        <x>210</x>
-        <y>390</y>
-        <width>317</width>
-        <height>34</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QToolButton" name="accceptRequestToolButton">
-         <property name="text">
-          <string>Zakceptuj wniosek</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resources.qrc">
-           <normaloff>:/mainwindow/images/Checked-96.png</normaloff>:/mainwindow/images/Checked-96.png</iconset>
-         </property>
-         <property name="toolButtonStyle">
-          <enum>Qt::ToolButtonTextBesideIcon</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="rejectRequestToolButton">
-         <property name="text">
-          <string>Odrzuć wniosek</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resources.qrc">
-           <normaloff>:/mainwindow/images/Do Not Disturb-96.png</normaloff>:/mainwindow/images/Do Not Disturb-96.png</iconset>
-         </property>
-         <property name="toolButtonStyle">
-          <enum>Qt::ToolButtonTextBesideIcon</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget_5">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>40</y>
-        <width>701</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QGroupBox" name="groupBox">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Ignored" vsizetype="Ignored">
-           <horstretch>1</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="title">
-          <string>Status wniosku</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-         <widget class="QWidget" name="layoutWidget_6">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>20</y>
-            <width>431</width>
-            <height>31</height>
-           </rect>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
-           <item>
-            <spacer name="horizontalSpacer_3">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>17</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="newRequestsRadioButton">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-               <horstretch>1</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text">
-              <string>nowy</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="acceptedRadioButton">
-             <property name="text">
-              <string>zaakceptowany</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="rejectedRequestsRadioButton">
-             <property name="text">
-              <string>odrzucony</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="allRequestsRadioButton">
-             <property name="text">
-              <string>wszystkie</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>83</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QToolButton" name="showRequestsToolButton">
-         <property name="text">
-          <string>Pokaż wnioski</string>
-         </property>
-         <property name="icon">
-          <iconset resource="resources.qrc">
-           <normaloff>:/mainwindow/images/search.png</normaloff>:/mainwindow/images/search.png</iconset>
-         </property>
-         <property name="toolButtonStyle">
-          <enum>Qt::ToolButtonTextBesideIcon</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QLabel" name="requestsLabel">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>10</y>
-        <width>143</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Wnioski o nowe konta</string>
-      </property>
+       </widget>
+      </widget>
+      <widget class="QToolButton" name="showRequestsToolButton">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>75</y>
+         <width>133</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Pokaż wnioski</string>
+       </property>
+       <property name="icon">
+        <iconset resource="resources.qrc">
+         <normaloff>:/mainwindow/images/search.png</normaloff>:/mainwindow/images/search.png</iconset>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextBesideIcon</enum>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="newUserPage">
@@ -1028,6 +1002,9 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
              </widget>
             </item>
            </layout>
@@ -1061,6 +1038,9 @@
                 <horstretch>1</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
               </property>
              </widget>
             </item>
@@ -1153,19 +1133,6 @@
      </widget>
     </widget>
     <widget class="QWidget" name="changePasswordPage">
-     <widget class="QLabel" name="label_7">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>341</width>
-        <height>121</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
      <widget class="QGroupBox" name="groupBox_2">
       <property name="geometry">
        <rect>
@@ -1211,7 +1178,11 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLineEdit" name="oldPasswordLineEdit"/>
+           <widget class="QLineEdit" name="oldPasswordLineEdit">
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -1238,7 +1209,11 @@
            </spacer>
           </item>
           <item>
-           <widget class="QLineEdit" name="newPasswordLineEdit"/>
+           <widget class="QLineEdit" name="newPasswordLineEdit">
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -1271,6 +1246,9 @@
               <horstretch>1</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
             </property>
            </widget>
           </item>
@@ -1308,10 +1286,10 @@
    <widget class="QTreeView" name="menuTreeView">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>60</y>
+      <x>20</x>
+      <y>10</y>
       <width>300</width>
-      <height>431</height>
+      <height>300</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -1334,6 +1312,9 @@
     <property name="focusPolicy">
      <enum>Qt::NoFocus</enum>
     </property>
+    <property name="frameShape">
+     <enum>QFrame::NoFrame</enum>
+    </property>
     <property name="itemsExpandable">
      <bool>false</bool>
     </property>
@@ -1347,7 +1328,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1254</width>
+     <width>1100</width>
      <height>25</height>
     </rect>
    </property>
