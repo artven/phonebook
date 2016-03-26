@@ -1,5 +1,5 @@
-#ifndef NEWUSERFORM_H
-#define NEWUSERFORM_H
+#ifndef NEWRECORDFORM_H
+#define NEWRECORDFORM_H
 
 #include <QWidget>
 #include <QLineEdit>
