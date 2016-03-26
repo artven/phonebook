@@ -5,6 +5,8 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <string>
+#include <map>
+
 #include "ui_NewRecordForm.h"
 
 namespace Ui {
@@ -25,7 +27,7 @@ public:
     std::string getPhone();
     std::string getMobile();
     std::string getEmail();
-    void clearFields();
+    void clear();
 
 signals:
     void newRecord(std::map<std::string, std::string>);
@@ -35,7 +37,7 @@ private slots:
     void onClearButtonClicked();
 
 private:
-    Ui::NewUserForm *ui;
+    Ui::NewRecordForm *ui;
 
     QLineEdit* name;
     QLineEdit* surname;
@@ -44,8 +46,8 @@ private:
     QLineEdit* phone;
     QLineEdit* mobile;
     QLineEdit* email;
-    QPushButton* ok;
-    QPushButton* clear;
+    QPushButton* okButton;
+    QPushButton* clearButton;
 
     void getFormElements();
     void addValidators();

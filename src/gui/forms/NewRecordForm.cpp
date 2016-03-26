@@ -2,7 +2,7 @@
 #include "ui_NewRecordForm.h"
 
 NewRecordForm::NewRecordForm(QWidget *parent) :
-QWidget(parent), ui(new Ui::NewUserForm) {
+QWidget(parent), ui(new Ui::NewRecordForm) {
     ui->setupUi(this);
     this->getFormElements();
     this->addValidators();
@@ -17,8 +17,8 @@ void NewRecordForm::getFormElements() {
     this->phone = ui->phoneLineEdit;
     this->mobile = ui->mobileLineEdit;
     this->email = ui->emailLineEdit;
-    this->ok = ui->addRecordPushButton;
-    this->clear = ui->clearFieldsPushButton;
+    this->okButton = ui->addRecordPushButton;
+    this->clearButton = ui->clearFieldsPushButton;
 }
 
 NewRecordForm::~NewRecordForm() {
@@ -57,10 +57,10 @@ void NewRecordForm::onOkButtonClicked() {
 }
 
 void NewRecordForm::onClearButtonClicked() {
-    this->clearFields();
+    this->clear();
 }
 
-void NewRecordForm::clearFields() {
+void NewRecordForm::clear() {
     this->name->clear();
     this->surname->clear();
     this->address->clear();
@@ -71,8 +71,8 @@ void NewRecordForm::clearFields() {
 }
 
 void NewRecordForm::connectSignals() {
-    QObject::connect(this->ok, SIGNAL(clicked()), this, SLOT(onOkButtonClicked()));
-    QObject::connect(this->clear, SIGNAL(clicked()), this, SLOT(onClearButtonClicked()));
+    QObject::connect(this->okButton, SIGNAL(clicked()), this, SLOT(onOkButtonClicked()));
+    QObject::connect(this->clearButton, SIGNAL(clicked()), this, SLOT(onClearButtonClicked()));
 }
 
 std::string NewRecordForm::getName() {
