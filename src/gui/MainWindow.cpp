@@ -184,7 +184,7 @@ void MainWindow::adaptWindowToWidget(QWidget *widget) {
 
     auto width = menuWidth + widgetWidht + 20;
     auto height = widgetHeight + 40;
-
+    this->mainWidget->setGeometry(350, 20, widgetWidht, widgetHeight);
     this->setWindowSize(width, height);
 }
 
