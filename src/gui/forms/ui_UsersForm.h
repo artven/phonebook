@@ -50,6 +50,8 @@ public:
         if (UsersForm->objectName().isEmpty())
             UsersForm->setObjectName(QStringLiteral("UsersForm"));
         UsersForm->resize(730, 470);
+        UsersForm->setMinimumSize(QSize(730, 470));
+        UsersForm->setMaximumSize(QSize(730, 470));
         groupBox_6 = new QGroupBox(UsersForm);
         groupBox_6->setObjectName(QStringLiteral("groupBox_6"));
         groupBox_6->setGeometry(QRect(10, 10, 700, 450));

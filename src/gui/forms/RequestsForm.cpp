@@ -25,7 +25,7 @@ void RequestsForm::getFormElements() {
 }
 
 void RequestsForm::connectSignals() {
-    QObject::connect(this->all, SIGNAL(clicked()), this, SLOT(onAllClicked));
+    QObject::connect(this->all, SIGNAL(clicked()), this, SLOT(onAllClicked()));
     QObject::connect(this->accepted, SIGNAL(clicked()), this, SLOT(onAcceptedClicked()));
     QObject::connect(this->rejected, SIGNAL(clicked()), this, SLOT(onRejectedClicked()));
     QObject::connect(this->waiting, SIGNAL(clicked()), this, SLOT(onWaitingClicked()));

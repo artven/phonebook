@@ -39,6 +39,8 @@ public:
         if (PhonebookForm->objectName().isEmpty())
             PhonebookForm->setObjectName(QStringLiteral("PhonebookForm"));
         PhonebookForm->resize(720, 520);
+        PhonebookForm->setMinimumSize(QSize(720, 520));
+        PhonebookForm->setMaximumSize(QSize(720, 520));
         groupBox_5 = new QGroupBox(PhonebookForm);
         groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
         groupBox_5->setGeometry(QRect(10, 10, 700, 500));

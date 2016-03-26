@@ -52,6 +52,8 @@ public:
         if (ChangePasswordForm->objectName().isEmpty())
             ChangePasswordForm->setObjectName(QStringLiteral("ChangePasswordForm"));
         ChangePasswordForm->resize(470, 220);
+        ChangePasswordForm->setMinimumSize(QSize(470, 220));
+        ChangePasswordForm->setMaximumSize(QSize(470, 220));
         groupBox_2 = new QGroupBox(ChangePasswordForm);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setGeometry(QRect(10, 10, 450, 200));

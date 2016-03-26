@@ -10,6 +10,18 @@
     <height>470</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>720</width>
+    <height>470</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>720</width>
+    <height>470</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -75,7 +87,7 @@
         <string>Zakceptuj wniosek</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="../resources.qrc">
          <normaloff>:/mainwindow/images/Checked-96.png</normaloff>:/mainwindow/images/Checked-96.png</iconset>
        </property>
        <property name="toolButtonStyle">
@@ -89,7 +101,7 @@
         <string>Odrzuć wniosek</string>
        </property>
        <property name="icon">
-        <iconset>
+        <iconset resource="../resources.qrc">
          <normaloff>:/mainwindow/images/Do Not Disturb-96.png</normaloff>:/mainwindow/images/Do Not Disturb-96.png</iconset>
        </property>
        <property name="toolButtonStyle">
@@ -188,6 +200,8 @@
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -47,6 +47,8 @@ public:
         if (RequestsForm->objectName().isEmpty())
             RequestsForm->setObjectName(QStringLiteral("RequestsForm"));
         RequestsForm->resize(720, 470);
+        RequestsForm->setMinimumSize(QSize(720, 470));
+        RequestsForm->setMaximumSize(QSize(720, 470));
         groupBox_8 = new QGroupBox(RequestsForm);
         groupBox_8->setObjectName(QStringLiteral("groupBox_8"));
         groupBox_8->setGeometry(QRect(10, 10, 700, 450));

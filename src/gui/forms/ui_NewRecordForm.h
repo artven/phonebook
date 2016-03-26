@@ -70,6 +70,8 @@ public:
         if (NewRecordForm->objectName().isEmpty())
             NewRecordForm->setObjectName(QStringLiteral("NewRecordForm"));
         NewRecordForm->resize(520, 370);
+        NewRecordForm->setMinimumSize(QSize(520, 370));
+        NewRecordForm->setMaximumSize(QSize(520, 370));
         groupBox_3 = new QGroupBox(NewRecordForm);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setGeometry(QRect(10, 10, 500, 350));

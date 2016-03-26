@@ -63,6 +63,8 @@ public:
         if (NewUserForm->objectName().isEmpty())
             NewUserForm->setObjectName(QStringLiteral("NewUserForm"));
         NewUserForm->resize(620, 300);
+        NewUserForm->setMinimumSize(QSize(620, 300));
+        NewUserForm->setMaximumSize(QSize(620, 300));
         groupBox_4 = new QGroupBox(NewUserForm);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
         groupBox_4->setGeometry(QRect(10, 10, 600, 280));
