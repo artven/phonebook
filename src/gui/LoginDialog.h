@@ -51,7 +51,7 @@ private:
     void getDialogElements();
     void enablePasswordMask();
     void connectSignals();
-    void addFieldsValidators();
+    void addValidators();
 
 public slots:
 

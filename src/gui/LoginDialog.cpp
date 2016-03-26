@@ -10,7 +10,7 @@ QDialog{parent}, ui(new Ui::LoginDialog) {
     this->getDialogElements();
     this->enablePasswordMask();
     this->connectSignals();
-    this->addFieldsValidators();
+    this->addValidators();
 }
 
 void LoginDialog::getDialogElements() {
@@ -32,7 +32,7 @@ void LoginDialog::connectSignals() {
     QObject::connect(this->accountPushButton, SIGNAL(clicked()), this, SLOT(onAccountPushButtonClicked()));
 }
 
-void LoginDialog::addFieldsValidators() {
+void LoginDialog::addValidators() {
     QRegExp regexp(R"#(\w{4,})#");
     QRegExpValidator *validator = new QRegExpValidator(regexp);
     this->loginLineEdit->setValidator(validator);
