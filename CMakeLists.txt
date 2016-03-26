@@ -27,6 +27,7 @@ include_directories(
         ${PROJECT_SOURCE_DIR}/src/database/include
         ${PROJECT_SOURCE_DIR}/src/phonebook/include
         ${PROJECT_SOURCE_DIR}/src/gui
+        ${PROJECT_SOURCE_DIR}/src/gui/forms
         ${PROJECT_SOURCE_DIR}/src/core/include
 )
 
