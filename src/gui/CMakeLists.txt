@@ -2,37 +2,47 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-
 SET(gui_HEADERS
-        ChangePasswordDialog.h
-        ui_ChangePasswordDialog.h
         LoginDialog.h
-        ui_LoginDialog.h
         MainWindow.h
-        ui_MainWindow.h
         UserAccountDialog.h
-        ui_UserAccountDialog.h
         Application.h
         SearchDialog.h
+        forms/PhonebookForm.h
+        forms/UsersForm.h
+        forms/NewRecordForm.h
+        forms/NewUserForm.h
+        forms/RequestsForm.h
+        forms/ChangePasswordForm.h
 )
 
 SET(gui_SOURCES
-        ChangePasswordDialog.cpp
         LoginDialog.cpp
         MainWindow.cpp
         UserAccountDialog.cpp
         Application.cpp
         SearchDialog.cpp
+        forms/PhonebookForm.cpp
+        forms/UsersForm.cpp
+        forms/NewRecordForm.cpp
+        forms/NewUserForm.cpp
+        forms/RequestsForm.cpp
+        forms/ChangePasswordForm.cpp
 )
 
 QT5_WRAP_CPP(gui_SOURCES ${gui_HEADERS})
 
 QT5_WRAP_UI(UI
-        ChangePasswordDialog.ui
         LoginDialog.ui
         MainWindow.ui
         UserAccountDialog.ui
         SearchDialog.ui
+        forms/PhonebookForm.ui
+        forms/UsersForm.ui
+        forms/NewRecordForm.ui
+        forms/NewUserForm.ui
+        forms/RequestsForm.ui
+        forms/ChangePasswordForm.ui
 )
 
 QT5_ADD_RESOURCES(gui_RESOURCES resources.qrc)
