@@ -82,6 +82,8 @@ private:
     void loadWidget(int widgetIndex);
 
     void adaptWindowToWidget(QWidget *widget);
+
+    void setWindowSize(int width, int height);
 };
 
 #endif // MAINWINDOW_H

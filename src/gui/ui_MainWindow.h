@@ -65,8 +65,9 @@ public:
         menuTreeView->setFont(font);
         menuTreeView->setFocusPolicy(Qt::NoFocus);
         menuTreeView->setFrameShape(QFrame::NoFrame);
+        menuTreeView->setAutoExpandDelay(5);
         menuTreeView->setItemsExpandable(true);
-        menuTreeView->setAnimated(true);
+        menuTreeView->setAnimated(false);
         menuTreeView->header()->setVisible(false);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);

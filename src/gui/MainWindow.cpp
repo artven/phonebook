@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <QMessageBox>
+#include <unistd.h>
 
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
@@ -41,9 +42,9 @@ void MainWindow::initializeMenu() {
     this->menuModel->setHeaderData(0, Qt::Horizontal, "Menu");
     this->menu->setModel(this->menuModel);
 
-//    auto pal = this->menu->palette();
-//    pal.setColor(QPalette::Base, QColor(53,53,53));
-//    this->menu->setPalette(pal);
+    auto pal = this->menu->palette();
+    pal.setColor(QPalette::Base, QColor(53,53,53));
+    this->menu->setPalette(pal);
 }
 
 void MainWindow::initalizeMainWidget() {
@@ -178,28 +179,33 @@ void MainWindow::loadWidget(int widgetIndex) {
 
 void MainWindow::adaptWindowToWidget(QWidget *widget) {
     auto menuWidth = 350;
-    auto border = 20;
     auto widgetWidht = widget->size().width();
     auto widgetHeight = widget->size().height();
 
-    auto width = menuWidth + border + widgetWidht;
-    auto height = widgetHeight + 2*border;
+    auto width = menuWidth + widgetWidht + 20;
+    auto height = widgetHeight + 40;
 
-    std::cout << width << std::endl;
-    std::cout << height << std::endl;
+    this->setWindowSize(width, height);
+}
 
+void MainWindow::setWindowSize(int width, int height) {
     this->setMinimumSize(width, height);
     this->setMaximumSize(width, height);
     this->setFixedSize(width, height);
 }
 
 void MainWindow::onMenuCollapsed() {
-    //std::cout << "dupa 1" << std::endl;
-
+    auto size = this->mainWidget->currentWidget()->size();
+    this->mainWidget->setGeometry(10, 20, size.width(), size.height());
+    this->setWindowSize(size.width()+20, size.height()+40);
+    this->menu->setFixedHeight(20);
 }
 
 void MainWindow::onMenuExpanded() {
-    //std::cout << "dupa 2" << std::endl;
+    this->menu->setFixedHeight(200);
+    auto size = this->mainWidget->currentWidget()->size();
+    this->mainWidget->setGeometry(350, 20, size.width(), size.height());
+    this->setWindowSize(size.width()+20+350, size.height()+40);
 }
 
 
