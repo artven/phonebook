@@ -18,6 +18,9 @@ public:
     explicit RequestsForm(QWidget *parent = 0);
     ~RequestsForm();
 
+    void clear();
+    void setModel(QStandardItemModel* model);
+
 signals:
     void loadRequestsClicked(std::string requestStatus);
 
@@ -43,6 +46,8 @@ private:
 
     void getFormElements();
     void connectSignals();
+
+    void addHeaders();
 };
 
 #endif // REQUESTSFORM_H

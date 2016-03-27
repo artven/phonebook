@@ -70,6 +70,8 @@ void MainWindow::connectSignals() {
                      this, SLOT(onUpdateUsersClicked(int, std::string, std::string)));
     QObject::connect(&this->newUserPage, SIGNAL(newUser(std::map<std::string, std::string>)),
                      this, SLOT(onNewUserClicked(std::map<std::string, std::string>)));
+    QObject::connect(&this->requestsPage, SIGNAL(loadRequestsClicked(std::string)),
+                     this, SLOT(onLoadRequestsClicked(std::string)));
 }
 
 void MainWindow::chooseWindowMode(UserRecord *user) {
@@ -249,3 +251,24 @@ void MainWindow::onNewUserClicked(std::map<std::string, std::string> p) {
         QMessageBox::warning(this, "Błąd", exception.what());
     }
 }
+
+void MainWindow::onLoadRequestsClicked(std::string requestStatus) {
+    QStandardItemModel* model{nullptr};
+    this->requestsPage.clear();
+
+    if (requestStatus == "all") {
+        model = this->getAllRequests();
+    } else if (requestStatus == "accpeted") {
+        model = this->getAcceptedRequests();
+    } else if (requestStatus == "waiting") {
+        model = this->getNewRequests();
+    } else if (requestStatus == "rejected") {
+        model = this->getRejectedRequests();
+    }
+
+    if (model != nullptr) {
+        this->requestsPage.setModel(model);
+    }
+}
+
+

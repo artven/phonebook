@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "RequestsForm.h"
 #include "ui_RequestsForm.h"
 
@@ -15,13 +17,16 @@ QWidget(parent), ui(new Ui::RequestsForm) {
 
 void RequestsForm::getFormElements() {
     this->all = ui->allRequestsRadioButton;
-    this->accepted = ui->allRequestsRadioButton;
+    this->accepted = ui->acceptedRequestsRadioButton;
     this->waiting = ui->waitingRequestsRadioButton;
     this->rejected = ui->rejectedRequestsRadioButton;
     this->acceptRequestButton = ui->accceptRequestToolButton;
     this->rejectRequestButton = ui->rejectRequestToolButton;
     this->table = ui->requestsTableView;
     this->model = nullptr;
+
+    this->acceptRequestButton->setEnabled(false);
+    this->rejectRequestButton->setEnabled(false);
 }
 
 void RequestsForm::connectSignals() {
@@ -55,4 +60,27 @@ void RequestsForm::onAcceptRequestClicked() {
 
 void RequestsForm::onRejectRequestClicked() {
 
+}
+
+void RequestsForm::clear() {
+    if (this->model != nullptr)
+        this->model->clear();
+}
+
+void RequestsForm::setModel(QStandardItemModel *model) {
+    if (model != nullptr) {
+        this->model = model;
+        this->table->setModel(model);
+        this->addHeaders();
+    }
+}
+
+void RequestsForm::addHeaders() {
+    this->model->setHeaderData(0,Qt::Horizontal, "Id");
+    this->model->setHeaderData(1,Qt::Horizontal, "Login");
+    this->model->setHeaderData(2,Qt::Horizontal, "Email");
+    this->model->setHeaderData(3,Qt::Horizontal, "Skrót hasła");
+    this->model->setHeaderData(4,Qt::Horizontal, "Uprawnienia");
+    this->model->setHeaderData(5,Qt::Horizontal, "Status");
+    this->model->setHeaderData(6,Qt::Horizontal, "Data");
 }

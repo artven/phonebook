@@ -54,8 +54,11 @@ private slots:
     void onShowAllUsersClicked();
     void onUpdateUsersClicked(int, std::string, std::string);
 
-    //new user record
+    //new user page slots
     void onNewUserClicked(std::map<std::string, std::string>);
+
+    //request page slots
+    void onLoadRequestsClicked(std::string);
 
 private:
     Ui::MainWindow *ui;

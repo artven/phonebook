@@ -41,9 +41,9 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>140</y>
+      <y>100</y>
       <width>650</width>
-      <height>250</height>
+      <height>270</height>
      </rect>
     </property>
     <property name="sizeAdjustPolicy">
@@ -64,8 +64,11 @@
     <attribute name="horizontalHeaderCascadingSectionResizes">
      <bool>true</bool>
     </attribute>
-    <attribute name="horizontalHeaderMinimumSectionSize">
+    <attribute name="horizontalHeaderDefaultSectionSize">
      <number>150</number>
+    </attribute>
+    <attribute name="horizontalHeaderMinimumSectionSize">
+     <number>30</number>
     </attribute>
     <attribute name="verticalHeaderVisible">
      <bool>false</bool>
@@ -114,9 +117,9 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>34</x>
-      <y>50</y>
-      <width>611</width>
+      <x>80</x>
+      <y>20</y>
+      <width>511</width>
       <height>69</height>
      </rect>
     </property>
@@ -138,44 +141,28 @@
     <widget class="QWidget" name="layoutWidget_6">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>40</x>
        <y>20</y>
-       <width>501</width>
+       <width>452</width>
        <height>31</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <spacer name="horizontalSpacer_3">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>17</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
        <widget class="QRadioButton" name="waitingRequestsRadioButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-          <horstretch>1</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
         <property name="text">
          <string>oczekujący</string>
-        </property>
-        <property name="checked">
-         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QRadioButton" name="acceptedRequestsRadioButton">
+        <property name="maximumSize">
+         <size>
+          <width>130</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>zaakceptowany</string>
         </property>
@@ -183,6 +170,12 @@
       </item>
       <item>
        <widget class="QRadioButton" name="rejectedRequestsRadioButton">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>odrzucony</string>
         </property>
@@ -190,6 +183,12 @@
       </item>
       <item>
        <widget class="QRadioButton" name="allRequestsRadioButton">
+        <property name="maximumSize">
+         <size>
+          <width>100</width>
+          <height>16777215</height>
+         </size>
+        </property>
         <property name="text">
          <string>wszystkie</string>
         </property>

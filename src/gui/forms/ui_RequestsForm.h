@@ -17,7 +17,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QRadioButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
@@ -36,7 +35,6 @@ public:
     QGroupBox *groupBox;
     QWidget *layoutWidget_6;
     QHBoxLayout *horizontalLayout_3;
-    QSpacerItem *horizontalSpacer_3;
     QRadioButton *waitingRequestsRadioButton;
     QRadioButton *acceptedRequestsRadioButton;
     QRadioButton *rejectedRequestsRadioButton;
@@ -54,14 +52,15 @@ public:
         groupBox_8->setGeometry(QRect(10, 10, 700, 450));
         requestsTableView = new QTableView(groupBox_8);
         requestsTableView->setObjectName(QStringLiteral("requestsTableView"));
-        requestsTableView->setGeometry(QRect(20, 140, 650, 250));
+        requestsTableView->setGeometry(QRect(20, 100, 650, 270));
         requestsTableView->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
         requestsTableView->setSelectionMode(QAbstractItemView::SingleSelection);
         requestsTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         requestsTableView->setGridStyle(Qt::DashDotLine);
         requestsTableView->setSortingEnabled(true);
         requestsTableView->horizontalHeader()->setCascadingSectionResizes(true);
-        requestsTableView->horizontalHeader()->setMinimumSectionSize(150);
+        requestsTableView->horizontalHeader()->setDefaultSectionSize(150);
+        requestsTableView->horizontalHeader()->setMinimumSectionSize(30);
         requestsTableView->verticalHeader()->setVisible(false);
         layoutWidget_4 = new QWidget(groupBox_8);
         layoutWidget_4->setObjectName(QStringLiteral("layoutWidget_4"));
@@ -89,7 +88,7 @@ public:
 
         groupBox = new QGroupBox(groupBox_8);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(34, 50, 611, 69));
+        groupBox->setGeometry(QRect(80, 20, 511, 69));
         QSizePolicy sizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
         sizePolicy.setHorizontalStretch(1);
         sizePolicy.setVerticalStretch(0);
@@ -99,37 +98,30 @@ public:
         groupBox->setFlat(true);
         layoutWidget_6 = new QWidget(groupBox);
         layoutWidget_6->setObjectName(QStringLiteral("layoutWidget_6"));
-        layoutWidget_6->setGeometry(QRect(60, 20, 501, 31));
+        layoutWidget_6->setGeometry(QRect(40, 20, 452, 31));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget_6);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer_3 = new QSpacerItem(17, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer_3);
-
         waitingRequestsRadioButton = new QRadioButton(layoutWidget_6);
         waitingRequestsRadioButton->setObjectName(QStringLiteral("waitingRequestsRadioButton"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(1);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(waitingRequestsRadioButton->sizePolicy().hasHeightForWidth());
-        waitingRequestsRadioButton->setSizePolicy(sizePolicy1);
-        waitingRequestsRadioButton->setChecked(true);
 
         horizontalLayout_3->addWidget(waitingRequestsRadioButton);
 
         acceptedRequestsRadioButton = new QRadioButton(layoutWidget_6);
         acceptedRequestsRadioButton->setObjectName(QStringLiteral("acceptedRequestsRadioButton"));
+        acceptedRequestsRadioButton->setMaximumSize(QSize(130, 16777215));
 
         horizontalLayout_3->addWidget(acceptedRequestsRadioButton);
 
         rejectedRequestsRadioButton = new QRadioButton(layoutWidget_6);
         rejectedRequestsRadioButton->setObjectName(QStringLiteral("rejectedRequestsRadioButton"));
+        rejectedRequestsRadioButton->setMaximumSize(QSize(100, 16777215));
 
         horizontalLayout_3->addWidget(rejectedRequestsRadioButton);
 
         allRequestsRadioButton = new QRadioButton(layoutWidget_6);
         allRequestsRadioButton->setObjectName(QStringLiteral("allRequestsRadioButton"));
+        allRequestsRadioButton->setMaximumSize(QSize(100, 16777215));
 
         horizontalLayout_3->addWidget(allRequestsRadioButton);
 
