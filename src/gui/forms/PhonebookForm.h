@@ -5,6 +5,8 @@
 #include <QToolButton>
 #include <QTableView>
 #include <QStandardItemModel>
+#include <map>
+#include <string>
 
 namespace Ui {
     class PhonebookForm;
@@ -22,6 +24,7 @@ public:
 
 signals:
     void showAllPhones();
+    void searchPhones(std::map<std::string, std::string>);
 
 private slots:
     void onAllPhonesButtonClicked();

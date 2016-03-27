@@ -61,6 +61,8 @@ void MainWindow::connectSignals() {
     QObject::connect(this->menu, SIGNAL(collapsed(QModelIndex)), this, SLOT(onMenuCollapsed()));
     QObject::connect(this->menu, SIGNAL(expanded(QModelIndex)), this, SLOT(onMenuExpanded()));
     QObject::connect(&this->phonebookPage, SIGNAL(showAllPhones()), this, SLOT(onShowAllPhonesClicked()));
+    QObject::connect(&this->phonebookPage, SIGNAL(searchPhones(std::map<std::string, std::string>)),
+                     this, SLOT(onSearchPhonesClicked(std::map<std::string, std::string>)));
 }
 
 void MainWindow::chooseWindowMode(UserRecord *user) {
@@ -173,7 +175,6 @@ void MainWindow::onMenuExpanded() {
 }
 
 void MainWindow::onShowAllPhonesClicked() {
-    std::cout << "dupa" << std::endl;
     auto newPhonesModel = this->Application::getAllPhones();
     if (newPhonesModel != nullptr)
         this->phonebookPage.setModel(newPhonesModel);
@@ -182,3 +183,12 @@ void MainWindow::onShowAllPhonesClicked() {
 }
 
 
+void MainWindow::onSearchPhonesClicked(std::map<std::string, std::string> p) {
+    auto model = this->searchPhones(p["name"], p["surname"], p["address"], p["city"],
+                                    p["email"], p["phone"], p["mobile"]);
+
+    if (model != nullptr)
+        this->phonebookPage.setModel(model);
+    else
+        QMessageBox::warning(this, "Błąd!", "Nie znaleziono żadnego rekordu!");
+}

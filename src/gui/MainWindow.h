@@ -44,6 +44,7 @@ private slots:
 
     //phonnebook page slots
     void onShowAllPhonesClicked();
+    void onSearchPhonesClicked(std::map<std::string, std::string>);
 
 private:
     Ui::MainWindow *ui;

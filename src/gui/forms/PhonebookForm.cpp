@@ -1,5 +1,6 @@
-#include "PhonebookForm.h"
 #include "ui_PhonebookForm.h"
+#include "PhonebookForm.h"
+#include "SearchDialog.h"
 
 PhonebookForm::~PhonebookForm() {
     delete ui;
@@ -32,7 +33,19 @@ void PhonebookForm::onAllPhonesButtonClicked() {
 }
 
 void PhonebookForm::onSearchButtonClicked() {
-
+    SearchDialog dlg;
+    dlg.exec();
+    if (dlg.getResult() == SearchDialogResult::ok) {
+        std::map<std::string, std::string> parameters;
+        parameters["name"] = dlg.getName();
+        parameters["surname"] = dlg.getSurname();
+        parameters["address"] = dlg.getAddress();
+        parameters["city"] = dlg.getCity();
+        parameters["phone"] = dlg.getPhone();
+        parameters["mobile"] = dlg.getMobile();
+        parameters["email"] = dlg.getEmail();
+        emit searchPhones(parameters);
+    }
 }
 
 void PhonebookForm::onClearButtonClicked() {
