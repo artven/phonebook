@@ -68,6 +68,8 @@ void MainWindow::connectSignals() {
     QObject::connect(&this->usersPage, SIGNAL(showAllUsers()), this, SLOT(onShowAllUsersClicked()));
     QObject::connect(&this->usersPage, SIGNAL(updateUser(int, std::string, std::string)),
                      this, SLOT(onUpdateUsersClicked(int, std::string, std::string)));
+    QObject::connect(&this->newUserPage, SIGNAL(newUser(std::map<std::string, std::string>)),
+                     this, SLOT(onNewUserClicked(std::map<std::string, std::string>)));
 }
 
 void MainWindow::chooseWindowMode(UserRecord *user) {
@@ -226,5 +228,24 @@ void MainWindow::onUpdateUsersClicked(int id, std::string login, std::string ema
         this->usersPage.clear();
     } catch (std::invalid_argument& exception) {
         QMessageBox::warning(this, "Błąd!", exception.what());
+    }
+}
+
+void MainWindow::onNewUserClicked(std::map<std::string, std::string> p) {
+    UserRole r;
+    if (p["role"] == "Użytkownik")
+        r = UserRole::NormalUser;
+    else if (p["role"] == "Operator")
+        r = UserRole::Operator;
+    else if (p["role"] == "Administrator")
+        r = UserRole::Admministrator;
+
+    try {
+        UserRecord newUser{0, p["login"], p["email"], r};
+        this->addUser(newUser, p["password"]);
+        QMessageBox::information(this, "Sukces!", "Nowy użytkownik został dodany do bazy");
+        this->newUserPage.clear();
+    } catch (std::invalid_argument& exception) {
+        QMessageBox::warning(this, "Błąd", exception.what());
     }
 }

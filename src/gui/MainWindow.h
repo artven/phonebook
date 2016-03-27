@@ -38,6 +38,7 @@ public:
     ~MainWindow();
 
 private slots:
+    // menu
     void onMenuClicked(QModelIndex);
     void onMenuCollapsed();
     void onMenuExpanded();
@@ -52,6 +53,9 @@ private slots:
     //users page slots
     void onShowAllUsersClicked();
     void onUpdateUsersClicked(int, std::string, std::string);
+
+    //new user record
+    void onNewUserClicked(std::map<std::string, std::string>);
 
 private:
     Ui::MainWindow *ui;
