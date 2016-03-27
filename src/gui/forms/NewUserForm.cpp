@@ -73,7 +73,7 @@ void NewUserForm::clear() {
     this->email->clear();
     this->password->clear();
     this->repeatPassword->clear();
-    this->role->setCurrentIndex(1);
+    this->role->setCurrentIndex(0);
 }
 
 void NewUserForm::addComboBoxValues() {
