@@ -77,10 +77,13 @@ void NewUserForm::clear() {
 }
 
 void NewUserForm::addComboBoxValues() {
-    // TODO zrobić wersję z ikonami
-    this->role->addItem("Użytkownik");
-    this->role->addItem("Operator");
-    this->role->addItem("Administrator");
+    QIcon userIcon{QPixmap{":/mainwindow/images/User-96.png"}};
+    QIcon operatorIcon{QPixmap{":/mainwindow/images/Collaborator-96.png"}};
+    QIcon administratorIcon{QPixmap{":/mainwindow/images/Administrator-96.png"}};
+
+    this->role->addItem(userIcon, "Użytkownik");
+    this->role->addItem(operatorIcon, "Operator");
+    this->role->addItem(administratorIcon, "Administrator");
 }
 
 std::string NewUserForm::getLogin() {

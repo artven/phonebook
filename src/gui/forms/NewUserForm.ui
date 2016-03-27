@@ -79,6 +79,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="toolTip">
+            <string>Login musi się składać z minimum czterech: liter, cyfr lub '_'.</string>
+           </property>
+           <property name="statusTip">
+            <string>Podaj login nowego użytkownika.</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -113,6 +119,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="toolTip">
+            <string>Email musi zawierać znak '@' oraz domenę pl lub com.</string>
+           </property>
+           <property name="statusTip">
+            <string>Podaj adres email nowego użytkownika.</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -146,6 +158,12 @@
              <horstretch>1</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Hasło musi zawierać minimum 4 litery, cyfry lub znaki '_'.</string>
+           </property>
+           <property name="statusTip">
+            <string>Podaj hasło nowego użytkownika.</string>
            </property>
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>
@@ -184,6 +202,12 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="toolTip">
+            <string>Hasło musi zawierać minimum 4 litery, cyfry lub znaki '_'.</string>
+           </property>
+           <property name="statusTip">
+            <string>Powtórz wprowadzone hasło.</string>
+           </property>
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>
            </property>
@@ -221,6 +245,14 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="toolTip">
+            <string> Użytkownik - przeglądanie i dodawanie wpisów. 
+ Operator - edycja użytkowników i wniosków. 
+ Administrator - tworzenie nowych kont.</string>
+           </property>
+           <property name="statusTip">
+            <string>Wybierz poziom uprawnień nowego użytkownika.</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -244,6 +276,28 @@
        </item>
        <item>
         <widget class="QToolButton" name="clearToolButton">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="statusTip">
+          <string>Wyczyść formularz.</string>
+         </property>
          <property name="text">
           <string>Wyczyść</string>
          </property>
@@ -251,16 +305,53 @@
           <iconset resource="../resources.qrc">
            <normaloff>:/mainwindow/images/Close Window-96.png</normaloff>:/mainwindow/images/Close Window-96.png</iconset>
          </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextBesideIcon</enum>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
        <item>
         <widget class="QToolButton" name="addToolButton">
+         <property name="minimumSize">
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>100</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="statusTip">
+          <string>Dodaj użytkownika do bazy.</string>
+         </property>
          <property name="text">
           <string>Dodaj</string>
          </property>
          <property name="icon">
           <iconset resource="../resources.qrc">
            <normaloff>:/mainwindow/images/Checked-96.png</normaloff>:/mainwindow/images/Checked-96.png</iconset>
+         </property>
+         <property name="toolButtonStyle">
+          <enum>Qt::ToolButtonTextBesideIcon</enum>
+         </property>
+         <property name="autoRaise">
+          <bool>true</bool>
+         </property>
+         <property name="arrowType">
+          <enum>Qt::NoArrow</enum>
          </property>
         </widget>
        </item>
