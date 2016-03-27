@@ -11,7 +11,7 @@ QWidget(parent), ui(new Ui::NewRecordForm) {
 
 void NewRecordForm::getFormElements() {
     this->name = ui->nameLineEdit;
-    this->surname = ui->nameLineEdit;
+    this->surname = ui->surnameLineEdit;
     this->address = ui->addressLineEdit;
     this->city = ui->cityLineEdit;
     this->phone = ui->phoneLineEdit;
