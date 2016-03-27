@@ -60,7 +60,7 @@ public:
         showAllUsersToolButton->setGeometry(QRect(50, 30, 141, 25));
         usersTableView = new QTableView(groupBox_6);
         usersTableView->setObjectName(QStringLiteral("usersTableView"));
-        usersTableView->setGeometry(QRect(50, 60, 600, 251));
+        usersTableView->setGeometry(QRect(50, 60, 602, 250));
         usersTableView->setSelectionMode(QAbstractItemView::SingleSelection);
         usersTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         usersTableView->horizontalHeader()->setDefaultSectionSize(150);

@@ -18,8 +18,11 @@ public:
     explicit UsersForm(QWidget *parent = 0);
     ~UsersForm();
 
-signals:
+    void clear();
+    void setModel(QStandardItemModel* model);
 
+signals:
+    void showAllUsers();
 
 private slots:
     void onShowAllButtonClicked();
@@ -39,6 +42,7 @@ private:
     void getFormElements();
     void addValidators();
     void connectSignals();
+    void addHeaders();
 };
 
 #endif // USERSFORM_H

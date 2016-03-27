@@ -38,9 +38,29 @@ void UsersForm::connectSignals() {
 }
 
 void UsersForm::onShowAllButtonClicked() {
-
+    emit showAllUsers();
 }
 
 void UsersForm::onSaveButtonClicked() {
 
+}
+
+void UsersForm::clear() {
+    if (this->model != nullptr)
+        this->model->clear();
+}
+
+void UsersForm::setModel(QStandardItemModel *model) {
+    this->model = model;
+    this->table->setModel(model);
+    this->addHeaders();
+}
+
+void UsersForm::addHeaders() {
+    if (this->model != nullptr) {
+        this->model->setHeaderData(0, Qt::Horizontal, "Id");
+        this->model->setHeaderData(1, Qt::Horizontal, "Login");
+        this->model->setHeaderData(2, Qt::Horizontal, "Email");
+        this->model->setHeaderData(3, Qt::Horizontal, "Uprawnienia");
+    }
 }
