@@ -38,7 +38,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void onMenuDoubleClicked(QModelIndex);
+    void onMenuClicked(QModelIndex);
     void onMenuCollapsed();
     void onMenuExpanded();
 
@@ -48,6 +48,9 @@ private slots:
 
     //newrecord page slots
     void onNewRecordClicked(std::map<std::string, std::string>);
+
+    //users page slots
+    void onShowAllUsersClicked();
 
 private:
     Ui::MainWindow *ui;

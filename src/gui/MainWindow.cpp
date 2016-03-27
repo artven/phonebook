@@ -57,7 +57,7 @@ void MainWindow::initalizeMainWidget() {
 }
 
 void MainWindow::connectSignals() {
-    QObject::connect(this->menu, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(onMenuDoubleClicked(QModelIndex)));
+    QObject::connect(this->menu, SIGNAL(clicked(QModelIndex)), this, SLOT(onMenuClicked(QModelIndex)));
     QObject::connect(this->menu, SIGNAL(collapsed(QModelIndex)), this, SLOT(onMenuCollapsed()));
     QObject::connect(this->menu, SIGNAL(expanded(QModelIndex)), this, SLOT(onMenuExpanded()));
     QObject::connect(&this->phonebookPage, SIGNAL(showAllPhones()), this, SLOT(onShowAllPhonesClicked()));
@@ -65,6 +65,7 @@ void MainWindow::connectSignals() {
                      this, SLOT(onSearchPhonesClicked(std::map<std::string, std::string>)));
     QObject::connect(&this->newRecordPage, SIGNAL(newRecord(std::map<std::string, std::string>)),
                      this, SLOT(onNewRecordClicked(std::map<std::string, std::string>)));
+    QObject::connect(&this->usersPage, SIGNAL(showAllUsers()), this, SLOT(onShowAllUsersClicked()));
 }
 
 void MainWindow::chooseWindowMode(UserRecord *user) {
@@ -127,7 +128,7 @@ void MainWindow::loadUserWidgets() {
     this->menuPages.push_back(&this->passwordPage);
 }
 
-void MainWindow::onMenuDoubleClicked(QModelIndex idx) {
+void MainWindow::onMenuClicked(QModelIndex idx) {
     if (idx.parent() != QModelIndex()) {
         if(idx.row() < this->menuPages.size()) {
             this->loadWidget(idx.row());
@@ -204,4 +205,13 @@ void MainWindow::onNewRecordClicked(std::map<std::string, std::string> p) {
     } catch (std::invalid_argument& exception) {
         QMessageBox::warning(this, "Błąd", exception.what());
     }
+}
+
+void MainWindow::onShowAllUsersClicked() {
+    auto newModel = this->getAllUsers();
+    if (newModel != nullptr) {
+        this->usersPage.clear();
+        this->usersPage.setModel(newModel);
+    } else
+        QMessageBox::warning(this, "Błąd", "Brak użytkowników w bazie!");
 }
