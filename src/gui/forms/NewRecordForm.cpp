@@ -17,8 +17,8 @@ void NewRecordForm::getFormElements() {
     this->phone = ui->phoneLineEdit;
     this->mobile = ui->mobileLineEdit;
     this->email = ui->emailLineEdit;
-    this->okButton = ui->addRecordPushButton;
-    this->clearButton = ui->clearFieldsPushButton;
+    this->okButton = ui->addRecordToolButton;
+    this->clearButton = ui->clearFieldsToolButton;
 }
 
 NewRecordForm::~NewRecordForm() {

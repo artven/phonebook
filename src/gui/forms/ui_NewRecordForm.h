@@ -18,8 +18,8 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -62,8 +62,9 @@ public:
     QLineEdit *emailLineEdit;
     QHBoxLayout *horizontalLayout_15;
     QSpacerItem *horizontalSpacer_15;
-    QPushButton *clearFieldsPushButton;
-    QPushButton *addRecordPushButton;
+    QToolButton *clearFieldsToolButton;
+    QToolButton *addRecordToolButton;
+    QLabel *label;
 
     void setupUi(QWidget *NewRecordForm)
     {
@@ -77,7 +78,7 @@ public:
         groupBox_3->setGeometry(QRect(10, 10, 500, 350));
         layoutWidget = new QWidget(groupBox_3);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(40, 40, 411, 278));
+        layoutWidget->setGeometry(QRect(40, 40, 411, 283));
         verticalLayout_3 = new QVBoxLayout(layoutWidget);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -245,19 +246,40 @@ public:
 
         horizontalLayout_15->addItem(horizontalSpacer_15);
 
-        clearFieldsPushButton = new QPushButton(layoutWidget);
-        clearFieldsPushButton->setObjectName(QStringLiteral("clearFieldsPushButton"));
+        clearFieldsToolButton = new QToolButton(layoutWidget);
+        clearFieldsToolButton->setObjectName(QStringLiteral("clearFieldsToolButton"));
+        QFont font;
+        font.setPointSize(9);
+        font.setBold(true);
+        font.setWeight(75);
+        clearFieldsToolButton->setFont(font);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/mainwindow/images/Close Window-96.png"), QSize(), QIcon::Normal, QIcon::Off);
+        clearFieldsToolButton->setIcon(icon);
+        clearFieldsToolButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+        clearFieldsToolButton->setAutoRaise(true);
 
-        horizontalLayout_15->addWidget(clearFieldsPushButton);
+        horizontalLayout_15->addWidget(clearFieldsToolButton);
 
-        addRecordPushButton = new QPushButton(layoutWidget);
-        addRecordPushButton->setObjectName(QStringLiteral("addRecordPushButton"));
+        addRecordToolButton = new QToolButton(layoutWidget);
+        addRecordToolButton->setObjectName(QStringLiteral("addRecordToolButton"));
+        addRecordToolButton->setFont(font);
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/mainwindow/images/Checked-96.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addRecordToolButton->setIcon(icon1);
+        addRecordToolButton->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+        addRecordToolButton->setAutoRaise(true);
 
-        horizontalLayout_15->addWidget(addRecordPushButton);
+        horizontalLayout_15->addWidget(addRecordToolButton);
 
 
         verticalLayout_3->addLayout(horizontalLayout_15);
 
+        label = new QLabel(groupBox_3);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(460, 10, 61, 51));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/mainwindow/images/Add List-96.png")));
+        label->setScaledContents(true);
 
         retranslateUi(NewRecordForm);
 
@@ -273,19 +295,38 @@ public:
         nameLineEdit->setToolTip(QApplication::translate("NewRecordForm", "dupa 1234", 0));
 #endif // QT_NO_TOOLTIP
 #ifndef QT_NO_STATUSTIP
-        nameLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "fasgasfasds", 0));
+        nameLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj imi\304\231 osoby.", 0));
 #endif // QT_NO_STATUSTIP
 #ifndef QT_NO_WHATSTHIS
-        nameLineEdit->setWhatsThis(QApplication::translate("NewRecordForm", "asdasd", 0));
+        nameLineEdit->setWhatsThis(QString());
 #endif // QT_NO_WHATSTHIS
         surnameLabel->setText(QApplication::translate("NewRecordForm", "Nazwisko", 0));
+#ifndef QT_NO_STATUSTIP
+        surnameLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj nazwisko osoby.", 0));
+#endif // QT_NO_STATUSTIP
         addressLabel->setText(QApplication::translate("NewRecordForm", "Adres", 0));
+#ifndef QT_NO_STATUSTIP
+        addressLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj adres.", 0));
+#endif // QT_NO_STATUSTIP
         cityLabel->setText(QApplication::translate("NewRecordForm", "Miasto", 0));
+#ifndef QT_NO_STATUSTIP
+        cityLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj nazw\304\231 miasta.", 0));
+#endif // QT_NO_STATUSTIP
         phoneLabel->setText(QApplication::translate("NewRecordForm", "Telefon", 0));
+#ifndef QT_NO_STATUSTIP
+        phoneLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj telefon stacjnonarny.", 0));
+#endif // QT_NO_STATUSTIP
         mobileLabel->setText(QApplication::translate("NewRecordForm", "Kom\303\263rka", 0));
+#ifndef QT_NO_STATUSTIP
+        mobileLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj telefon kom\303\263rkowy.", 0));
+#endif // QT_NO_STATUSTIP
         emailLabel->setText(QApplication::translate("NewRecordForm", "Email:", 0));
-        clearFieldsPushButton->setText(QApplication::translate("NewRecordForm", "Wyczy\305\233\304\207", 0));
-        addRecordPushButton->setText(QApplication::translate("NewRecordForm", "Dodaj", 0));
+#ifndef QT_NO_STATUSTIP
+        emailLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj adres email.", 0));
+#endif // QT_NO_STATUSTIP
+        clearFieldsToolButton->setText(QApplication::translate("NewRecordForm", "Wyczy\305\233\304\207", 0));
+        addRecordToolButton->setText(QApplication::translate("NewRecordForm", "Dodaj", 0));
+        label->setText(QString());
     } // retranslateUi
 
 };

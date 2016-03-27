@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QLineEdit>
-#include <QPushButton>
+#include <QToolButton>
 #include <string>
 #include <map>
 
@@ -46,8 +46,8 @@ private:
     QLineEdit* phone;
     QLineEdit* mobile;
     QLineEdit* email;
-    QPushButton* okButton;
-    QPushButton* clearButton;
+    QToolButton* okButton;
+    QToolButton* clearButton;
 
     void getFormElements();
     void addValidators();
