@@ -14,6 +14,7 @@ SET(gui_HEADERS
         forms/NewUserForm.h
         forms/RequestsForm.h
         forms/ChangePasswordForm.h
+        UserMenu.h
 )
 
 SET(gui_SOURCES
@@ -28,6 +29,7 @@ SET(gui_SOURCES
         forms/NewUserForm.cpp
         forms/RequestsForm.cpp
         forms/ChangePasswordForm.cpp
+        UserMenu.cpp
 )
 
 QT5_WRAP_CPP(gui_SOURCES ${gui_HEADERS})

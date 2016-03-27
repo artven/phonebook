@@ -1,13 +1,13 @@
 #include <QStandardItem>
 #include <vector>
-#include <iostream>
+
 #include <QMessageBox>
-#include <unistd.h>
+#include <iostream>
 
-#include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "MainWindow.h"
 #include "SearchDialog.h"
-
+#include "UserMenu.h"
 
 MainWindow::~MainWindow() {
     delete ui;
@@ -74,18 +74,13 @@ void MainWindow::chooseWindowMode(UserRecord *user) {
 
 void MainWindow::addAdministratorMenu() {
     this->menuModel->clear();
-    QStandardItem* administratorRootItem = new QStandardItem(this->administratorIcon, "Administrator");
+    this->loadAdministratorWidgets();
+    QStandardItem* administratorRootItem = UserMenu::createAdministratorMenu();
+    this->menuModel->setItem(0, 0, administratorRootItem);
+    this->menu->expandAll();
+}
 
-    std::vector<QStandardItem*> menuItems;
-    menuItems.push_back(new QStandardItem{this->browseRecordsIcon, "Przeglądaj bazę"});
-    menuItems.push_back(new QStandardItem{this->addRecordIcon, "Dodaj wpis"});
-    menuItems.push_back(new QStandardItem{this->newUserRequestIcon, "Wnioski o nowe konta"});
-    menuItems.push_back(new QStandardItem{this->browseUsersIcon, "Edytuj użytkowników"});
-    menuItems.push_back(new QStandardItem{this->newPowerUserIcon, "Nowy użytkownik"});
-    menuItems.push_back(new QStandardItem{this->changePasswordIcon, "Zmień hasło"});
-    menuItems.push_back(new QStandardItem{this->logutIcon, "Wyloguj się"});
-    menuItems.push_back(new QStandardItem{this->exitIcon, "Wyjdź"});
-
+void MainWindow::loadAdministratorWidgets() {
     this->menuPages.clear();
     this->menuPages.push_back(&this->phonebookPage);
     this->menuPages.push_back(&this->newRecordPage);
@@ -93,70 +88,38 @@ void MainWindow::addAdministratorMenu() {
     this->menuPages.push_back(&this->usersPage);
     this->menuPages.push_back(&this->newUserPage);
     this->menuPages.push_back(&this->passwordPage);
-
-    administratorRootItem->setEditable(false);
-    for(auto item: menuItems) {
-        item->setEditable(false);
-        administratorRootItem->appendRow(item);
-    }
-
-    this->menuModel->setItem(0, 0, administratorRootItem);
-    this->menu->expandAll();
 }
 
 void MainWindow::addOperatorMenu() {
     this->menuModel->clear();
-    QStandardItem* operatorRootItem = new QStandardItem(this->operatorIcon, "Operator");
+    this->loadOperatorWidgets();
+    QStandardItem* operatorRootItem = UserMenu::createOperatorMenu();
+    this->menuModel->setItem(0, 0, operatorRootItem);
+    this->menu->expandAll();
+}
 
-    std::vector<QStandardItem*> menuItems;
-    menuItems.push_back(new QStandardItem{this->browseRecordsIcon, "Przeglądaj bazę"});
-    menuItems.push_back(new QStandardItem{this->addRecordIcon, "Dodaj wpis"});
-    menuItems.push_back(new QStandardItem{this->browseUsersIcon, "Edytuj użytkowników"});
-    menuItems.push_back(new QStandardItem{this->newUserRequestIcon, "Wnioski o nowe konta"});
-    menuItems.push_back(new QStandardItem{this->changePasswordIcon, "Zmień hasło"});
-    menuItems.push_back(new QStandardItem{this->logutIcon, "Wyloguj się"});
-    menuItems.push_back(new QStandardItem{this->exitIcon, "Wyjdź"});
-
+void MainWindow::loadOperatorWidgets() {
     this->menuPages.clear();
     this->menuPages.push_back(&this->phonebookPage);
     this->menuPages.push_back(&this->newRecordPage);
     this->menuPages.push_back(&this->usersPage);
     this->menuPages.push_back(&this->requestsPage);
     this->menuPages.push_back(&this->passwordPage);
-
-    operatorRootItem->setEditable(false);
-    for(auto item: menuItems) {
-        item->setEditable(false);
-        operatorRootItem->appendRow(item);
-    }
-
-    this->menuModel->setItem(0, 0, operatorRootItem);
 }
 
 void MainWindow::addUserMenu() {
     this->menuModel->clear();
-    QStandardItem* userMenuRootItem = new QStandardItem{this->userIcon, "Użytkownik"};
+    this->loadUserWidgets();
+    QStandardItem* userMenuRootItem = UserMenu::createUserMenu();
+    this->menuModel->setItem(0, 0, userMenuRootItem);
+    this->menu->expandAll();
+}
 
-    std::vector<QStandardItem*> userMenuItems;
-    userMenuItems.push_back(new QStandardItem{this->browseRecordsIcon, "Przeglądaj bazę"});
-    userMenuItems.push_back(new QStandardItem{this->addRecordIcon, "Dodaj wpis"});
-    userMenuItems.push_back(new QStandardItem{this->changePasswordIcon, "Zmień hasło"});
-    userMenuItems.push_back(new QStandardItem{this->logutIcon, "Wyloguj się"});
-    userMenuItems.push_back(new QStandardItem{this->exitIcon, "Wyjdź"});
-
+void MainWindow::loadUserWidgets() {
     this->menuPages.clear();
     this->menuPages.push_back(&this->phonebookPage);
     this->menuPages.push_back(&this->newRecordPage);
     this->menuPages.push_back(&this->passwordPage);
-
-    userMenuRootItem->setEditable(false);
-    for(auto item: userMenuItems) {
-        item->setEditable(false);
-        userMenuRootItem->appendRow(item);
-    }
-
-    this->menuModel->setItem(0, 0, userMenuRootItem);
-    this->menu->expandAll();
 }
 
 void MainWindow::onMenuDoubleClicked(QModelIndex idx) {
@@ -207,5 +170,3 @@ void MainWindow::onMenuExpanded() {
     this->mainWidget->setGeometry(350, 20, size.width(), size.height());
     this->setWindowSize(size.width()+20+350, size.height()+40);
 }
-
-
