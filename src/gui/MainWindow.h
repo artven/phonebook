@@ -59,6 +59,7 @@ private slots:
 
     //request page slots
     void onLoadRequestsClicked(std::string);
+    void onSetRequestStatusClicked(std::vector<std::string>, bool);
 
 private:
     Ui::MainWindow *ui;

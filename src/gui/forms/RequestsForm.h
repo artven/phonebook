@@ -6,6 +6,8 @@
 #include <QRadioButton>
 #include <QToolButton>
 #include <QTableView>
+#include <vector>
+#include <string>
 
 namespace Ui {
     class RequestsForm;
@@ -23,6 +25,7 @@ public:
 
 signals:
     void loadRequestsClicked(std::string requestStatus);
+    void setRequestStatusClicked(std::vector<std::string> request, bool status);
 
 private slots:
     void onAllClicked();
@@ -31,6 +34,7 @@ private slots:
     void onRejectedClicked();
     void onAcceptRequestClicked();
     void onRejectRequestClicked();
+    void onTableRowClicked(QModelIndex);
 
 private:
     Ui::RequestsForm *ui;
@@ -46,8 +50,10 @@ private:
 
     void getFormElements();
     void connectSignals();
-
     void addHeaders();
+    std::vector<std::string> getSelectedRequest();
+    void disableButtons();
+    void enableButtons();
 };
 
 #endif // REQUESTSFORM_H

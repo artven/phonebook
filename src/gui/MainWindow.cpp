@@ -72,6 +72,8 @@ void MainWindow::connectSignals() {
                      this, SLOT(onNewUserClicked(std::map<std::string, std::string>)));
     QObject::connect(&this->requestsPage, SIGNAL(loadRequestsClicked(std::string)),
                      this, SLOT(onLoadRequestsClicked(std::string)));
+    QObject::connect(&this->requestsPage, SIGNAL(setRequestStatusClicked(std::vector<std::string>, bool)),
+                     this, SLOT(onSetRequestStatusClicked(std::vector<std::string>, bool)));
 }
 
 void MainWindow::chooseWindowMode(UserRecord *user) {
@@ -271,4 +273,13 @@ void MainWindow::onLoadRequestsClicked(std::string requestStatus) {
     }
 }
 
-
+void MainWindow::onSetRequestStatusClicked(std::vector<std::string> request, bool status) {
+    try {
+        if (status)
+            this->acceptRequest(request);
+        else
+            this->rejectRequest(request);
+    } catch (std::invalid_argument& exception) {
+        QMessageBox::warning(this, "Błąd!", exception.what());
+    }
+}
