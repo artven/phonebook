@@ -221,6 +221,7 @@ QStandardItemModel *Application::getModelFromList(std::list<PhoneBookRecord> rec
 
             for(int col=0; col<8; col++) {
                 QStandardItem* item = new QStandardItem{recordValues[col].c_str()};
+                item->setEditable(false);
                 newModel->setItem(row, col, item);
             }
 

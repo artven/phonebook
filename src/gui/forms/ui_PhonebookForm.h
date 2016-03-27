@@ -47,6 +47,8 @@ public:
         phonesTableView = new QTableView(groupBox_5);
         phonesTableView->setObjectName(QStringLiteral("phonesTableView"));
         phonesTableView->setGeometry(QRect(50, 120, 600, 341));
+        phonesTableView->setSelectionMode(QAbstractItemView::SingleSelection);
+        phonesTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         phonesTableView->setGridStyle(Qt::DashLine);
         phonesTableView->setSortingEnabled(true);
         phonesTableView->horizontalHeader()->setCascadingSectionResizes(false);

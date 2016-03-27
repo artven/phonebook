@@ -28,7 +28,7 @@ void PhonebookForm::connectSignals() {
 }
 
 void PhonebookForm::onAllPhonesButtonClicked() {
-
+    emit showAllPhones();
 }
 
 void PhonebookForm::onSearchButtonClicked() {
@@ -42,4 +42,24 @@ void PhonebookForm::onClearButtonClicked() {
 void PhonebookForm::clear() {
     if (this->model != nullptr)
         this->model->clear();
+}
+
+void PhonebookForm::setModel(QStandardItemModel *model) {
+    this->clear();
+    this->model = model;
+    this->table->setModel(model);
+    this->addHeaders();
+}
+
+void PhonebookForm::addHeaders() {
+    if (this->model) {
+        this->model->setHeaderData(0, Qt::Horizontal, "Id");
+        this->model->setHeaderData(1, Qt::Horizontal, "Imie");
+        this->model->setHeaderData(2, Qt::Horizontal, "Nazwisko");
+        this->model->setHeaderData(3, Qt::Horizontal, "Adres");
+        this->model->setHeaderData(4, Qt::Horizontal, "Miasto");
+        this->model->setHeaderData(5, Qt::Horizontal, "Telefon");
+        this->model->setHeaderData(6, Qt::Horizontal, "Komórka");
+        this->model->setHeaderData(7, Qt::Horizontal, "Email");
+    }
 }

@@ -18,6 +18,10 @@ public:
     ~PhonebookForm();
 
     void clear();
+    void setModel(QStandardItemModel *model);
+
+signals:
+    void showAllPhones();
 
 private slots:
     void onAllPhonesButtonClicked();
@@ -35,6 +39,7 @@ private:
 
     void getFormElements();
     void connectSignals();
+    void addHeaders();
 };
 
 #endif // PHONEBOOKFORM_H

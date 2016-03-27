@@ -42,6 +42,9 @@ private slots:
     void onMenuCollapsed();
     void onMenuExpanded();
 
+    //phonnebook page slots
+    void onShowAllPhonesClicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -70,7 +73,6 @@ private:
     void setWindowSize(int width, int height);
     void loadAdministratorWidgets();
     void loadOperatorWidgets();
-
     void loadUserWidgets();
 };
 

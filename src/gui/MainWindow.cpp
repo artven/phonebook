@@ -60,6 +60,7 @@ void MainWindow::connectSignals() {
     QObject::connect(this->menu, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(onMenuDoubleClicked(QModelIndex)));
     QObject::connect(this->menu, SIGNAL(collapsed(QModelIndex)), this, SLOT(onMenuCollapsed()));
     QObject::connect(this->menu, SIGNAL(expanded(QModelIndex)), this, SLOT(onMenuExpanded()));
+    QObject::connect(&this->phonebookPage, SIGNAL(showAllPhones()), this, SLOT(onShowAllPhonesClicked()));
 }
 
 void MainWindow::chooseWindowMode(UserRecord *user) {
@@ -170,3 +171,14 @@ void MainWindow::onMenuExpanded() {
     this->mainWidget->setGeometry(350, 20, size.width(), size.height());
     this->setWindowSize(size.width()+20+350, size.height()+40);
 }
+
+void MainWindow::onShowAllPhonesClicked() {
+    std::cout << "dupa" << std::endl;
+    auto newPhonesModel = this->Application::getAllPhones();
+    if (newPhonesModel != nullptr)
+        this->phonebookPage.setModel(newPhonesModel);
+    else
+        QMessageBox::warning(this, "Błąd!", "Brak rekordów w bazie!");
+}
+
+
