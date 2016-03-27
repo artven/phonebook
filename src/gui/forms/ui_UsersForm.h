@@ -18,8 +18,10 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QToolButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -31,18 +33,20 @@ public:
     QToolButton *showAllUsersToolButton;
     QTableView *usersTableView;
     QGroupBox *groupBox_7;
-    QWidget *layoutWidget_3;
+    QWidget *widget;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout;
     QHBoxLayout *horizontalLayout_26;
     QLabel *label_18;
     QLineEdit *userIdLineEdit;
-    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_22;
     QLabel *userLoginLabel;
     QLineEdit *userLoginLineEdit;
-    QWidget *layoutWidget_2;
     QHBoxLayout *horizontalLayout_23;
     QLabel *userEmailLabel;
     QLineEdit *userEmailLineEdit;
+    QHBoxLayout *horizontalLayout_2;
+    QSpacerItem *horizontalSpacer;
     QToolButton *saveUserToolButton;
 
     void setupUi(QWidget *UsersForm)
@@ -52,6 +56,7 @@ public:
         UsersForm->resize(730, 470);
         UsersForm->setMinimumSize(QSize(730, 470));
         UsersForm->setMaximumSize(QSize(730, 470));
+        UsersForm->setFocusPolicy(Qt::TabFocus);
         groupBox_6 = new QGroupBox(UsersForm);
         groupBox_6->setObjectName(QStringLiteral("groupBox_6"));
         groupBox_6->setGeometry(QRect(10, 10, 700, 450));
@@ -68,68 +73,88 @@ public:
         groupBox_7 = new QGroupBox(groupBox_6);
         groupBox_7->setObjectName(QStringLiteral("groupBox_7"));
         groupBox_7->setGeometry(QRect(20, 320, 651, 111));
-        layoutWidget_3 = new QWidget(groupBox_7);
-        layoutWidget_3->setObjectName(QStringLiteral("layoutWidget_3"));
-        layoutWidget_3->setGeometry(QRect(20, 30, 171, 29));
-        horizontalLayout_26 = new QHBoxLayout(layoutWidget_3);
+        widget = new QWidget(groupBox_7);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(30, 30, 603, 66));
+        verticalLayout = new QVBoxLayout(widget);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout_26 = new QHBoxLayout();
         horizontalLayout_26->setObjectName(QStringLiteral("horizontalLayout_26"));
-        horizontalLayout_26->setContentsMargins(0, 0, 0, 0);
-        label_18 = new QLabel(layoutWidget_3);
+        label_18 = new QLabel(widget);
         label_18->setObjectName(QStringLiteral("label_18"));
 
         horizontalLayout_26->addWidget(label_18);
 
-        userIdLineEdit = new QLineEdit(layoutWidget_3);
+        userIdLineEdit = new QLineEdit(widget);
         userIdLineEdit->setObjectName(QStringLiteral("userIdLineEdit"));
         userIdLineEdit->setEnabled(false);
 
         horizontalLayout_26->addWidget(userIdLineEdit);
 
-        layoutWidget = new QWidget(groupBox_7);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(200, 30, 221, 29));
-        horizontalLayout_22 = new QHBoxLayout(layoutWidget);
+
+        horizontalLayout->addLayout(horizontalLayout_26);
+
+        horizontalLayout_22 = new QHBoxLayout();
         horizontalLayout_22->setObjectName(QStringLiteral("horizontalLayout_22"));
-        horizontalLayout_22->setContentsMargins(0, 0, 0, 0);
-        userLoginLabel = new QLabel(layoutWidget);
+        userLoginLabel = new QLabel(widget);
         userLoginLabel->setObjectName(QStringLiteral("userLoginLabel"));
         userLoginLabel->setMinimumSize(QSize(50, 0));
         userLoginLabel->setMaximumSize(QSize(50, 16777215));
 
         horizontalLayout_22->addWidget(userLoginLabel);
 
-        userLoginLineEdit = new QLineEdit(layoutWidget);
+        userLoginLineEdit = new QLineEdit(widget);
         userLoginLineEdit->setObjectName(QStringLiteral("userLoginLineEdit"));
         userLoginLineEdit->setMinimumSize(QSize(150, 0));
         userLoginLineEdit->setMaximumSize(QSize(150, 16777215));
 
         horizontalLayout_22->addWidget(userLoginLineEdit);
 
-        layoutWidget_2 = new QWidget(groupBox_7);
-        layoutWidget_2->setObjectName(QStringLiteral("layoutWidget_2"));
-        layoutWidget_2->setGeometry(QRect(430, 30, 211, 29));
-        horizontalLayout_23 = new QHBoxLayout(layoutWidget_2);
+
+        horizontalLayout->addLayout(horizontalLayout_22);
+
+        horizontalLayout_23 = new QHBoxLayout();
         horizontalLayout_23->setObjectName(QStringLiteral("horizontalLayout_23"));
-        horizontalLayout_23->setContentsMargins(0, 0, 0, 0);
-        userEmailLabel = new QLabel(layoutWidget_2);
+        userEmailLabel = new QLabel(widget);
         userEmailLabel->setObjectName(QStringLiteral("userEmailLabel"));
         userEmailLabel->setMinimumSize(QSize(50, 0));
         userEmailLabel->setMaximumSize(QSize(50, 16777215));
 
         horizontalLayout_23->addWidget(userEmailLabel);
 
-        userEmailLineEdit = new QLineEdit(layoutWidget_2);
+        userEmailLineEdit = new QLineEdit(widget);
         userEmailLineEdit->setObjectName(QStringLiteral("userEmailLineEdit"));
         userEmailLineEdit->setMinimumSize(QSize(150, 0));
         userEmailLineEdit->setMaximumSize(QSize(150, 16777215));
 
         horizontalLayout_23->addWidget(userEmailLineEdit);
 
-        saveUserToolButton = new QToolButton(groupBox_7);
+
+        horizontalLayout->addLayout(horizontalLayout_23);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        saveUserToolButton = new QToolButton(widget);
         saveUserToolButton->setObjectName(QStringLiteral("saveUserToolButton"));
-        saveUserToolButton->setGeometry(QRect(250, 70, 150, 26));
+        saveUserToolButton->setEnabled(false);
         saveUserToolButton->setMinimumSize(QSize(150, 0));
         saveUserToolButton->setMaximumSize(QSize(150, 16777215));
+
+        horizontalLayout_2->addWidget(saveUserToolButton);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
 
         retranslateUi(UsersForm);
 

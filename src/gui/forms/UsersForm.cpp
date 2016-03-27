@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "UsersForm.h"
 #include "ui_UsersForm.h"
 
@@ -35,6 +37,7 @@ void UsersForm::addValidators() {
 void UsersForm::connectSignals() {
     QObject::connect(this->showAllButton, SIGNAL(clicked()), this, SLOT(onShowAllButtonClicked()));
     QObject::connect(this->saveButton, SIGNAL(clicked()), this, SLOT(onSaveButtonClicked()));
+    QObject::connect(this->table, SIGNAL(clicked(QModelIndex)), this, SLOT(onTableRowClicked(QModelIndex)));
 }
 
 void UsersForm::onShowAllButtonClicked() {
@@ -42,12 +45,20 @@ void UsersForm::onShowAllButtonClicked() {
 }
 
 void UsersForm::onSaveButtonClicked() {
+    auto id = this->id->text().toInt();
+    auto login = this->login->text().toStdString();
+    auto email = this->email->text().toStdString();
 
+    emit updateUser(id, login, email);
 }
 
 void UsersForm::clear() {
     if (this->model != nullptr)
         this->model->clear();
+    this->login->clear();
+    this->email->clear();
+    this->id->clear();
+    this->saveButton->setEnabled(false);
 }
 
 void UsersForm::setModel(QStandardItemModel *model) {
@@ -64,3 +75,23 @@ void UsersForm::addHeaders() {
         this->model->setHeaderData(3, Qt::Horizontal, "Uprawnienia");
     }
 }
+
+void UsersForm::onTableRowClicked(QModelIndex idx) {
+    auto row = idx.row();
+
+    auto idIndex = this->model->index(idx.row(), 0);
+    auto id = this->model->data(idIndex).toString();
+    auto loginIndex = this->model->index(idx.row(), 1);
+    auto login = this->model->data(loginIndex).toString();
+    auto emailIndex = this->model->index(idx.row(), 2);
+    auto email = this->model->data(emailIndex).toString();
+    auto roleIndex = this->model->index(idx.row(), 3);
+    auto role = this->model->data(roleIndex).toString();
+
+    this->id->setText(id);
+    this->login->setText(login);
+    this->email->setText(email);
+
+    this->saveButton->setEnabled(true);
+}
+

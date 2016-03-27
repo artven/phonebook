@@ -51,6 +51,7 @@ private slots:
 
     //users page slots
     void onShowAllUsersClicked();
+    void onUpdateUsersClicked(int, std::string, std::string);
 
 private:
     Ui::MainWindow *ui;

@@ -6,6 +6,8 @@
 #include <QTableView>
 #include <QLineEdit>
 #include <QStandardItemModel>
+#include <map>
+#include <string>
 
 namespace Ui {
     class UsersForm;
@@ -23,10 +25,12 @@ public:
 
 signals:
     void showAllUsers();
+    void updateUser(int id, std::string login, std::string email);
 
 private slots:
     void onShowAllButtonClicked();
     void onSaveButtonClicked();
+    void onTableRowClicked(QModelIndex);
 
 private:
     Ui::UsersForm *ui;

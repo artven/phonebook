@@ -66,6 +66,8 @@ void MainWindow::connectSignals() {
     QObject::connect(&this->newRecordPage, SIGNAL(newRecord(std::map<std::string, std::string>)),
                      this, SLOT(onNewRecordClicked(std::map<std::string, std::string>)));
     QObject::connect(&this->usersPage, SIGNAL(showAllUsers()), this, SLOT(onShowAllUsersClicked()));
+    QObject::connect(&this->usersPage, SIGNAL(updateUser(int, std::string, std::string)),
+                     this, SLOT());
 }
 
 void MainWindow::chooseWindowMode(UserRecord *user) {
@@ -214,4 +216,15 @@ void MainWindow::onShowAllUsersClicked() {
         this->usersPage.setModel(newModel);
     } else
         QMessageBox::warning(this, "Błąd", "Brak użytkowników w bazie!");
+}
+
+void MainWindow::onUpdateUsersClicked(int id, std::string login, std::string email){
+    try {
+        UserRecord user{id, login, email, UserRole::NormalUser};
+        this->updateUser(user);
+        QMessageBox::information(this, "Ok", "Rekord zmieniono poprawnie!");
+        this->usersPage.clear();
+    } catch (std::invalid_argument& exception) {
+        QMessageBox::warning(this, "Błąd!", exception.what());
+    }
 }
