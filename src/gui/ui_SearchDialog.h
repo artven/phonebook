@@ -28,9 +28,12 @@ QT_BEGIN_NAMESPACE
 class Ui_SearchDialog
 {
 public:
-    QWidget *layoutWidget;
+    QWidget *widget;
+    QHBoxLayout *horizontalLayout_15;
+    QPushButton *cancelPushButton;
+    QPushButton *searchPushButton;
+    QWidget *widget1;
     QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout;
     QHBoxLayout *horizontalLayout_8;
     QLabel *label_4;
     QSpacerItem *horizontalSpacer_8;
@@ -43,7 +46,6 @@ public:
     QLabel *label_9;
     QSpacerItem *horizontalSpacer_10;
     QLineEdit *addressLineEdit;
-    QHBoxLayout *horizontalLayout_3;
     QHBoxLayout *horizontalLayout_16;
     QLabel *label_5;
     QSpacerItem *horizontalSpacer_16;
@@ -56,34 +58,44 @@ public:
     QLabel *label_14;
     QSpacerItem *horizontalSpacer_18;
     QLineEdit *mobileLineEdit;
-    QHBoxLayout *horizontalLayout_2;
     QHBoxLayout *horizontalLayout_14;
     QLabel *label_12;
     QSpacerItem *horizontalSpacer_14;
     QLineEdit *emailLineEdit;
-    QSpacerItem *horizontalSpacer;
-    QHBoxLayout *horizontalLayout_15;
-    QPushButton *cancelPushButton;
-    QPushButton *searchPushButton;
 
     void setupUi(QDialog *SearchDialog)
     {
         if (SearchDialog->objectName().isEmpty())
             SearchDialog->setObjectName(QStringLiteral("SearchDialog"));
-        SearchDialog->resize(859, 150);
+        SearchDialog->resize(290, 296);
         SearchDialog->setFocusPolicy(Qt::TabFocus);
         SearchDialog->setModal(true);
-        layoutWidget = new QWidget(SearchDialog);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 20, 815, 107));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        widget = new QWidget(SearchDialog);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(90, 260, 178, 28));
+        horizontalLayout_15 = new QHBoxLayout(widget);
+        horizontalLayout_15->setObjectName(QStringLiteral("horizontalLayout_15"));
+        horizontalLayout_15->setSizeConstraint(QLayout::SetFixedSize);
+        horizontalLayout_15->setContentsMargins(0, 0, 0, 0);
+        cancelPushButton = new QPushButton(widget);
+        cancelPushButton->setObjectName(QStringLiteral("cancelPushButton"));
+
+        horizontalLayout_15->addWidget(cancelPushButton);
+
+        searchPushButton = new QPushButton(widget);
+        searchPushButton->setObjectName(QStringLiteral("searchPushButton"));
+
+        horizontalLayout_15->addWidget(searchPushButton);
+
+        widget1 = new QWidget(SearchDialog);
+        widget1->setObjectName(QStringLiteral("widget1"));
+        widget1->setGeometry(QRect(10, 10, 266, 241));
+        verticalLayout = new QVBoxLayout(widget1);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
-        label_4 = new QLabel(layoutWidget);
+        label_4 = new QLabel(widget1);
         label_4->setObjectName(QStringLiteral("label_4"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
@@ -99,7 +111,7 @@ public:
 
         horizontalLayout_8->addItem(horizontalSpacer_8);
 
-        nameLineEdit = new QLineEdit(layoutWidget);
+        nameLineEdit = new QLineEdit(widget1);
         nameLineEdit->setObjectName(QStringLiteral("nameLineEdit"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
@@ -112,11 +124,11 @@ public:
         horizontalLayout_8->addWidget(nameLineEdit);
 
 
-        horizontalLayout->addLayout(horizontalLayout_8);
+        verticalLayout->addLayout(horizontalLayout_8);
 
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QStringLiteral("horizontalLayout_9"));
-        label_8 = new QLabel(layoutWidget);
+        label_8 = new QLabel(widget1);
         label_8->setObjectName(QStringLiteral("label_8"));
         sizePolicy.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
         label_8->setSizePolicy(sizePolicy);
@@ -129,7 +141,7 @@ public:
 
         horizontalLayout_9->addItem(horizontalSpacer_9);
 
-        surnameLineEdit = new QLineEdit(layoutWidget);
+        surnameLineEdit = new QLineEdit(widget1);
         surnameLineEdit->setObjectName(QStringLiteral("surnameLineEdit"));
         sizePolicy1.setHeightForWidth(surnameLineEdit->sizePolicy().hasHeightForWidth());
         surnameLineEdit->setSizePolicy(sizePolicy1);
@@ -139,11 +151,11 @@ public:
         horizontalLayout_9->addWidget(surnameLineEdit);
 
 
-        horizontalLayout->addLayout(horizontalLayout_9);
+        verticalLayout->addLayout(horizontalLayout_9);
 
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
-        label_9 = new QLabel(layoutWidget);
+        label_9 = new QLabel(widget1);
         label_9->setObjectName(QStringLiteral("label_9"));
         sizePolicy.setHeightForWidth(label_9->sizePolicy().hasHeightForWidth());
         label_9->setSizePolicy(sizePolicy);
@@ -156,7 +168,7 @@ public:
 
         horizontalLayout_10->addItem(horizontalSpacer_10);
 
-        addressLineEdit = new QLineEdit(layoutWidget);
+        addressLineEdit = new QLineEdit(widget1);
         addressLineEdit->setObjectName(QStringLiteral("addressLineEdit"));
         sizePolicy1.setHeightForWidth(addressLineEdit->sizePolicy().hasHeightForWidth());
         addressLineEdit->setSizePolicy(sizePolicy1);
@@ -166,16 +178,11 @@ public:
         horizontalLayout_10->addWidget(addressLineEdit);
 
 
-        horizontalLayout->addLayout(horizontalLayout_10);
+        verticalLayout->addLayout(horizontalLayout_10);
 
-
-        verticalLayout->addLayout(horizontalLayout);
-
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_16 = new QHBoxLayout();
         horizontalLayout_16->setObjectName(QStringLiteral("horizontalLayout_16"));
-        label_5 = new QLabel(layoutWidget);
+        label_5 = new QLabel(widget1);
         label_5->setObjectName(QStringLiteral("label_5"));
         sizePolicy.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
         label_5->setSizePolicy(sizePolicy);
@@ -188,7 +195,7 @@ public:
 
         horizontalLayout_16->addItem(horizontalSpacer_16);
 
-        cityLineEdit = new QLineEdit(layoutWidget);
+        cityLineEdit = new QLineEdit(widget1);
         cityLineEdit->setObjectName(QStringLiteral("cityLineEdit"));
         sizePolicy1.setHeightForWidth(cityLineEdit->sizePolicy().hasHeightForWidth());
         cityLineEdit->setSizePolicy(sizePolicy1);
@@ -198,11 +205,11 @@ public:
         horizontalLayout_16->addWidget(cityLineEdit);
 
 
-        horizontalLayout_3->addLayout(horizontalLayout_16);
+        verticalLayout->addLayout(horizontalLayout_16);
 
         horizontalLayout_17 = new QHBoxLayout();
         horizontalLayout_17->setObjectName(QStringLiteral("horizontalLayout_17"));
-        label_13 = new QLabel(layoutWidget);
+        label_13 = new QLabel(widget1);
         label_13->setObjectName(QStringLiteral("label_13"));
         sizePolicy.setHeightForWidth(label_13->sizePolicy().hasHeightForWidth());
         label_13->setSizePolicy(sizePolicy);
@@ -215,7 +222,7 @@ public:
 
         horizontalLayout_17->addItem(horizontalSpacer_17);
 
-        phoneLineEdit = new QLineEdit(layoutWidget);
+        phoneLineEdit = new QLineEdit(widget1);
         phoneLineEdit->setObjectName(QStringLiteral("phoneLineEdit"));
         sizePolicy1.setHeightForWidth(phoneLineEdit->sizePolicy().hasHeightForWidth());
         phoneLineEdit->setSizePolicy(sizePolicy1);
@@ -225,11 +232,11 @@ public:
         horizontalLayout_17->addWidget(phoneLineEdit);
 
 
-        horizontalLayout_3->addLayout(horizontalLayout_17);
+        verticalLayout->addLayout(horizontalLayout_17);
 
         horizontalLayout_18 = new QHBoxLayout();
         horizontalLayout_18->setObjectName(QStringLiteral("horizontalLayout_18"));
-        label_14 = new QLabel(layoutWidget);
+        label_14 = new QLabel(widget1);
         label_14->setObjectName(QStringLiteral("label_14"));
         sizePolicy.setHeightForWidth(label_14->sizePolicy().hasHeightForWidth());
         label_14->setSizePolicy(sizePolicy);
@@ -242,7 +249,7 @@ public:
 
         horizontalLayout_18->addItem(horizontalSpacer_18);
 
-        mobileLineEdit = new QLineEdit(layoutWidget);
+        mobileLineEdit = new QLineEdit(widget1);
         mobileLineEdit->setObjectName(QStringLiteral("mobileLineEdit"));
         sizePolicy1.setHeightForWidth(mobileLineEdit->sizePolicy().hasHeightForWidth());
         mobileLineEdit->setSizePolicy(sizePolicy1);
@@ -252,16 +259,11 @@ public:
         horizontalLayout_18->addWidget(mobileLineEdit);
 
 
-        horizontalLayout_3->addLayout(horizontalLayout_18);
+        verticalLayout->addLayout(horizontalLayout_18);
 
-
-        verticalLayout->addLayout(horizontalLayout_3);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_14 = new QHBoxLayout();
         horizontalLayout_14->setObjectName(QStringLiteral("horizontalLayout_14"));
-        label_12 = new QLabel(layoutWidget);
+        label_12 = new QLabel(widget1);
         label_12->setObjectName(QStringLiteral("label_12"));
         sizePolicy.setHeightForWidth(label_12->sizePolicy().hasHeightForWidth());
         label_12->setSizePolicy(sizePolicy);
@@ -274,7 +276,7 @@ public:
 
         horizontalLayout_14->addItem(horizontalSpacer_14);
 
-        emailLineEdit = new QLineEdit(layoutWidget);
+        emailLineEdit = new QLineEdit(widget1);
         emailLineEdit->setObjectName(QStringLiteral("emailLineEdit"));
         sizePolicy1.setHeightForWidth(emailLineEdit->sizePolicy().hasHeightForWidth());
         emailLineEdit->setSizePolicy(sizePolicy1);
@@ -284,30 +286,7 @@ public:
         horizontalLayout_14->addWidget(emailLineEdit);
 
 
-        horizontalLayout_2->addLayout(horizontalLayout_14);
-
-        horizontalSpacer = new QSpacerItem(347, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer);
-
-        horizontalLayout_15 = new QHBoxLayout();
-        horizontalLayout_15->setObjectName(QStringLiteral("horizontalLayout_15"));
-        horizontalLayout_15->setSizeConstraint(QLayout::SetFixedSize);
-        cancelPushButton = new QPushButton(layoutWidget);
-        cancelPushButton->setObjectName(QStringLiteral("cancelPushButton"));
-
-        horizontalLayout_15->addWidget(cancelPushButton);
-
-        searchPushButton = new QPushButton(layoutWidget);
-        searchPushButton->setObjectName(QStringLiteral("searchPushButton"));
-
-        horizontalLayout_15->addWidget(searchPushButton);
-
-
-        horizontalLayout_2->addLayout(horizontalLayout_15);
-
-
-        verticalLayout->addLayout(horizontalLayout_2);
+        verticalLayout->addLayout(horizontalLayout_14);
 
         QWidget::setTabOrder(nameLineEdit, surnameLineEdit);
         QWidget::setTabOrder(surnameLineEdit, addressLineEdit);
@@ -325,7 +304,9 @@ public:
 
     void retranslateUi(QDialog *SearchDialog)
     {
-        SearchDialog->setWindowTitle(QApplication::translate("SearchDialog", "Dialog", 0));
+        SearchDialog->setWindowTitle(QApplication::translate("SearchDialog", "Szukaj", 0));
+        cancelPushButton->setText(QApplication::translate("SearchDialog", "Anuluj", 0));
+        searchPushButton->setText(QApplication::translate("SearchDialog", "Szukaj", 0));
         label_4->setText(QApplication::translate("SearchDialog", "Imi\304\231", 0));
 #ifndef QT_NO_TOOLTIP
         nameLineEdit->setToolTip(QApplication::translate("SearchDialog", "dupa 1234", 0));
@@ -351,8 +332,6 @@ public:
         label_13->setText(QApplication::translate("SearchDialog", "Telefon", 0));
         label_14->setText(QApplication::translate("SearchDialog", "Kom\303\263rka", 0));
         label_12->setText(QApplication::translate("SearchDialog", "  Email:", 0));
-        cancelPushButton->setText(QApplication::translate("SearchDialog", "Anuluj", 0));
-        searchPushButton->setText(QApplication::translate("SearchDialog", "Szukaj", 0));
     } // retranslateUi
 
 };
