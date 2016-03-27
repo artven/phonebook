@@ -67,7 +67,7 @@ void MainWindow::connectSignals() {
                      this, SLOT(onNewRecordClicked(std::map<std::string, std::string>)));
     QObject::connect(&this->usersPage, SIGNAL(showAllUsers()), this, SLOT(onShowAllUsersClicked()));
     QObject::connect(&this->usersPage, SIGNAL(updateUser(int, std::string, std::string)),
-                     this, SLOT());
+                     this, SLOT(onUpdateUsersClicked(int, std::string, std::string)));
 }
 
 void MainWindow::chooseWindowMode(UserRecord *user) {
