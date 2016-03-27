@@ -46,6 +46,9 @@ private slots:
     void onShowAllPhonesClicked();
     void onSearchPhonesClicked(std::map<std::string, std::string>);
 
+    //newrecord page slots
+    void onNewRecordClicked(std::map<std::string, std::string>);
+
 private:
     Ui::MainWindow *ui;
 

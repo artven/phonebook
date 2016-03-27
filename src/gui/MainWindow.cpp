@@ -63,6 +63,8 @@ void MainWindow::connectSignals() {
     QObject::connect(&this->phonebookPage, SIGNAL(showAllPhones()), this, SLOT(onShowAllPhonesClicked()));
     QObject::connect(&this->phonebookPage, SIGNAL(searchPhones(std::map<std::string, std::string>)),
                      this, SLOT(onSearchPhonesClicked(std::map<std::string, std::string>)));
+    QObject::connect(&this->newRecordPage, SIGNAL(newRecord(std::map<std::string, std::string>)),
+                     this, SLOT(onNewRecordClicked(std::map<std::string, std::string>)));
 }
 
 void MainWindow::chooseWindowMode(UserRecord *user) {
@@ -182,7 +184,6 @@ void MainWindow::onShowAllPhonesClicked() {
         QMessageBox::warning(this, "Błąd!", "Brak rekordów w bazie!");
 }
 
-
 void MainWindow::onSearchPhonesClicked(std::map<std::string, std::string> p) {
     auto model = this->searchPhones(p["name"], p["surname"], p["address"], p["city"],
                                     p["email"], p["phone"], p["mobile"]);
@@ -191,4 +192,16 @@ void MainWindow::onSearchPhonesClicked(std::map<std::string, std::string> p) {
         this->phonebookPage.setModel(model);
     else
         QMessageBox::warning(this, "Błąd!", "Nie znaleziono żadnego rekordu!");
+}
+
+void MainWindow::onNewRecordClicked(std::map<std::string, std::string> p) {
+    try {
+        PhoneBookRecord newRecord{0, p["name"], p["surname"], p["address"], p["city"],
+                                  p["phone"], p["mobile"], p["email"]};
+        this->addRecord(newRecord);
+        QMessageBox::information(this, "Sukces", "Rekord został dodany do bazy!");
+        this->newRecordPage.clear();
+    } catch (std::invalid_argument& exception) {
+        QMessageBox::warning(this, "Błąd", exception.what());
+    }
 }
