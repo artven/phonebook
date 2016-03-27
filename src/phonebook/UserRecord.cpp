@@ -30,7 +30,7 @@ UserRecord::UserRecord(std::string input, char sep) {
     boost::trim(r[4]);
     if(r[4] == "administrator")
         this->role = UserRole::Admministrator;
-    else if(r[3] == "operator")
+    else if(r[4] == "operator")
         this->role = UserRole::Operator;
     else
         this->role = UserRole::NormalUser;
