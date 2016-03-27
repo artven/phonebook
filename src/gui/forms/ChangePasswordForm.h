@@ -24,7 +24,7 @@ public:
     void clear();
 
 signals:
-    void changePassword(std::map<std::string, std::string>);
+    void changePasswordClicked(std::map<std::string, std::string>);
 
 private slots:
     void onOkButtonClicked();

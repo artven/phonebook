@@ -49,7 +49,7 @@ void ChangePasswordForm::onOkButtonClicked() {
         passwords["repeat"] = repeatPassword;
         passwords["new"] = newPassword;
 
-        emit changePassword(passwords);
+        emit changePasswordClicked(passwords);
     }
 }
 

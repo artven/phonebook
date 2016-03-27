@@ -47,7 +47,7 @@ private slots:
     void onShowAllPhonesClicked();
     void onSearchPhonesClicked(std::map<std::string, std::string>);
 
-    //newrecord page slots
+    //new record page slots
     void onNewRecordClicked(std::map<std::string, std::string>);
 
     //users page slots
@@ -60,6 +60,9 @@ private slots:
     //request page slots
     void onLoadRequestsClicked(std::string);
     void onSetRequestStatusClicked(std::vector<std::string>, bool);
+
+    //change password page slots
+    void onChangePasswordClicked(std::map<std::string, std::string>);
 
 private:
     Ui::MainWindow *ui;

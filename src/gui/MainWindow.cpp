@@ -74,6 +74,8 @@ void MainWindow::connectSignals() {
                      this, SLOT(onLoadRequestsClicked(std::string)));
     QObject::connect(&this->requestsPage, SIGNAL(setRequestStatusClicked(std::vector<std::string>, bool)),
                      this, SLOT(onSetRequestStatusClicked(std::vector<std::string>, bool)));
+    QObject::connect(&this->passwordPage, SIGNAL(changePasswordClicked(std::map<std::string, std::string>)),
+                     this, SLOT(onChangePasswordClicked(std::map<std::string, std::string>)));
 }
 
 void MainWindow::chooseWindowMode(UserRecord *user) {
@@ -282,4 +284,14 @@ void MainWindow::onSetRequestStatusClicked(std::vector<std::string> request, boo
     } catch (std::invalid_argument& exception) {
         QMessageBox::warning(this, "Błąd!", exception.what());
     }
+}
+
+void MainWindow::onChangePasswordClicked(std::map<std::string, std::string> p) {
+        try {
+            this->changePassword(p["new"], p["old"]);
+            QMessageBox::information(this, "Info", "Hasło zostało zmienione. Zostaniesz wylogowany.");
+            this->logout();
+        } catch (std::invalid_argument& exception) {
+            QMessageBox::warning(this, "Błąd!", exception.what());
+        }
 }
