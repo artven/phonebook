@@ -64,7 +64,6 @@ public:
     QSpacerItem *horizontalSpacer_15;
     QToolButton *clearFieldsToolButton;
     QToolButton *addRecordToolButton;
-    QLabel *label;
 
     void setupUi(QWidget *NewRecordForm)
     {
@@ -275,11 +274,6 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_15);
 
-        label = new QLabel(groupBox_3);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(460, 10, 61, 51));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/mainwindow/images/Add List-96.png")));
-        label->setScaledContents(true);
 
         retranslateUi(NewRecordForm);
 
@@ -326,7 +320,6 @@ public:
 #endif // QT_NO_STATUSTIP
         clearFieldsToolButton->setText(QApplication::translate("NewRecordForm", "Wyczy\305\233\304\207", 0));
         addRecordToolButton->setText(QApplication::translate("NewRecordForm", "Dodaj", 0));
-        label->setText(QString());
     } // retranslateUi
 
 };
