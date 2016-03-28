@@ -6,8 +6,8 @@
 
 QRegExp Record::nameValidationPolicy = QRegExp{R"#(^\w{4,}$)#"};
 QRegExp Record::surnameValidationPolicy = QRegExp{R"#(^\w{4,}$)#"};
-QRegExp Record::addressValidationPolicy = QRegExp{R"##(^[\w ]{4,})##"};
-QRegExp Record::cityValidationPolicy = QRegExp{R"##(^\w{4,}$)##"};
+QRegExp Record::addressValidationPolicy = QRegExp{R"##(^[\w \.]{4,})##"};
+QRegExp Record::cityValidationPolicy = QRegExp{R"##(^[\w]{4,}$)##"};
 QRegExp Record::phoneNumberValidationPolicy = QRegExp{R"##(^[0-9]{2} [0-9]{7}$)##"};
 QRegExp Record::mobilePhoneNumberValidationPolicy = QRegExp{R"##(^[1-9]{1}[0-9]{8}$)##"};
 QRegExp Record::emailValidationPolicy = QRegExp{R"##(^[\w\.]{3,}@[\w\.]{2,}((\.com)|(\.pl))$)##"};
