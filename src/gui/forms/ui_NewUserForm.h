@@ -243,49 +243,14 @@ public:
         NewUserForm->setWindowTitle(QApplication::translate("NewUserForm", "Form", 0));
         groupBox_4->setTitle(QApplication::translate("NewUserForm", "Dodaj nowego u\305\274ytkownika", 0));
         label_13->setText(QApplication::translate("NewUserForm", "Login:", 0));
-#ifndef QT_NO_TOOLTIP
-        loginLineEdit->setToolTip(QApplication::translate("NewUserForm", "Login musi si\304\231 sk\305\202ada\304\207 z minimum czterech: liter, cyfr lub '_'.", 0));
-#endif // QT_NO_TOOLTIP
-#ifndef QT_NO_STATUSTIP
-        loginLineEdit->setStatusTip(QApplication::translate("NewUserForm", "Podaj login nowego u\305\274ytkownika.", 0));
-#endif // QT_NO_STATUSTIP
         label_14->setText(QApplication::translate("NewUserForm", "Email:", 0));
-#ifndef QT_NO_TOOLTIP
-        emailLineEdit->setToolTip(QApplication::translate("NewUserForm", "Email musi zawiera\304\207 znak '@' oraz domen\304\231 pl lub com.", 0));
-#endif // QT_NO_TOOLTIP
-#ifndef QT_NO_STATUSTIP
-        emailLineEdit->setStatusTip(QApplication::translate("NewUserForm", "Podaj adres email nowego u\305\274ytkownika.", 0));
-#endif // QT_NO_STATUSTIP
         label_15->setText(QApplication::translate("NewUserForm", "Has\305\202o", 0));
-#ifndef QT_NO_TOOLTIP
-        passwordLineEdit->setToolTip(QApplication::translate("NewUserForm", "Has\305\202o musi zawiera\304\207 minimum 4 litery, cyfry lub znaki '_'.", 0));
-#endif // QT_NO_TOOLTIP
-#ifndef QT_NO_STATUSTIP
-        passwordLineEdit->setStatusTip(QApplication::translate("NewUserForm", "Podaj has\305\202o nowego u\305\274ytkownika.", 0));
-#endif // QT_NO_STATUSTIP
         label_16->setText(QApplication::translate("NewUserForm", "Powt\303\263rz has\305\202o", 0));
-#ifndef QT_NO_TOOLTIP
-        repeatPasswordLineEdit->setToolTip(QApplication::translate("NewUserForm", "Has\305\202o musi zawiera\304\207 minimum 4 litery, cyfry lub znaki '_'.", 0));
-#endif // QT_NO_TOOLTIP
-#ifndef QT_NO_STATUSTIP
-        repeatPasswordLineEdit->setStatusTip(QApplication::translate("NewUserForm", "Powt\303\263rz wprowadzone has\305\202o.", 0));
-#endif // QT_NO_STATUSTIP
         label_17->setText(QApplication::translate("NewUserForm", "Poziom uprawnie\305\204", 0));
 #ifndef QT_NO_TOOLTIP
-        roleComboBox->setToolTip(QApplication::translate("NewUserForm", " U\305\274ytkownik - przegl\304\205danie i dodawanie wpis\303\263w. \n"
-" Operator - edycja u\305\274ytkownik\303\263w i wniosk\303\263w. \n"
-" Administrator - tworzenie nowych kont.", 0));
+        roleComboBox->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-#ifndef QT_NO_STATUSTIP
-        roleComboBox->setStatusTip(QApplication::translate("NewUserForm", "Wybierz poziom uprawnie\305\204 nowego u\305\274ytkownika.", 0));
-#endif // QT_NO_STATUSTIP
-#ifndef QT_NO_STATUSTIP
-        clearToolButton->setStatusTip(QApplication::translate("NewUserForm", "Wyczy\305\233\304\207 formularz.", 0));
-#endif // QT_NO_STATUSTIP
         clearToolButton->setText(QApplication::translate("NewUserForm", "Wyczy\305\233\304\207", 0));
-#ifndef QT_NO_STATUSTIP
-        addToolButton->setStatusTip(QApplication::translate("NewUserForm", "Dodaj u\305\274ytkownika do bazy.", 0));
-#endif // QT_NO_STATUSTIP
         addToolButton->setText(QApplication::translate("NewUserForm", "Dodaj", 0));
     } // retranslateUi
 

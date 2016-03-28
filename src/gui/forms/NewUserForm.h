@@ -47,6 +47,10 @@ private:
     void addValidators();
     void connectSignals();
     void addComboBoxValues();
+
+    void addStatusTips();
+
+    void addToolTips();
 };
 
 #endif // NEWUSERFORM_H

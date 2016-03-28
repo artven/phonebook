@@ -1,7 +1,8 @@
 #include <QMessageBox>
 
-#include "NewUserForm.h"
 #include "ui_NewUserForm.h"
+#include "NewUserForm.h"
+#include "Record.h"
 
 NewUserForm::~NewUserForm() {
     delete ui;
@@ -15,6 +16,8 @@ QWidget(parent), ui(new Ui::NewUserForm) {
     this->addValidators();
     this->connectSignals();
     this->addComboBoxValues();
+    this->addStatusTips();
+    this->addToolTips();
 }
 
 void NewUserForm::getFormElements() {
@@ -86,6 +89,16 @@ void NewUserForm::addComboBoxValues() {
     this->role->addItem(administratorIcon, "Administrator");
 }
 
+void NewUserForm::addStatusTips() {
+    this->login->setStatusTip(Record::loginStatusTip.c_str());
+    this->email->setStatusTip(Record::emailStatusTip.c_str());
+    this->password->setStatusTip(Record::passwordStatusTip.c_str());
+    this->repeatPassword->setStatusTip(Record::passwordStatusTip.c_str());
+    this->role->setStatusTip(Record::roleStatusTip.c_str());
+    this->okButton->setStatusTip("Dodaj nowego użytkownika do bazy.");
+    this->clearButton->setStatusTip("Wyczyść formularz");
+}
+
 std::string NewUserForm::getLogin() {
     return this->login->text().toStdString();
 }
@@ -105,3 +118,11 @@ std::string NewUserForm::getRepeatPassword() {
 std::string NewUserForm::getRole() {
     return this->role->currentText().toStdString();
 }
+
+void NewUserForm::addToolTips() {
+    this->login->setToolTip(Record::loginToolTip.c_str());
+    this->email->setToolTip(Record::emaiToolTip.c_str());
+    this->password->setToolTip(Record::passwordToolTip.c_str());;
+    this->repeatPassword->setToolTip(Record::passwordToolTip.c_str());;;
+    this->role->setToolTip(Record::roleToolTip.c_str());
+}ad

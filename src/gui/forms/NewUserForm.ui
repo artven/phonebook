@@ -79,12 +79,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="toolTip">
-            <string>Login musi się składać z minimum czterech: liter, cyfr lub '_'.</string>
-           </property>
-           <property name="statusTip">
-            <string>Podaj login nowego użytkownika.</string>
-           </property>
           </widget>
          </item>
         </layout>
@@ -119,12 +113,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="toolTip">
-            <string>Email musi zawierać znak '@' oraz domenę pl lub com.</string>
-           </property>
-           <property name="statusTip">
-            <string>Podaj adres email nowego użytkownika.</string>
-           </property>
           </widget>
          </item>
         </layout>
@@ -158,12 +146,6 @@
              <horstretch>1</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
-           </property>
-           <property name="toolTip">
-            <string>Hasło musi zawierać minimum 4 litery, cyfry lub znaki '_'.</string>
-           </property>
-           <property name="statusTip">
-            <string>Podaj hasło nowego użytkownika.</string>
            </property>
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>
@@ -201,12 +183,6 @@
              <horstretch>1</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
-           </property>
-           <property name="toolTip">
-            <string>Hasło musi zawierać minimum 4 litery, cyfry lub znaki '_'.</string>
-           </property>
-           <property name="statusTip">
-            <string>Powtórz wprowadzone hasło.</string>
            </property>
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>
@@ -246,12 +222,7 @@
             </sizepolicy>
            </property>
            <property name="toolTip">
-            <string> Użytkownik - przeglądanie i dodawanie wpisów. 
- Operator - edycja użytkowników i wniosków. 
- Administrator - tworzenie nowych kont.</string>
-           </property>
-           <property name="statusTip">
-            <string>Wybierz poziom uprawnień nowego użytkownika.</string>
+            <string/>
            </property>
           </widget>
          </item>
@@ -295,9 +266,6 @@
            <bold>true</bold>
           </font>
          </property>
-         <property name="statusTip">
-          <string>Wyczyść formularz.</string>
-         </property>
          <property name="text">
           <string>Wyczyść</string>
          </property>
@@ -333,9 +301,6 @@
            <weight>75</weight>
            <bold>true</bold>
           </font>
-         </property>
-         <property name="statusTip">
-          <string>Dodaj użytkownika do bazy.</string>
          </property>
          <property name="text">
           <string>Dodaj</string>
