@@ -6,9 +6,42 @@
 #define MAIN_PROGRAM_RECORD_H
 
 #include <string>
-#include <regex>
+#include <sstream>
+#include <QRegExp>
 
 class Record {
+public:
+    static QRegExp nameValidationPolicy;
+    static QRegExp surnameValidationPolicy;
+    static QRegExp addressValidationPolicy;
+    static QRegExp cityValidationPolicy;
+    static QRegExp phoneNumberValidationPolicy;
+    static QRegExp mobilePhoneNumberValidationPolicy;
+    static QRegExp emailValidationPolicy;
+    static QRegExp loginValidationPolicy;
+
+    static std::string nameStatusTip;
+    static std::string surnameStatusTip;
+    static std::string addressStatusTip;
+    static std::string cityStatusTip;
+    static std::string phoneNumberStatusTip;
+    static std::string mobilePhoneStatusTip;
+    static std::string emailStatusTip;
+    static std::string loginStatusTip;
+    static std::string passwordStatusTip;
+    static std::string roleStatusTip;
+
+    static std::string nameToolTip;
+    static std::string surnameToolTip;
+    static std::string addressToolTip;
+    static std::string cityToolTip;
+    static std::string phoneNumberToolTip;
+    static std::string mobileNumberToolTip;
+    static std::string emaiToolTip;
+    static std::string loginToolTip;
+    static std::string passwordToolTip;
+    static std::string roleToolTip;
+
 protected:
 
     std::vector<std::string> parseInputString(std::string input, char sep);
@@ -27,15 +60,6 @@ protected:
 
     virtual void validateFields() const = 0;
     virtual void trimFields()  = 0;
-
-    std::regex nameValidationPolicy {{R"##(^[A-Z][a-z]{2,}$)##"}};
-    std::regex surnameValidationPolicy {{R"##(^[A-Z][a-z]{2,}$)##"}};
-    std::regex addressValidationPolicy {{R"##(^[A-Z][a-z]{2,} [0-9]+$)##"}};
-    std::regex cityValidationPolicy {{R"##(^[A-Z][a-z]{2,}$)##"}};
-    std::regex phoneNumberValidationPolicy {{R"##(^[0-9]{2} [0-9]{7}$)##"}};
-    std::regex mobilePhoneNumberValidationPolicy {{R"##(^[1-9]{1}[0-9]{8}$)##"}};
-    std::regex emailValidationPolicy {{R"##(^[a-zA-Z][a-zA-Z0-9\._]{1,}@[a-zA-Z0-9\.]{2,}((\.com)|(\.pl))$)##"}};
-    std::regex loginValidationPolicy {{R"##(^[a-zA-Z][a-zA-Z0-9]{3,}$)##"}};
 };
 
 
