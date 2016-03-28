@@ -7,7 +7,7 @@
 QRegExp Record::nameValidationPolicy = QRegExp{R"#(^\w{4,}$)#"};
 QRegExp Record::surnameValidationPolicy = QRegExp{R"#(^\w{4,}$)#"};
 QRegExp Record::addressValidationPolicy = QRegExp{R"##(^[\w ]{4,})##"};
-QRegExp Record::cityValidationPolicy = QRegExp{R"##(^\w{2,}$)##"};
+QRegExp Record::cityValidationPolicy = QRegExp{R"##(^\w{4,}$)##"};
 QRegExp Record::phoneNumberValidationPolicy = QRegExp{R"##(^[0-9]{2} [0-9]{7}$)##"};
 QRegExp Record::mobilePhoneNumberValidationPolicy = QRegExp{R"##(^[1-9]{1}[0-9]{8}$)##"};
 QRegExp Record::emailValidationPolicy = QRegExp{R"##(^[\w\.]{3,}@[\w\.]{2,}((\.com)|(\.pl))$)##"};
@@ -25,11 +25,11 @@ std::string Record::passwordStatusTip{"Podaj hasło użytkownika"};
 std::string Record::roleStatusTip{"Wybierz poziom uprawnień użytkownika"};
 
 std::string Record::nameToolTip{"Imię musi się składać z minimum 4 znaków."};
-std::string Record::surnameToolTip;
-std::string Record::addressToolTip;
-std::string Record::cityToolTip;
-std::string Record::phoneNumberToolTip;
-std::string Record::mobileNumberToolTip;
+std::string Record::surnameToolTip{"Nazwisko musi się składać z minimum 4 znaków."};;
+std::string Record::addressToolTip{"Adres musi się składać z minimum 4 znaków."};
+std::string Record::cityToolTip{"Miasto musi się składać z minimum 4 znaków."};
+std::string Record::phoneNumberToolTip{"Telefon stacjonarny musi składać się kolejno z 2 cyfr, spacji i 7cyfr."};
+std::string Record::mobileNumberToolTip{"Telefon komórkowy musi składać z 9 cyfr"};
 std::string Record::emaiToolTip{"Email musi zawierać znak '@' oraz domenę pl lub com."};
 std::string Record::loginToolTip{"Login musi się składać z minimum czterech: liter, cyfr lub '_'."};
 std::string Record::passwordToolTip{"Hasło musi zawierać minimum 4 litery, cyfry lub znaki '_'."};

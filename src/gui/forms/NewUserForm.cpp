@@ -125,4 +125,4 @@ void NewUserForm::addToolTips() {
     this->password->setToolTip(Record::passwordToolTip.c_str());;
     this->repeatPassword->setToolTip(Record::passwordToolTip.c_str());;;
     this->role->setToolTip(Record::roleToolTip.c_str());
-}ad
+}

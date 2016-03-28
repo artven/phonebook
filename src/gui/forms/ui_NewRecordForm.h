@@ -285,39 +285,15 @@ public:
         NewRecordForm->setWindowTitle(QApplication::translate("NewRecordForm", "Form", 0));
         groupBox_3->setTitle(QApplication::translate("NewRecordForm", "Dodaj wpis do ksi\304\205\305\274ki telefonicznej:", 0));
         nameLabel->setText(QApplication::translate("NewRecordForm", "Imi\304\231", 0));
-#ifndef QT_NO_TOOLTIP
-        nameLineEdit->setToolTip(QApplication::translate("NewRecordForm", "dupa 1234", 0));
-#endif // QT_NO_TOOLTIP
-#ifndef QT_NO_STATUSTIP
-        nameLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj imi\304\231 osoby.", 0));
-#endif // QT_NO_STATUSTIP
 #ifndef QT_NO_WHATSTHIS
         nameLineEdit->setWhatsThis(QString());
 #endif // QT_NO_WHATSTHIS
         surnameLabel->setText(QApplication::translate("NewRecordForm", "Nazwisko", 0));
-#ifndef QT_NO_STATUSTIP
-        surnameLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj nazwisko osoby.", 0));
-#endif // QT_NO_STATUSTIP
         addressLabel->setText(QApplication::translate("NewRecordForm", "Adres", 0));
-#ifndef QT_NO_STATUSTIP
-        addressLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj adres.", 0));
-#endif // QT_NO_STATUSTIP
         cityLabel->setText(QApplication::translate("NewRecordForm", "Miasto", 0));
-#ifndef QT_NO_STATUSTIP
-        cityLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj nazw\304\231 miasta.", 0));
-#endif // QT_NO_STATUSTIP
         phoneLabel->setText(QApplication::translate("NewRecordForm", "Telefon", 0));
-#ifndef QT_NO_STATUSTIP
-        phoneLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj telefon stacjnonarny.", 0));
-#endif // QT_NO_STATUSTIP
         mobileLabel->setText(QApplication::translate("NewRecordForm", "Kom\303\263rka", 0));
-#ifndef QT_NO_STATUSTIP
-        mobileLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj telefon kom\303\263rkowy.", 0));
-#endif // QT_NO_STATUSTIP
         emailLabel->setText(QApplication::translate("NewRecordForm", "Email:", 0));
-#ifndef QT_NO_STATUSTIP
-        emailLineEdit->setStatusTip(QApplication::translate("NewRecordForm", "Podaj adres email.", 0));
-#endif // QT_NO_STATUSTIP
         clearFieldsToolButton->setText(QApplication::translate("NewRecordForm", "Wyczy\305\233\304\207", 0));
         addRecordToolButton->setText(QApplication::translate("NewRecordForm", "Dodaj", 0));
     } // retranslateUi

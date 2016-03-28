@@ -1,5 +1,6 @@
-#include "NewRecordForm.h"
 #include "ui_NewRecordForm.h"
+#include "NewRecordForm.h"
+#include "Record.h"
 
 NewRecordForm::NewRecordForm(QWidget *parent) :
 QWidget(parent), ui(new Ui::NewRecordForm) {
@@ -7,6 +8,8 @@ QWidget(parent), ui(new Ui::NewRecordForm) {
     this->getFormElements();
     this->addValidators();
     this->connectSignals();
+    this->addStatusTips();
+    this->addToolTips();
 }
 
 void NewRecordForm::getFormElements() {
@@ -101,4 +104,26 @@ std::string NewRecordForm::getMobile() {
 
 std::string NewRecordForm::getEmail() {
     return this->email->text().toStdString();
+}
+
+void NewRecordForm::addStatusTips() {
+    this->name->setStatusTip(Record::nameStatusTip.c_str());
+    this->surname->setStatusTip(Record::surnameStatusTip.c_str());
+    this->address->setStatusTip(Record::addressStatusTip.c_str());
+    this->city->setStatusTip(Record::cityStatusTip.c_str());
+    this->phone->setStatusTip(Record::phoneNumberStatusTip.c_str());
+    this->mobile->setStatusTip(Record::mobilePhoneStatusTip.c_str());
+    this->email->setStatusTip(Record::emailStatusTip.c_str());
+    this->okButton->setStatusTip("Dodaj rekord do bazy");
+    this->clearButton->setStatusTip("Wyczyść formularz");
+}
+
+void NewRecordForm::addToolTips() {
+    this->name->setToolTip(Record::nameToolTip.c_str());
+    this->surname->setToolTip(Record::surnameToolTip.c_str());
+    this->address->setToolTip(Record::addressToolTip.c_str());
+    this->city->setToolTip(Record::cityToolTip.c_str());
+    this->phone->setToolTip(Record::phoneNumberToolTip.c_str());
+    this->mobile->setToolTip(Record::mobileNumberToolTip.c_str());
+    this->email->setToolTip(Record::emaiToolTip.c_str());
 }

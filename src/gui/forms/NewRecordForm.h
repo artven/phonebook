@@ -52,6 +52,10 @@ private:
     void getFormElements();
     void addValidators();
     void connectSignals();
+
+    void addStatusTips();
+
+    void addToolTips();
 };
 
 #endif // NEWUSERFORM_H

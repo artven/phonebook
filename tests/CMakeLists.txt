@@ -2,7 +2,7 @@ project(project_tests)
 
 SET(TESTS_SOURCE_FILES
         PhoneBookRecordTests.cpp
-        SQLiteDatabaseTests.cpp PhoneBookAPITests.cpp UsersTests.cpp UserManagerTests.cpp)
+        SQLiteDatabaseTests.cpp PhoneBookAPITests.cpp UsersTests.cpp UserManagerTests.cpp BasicTests.cpp)
 
 include_directories(${GTEST_SOURCE_DIR} ${GTEST_SOURCE_DIR}/include)
 

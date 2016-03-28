@@ -79,12 +79,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="toolTip">
-            <string>dupa 1234</string>
-           </property>
-           <property name="statusTip">
-            <string>Podaj imię osoby.</string>
-           </property>
            <property name="whatsThis">
             <string/>
            </property>
@@ -122,9 +116,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="statusTip">
-            <string>Podaj nazwisko osoby.</string>
-           </property>
           </widget>
          </item>
         </layout>
@@ -158,9 +149,6 @@
              <horstretch>1</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
-           </property>
-           <property name="statusTip">
-            <string>Podaj adres.</string>
            </property>
           </widget>
          </item>
@@ -196,9 +184,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="statusTip">
-            <string>Podaj nazwę miasta.</string>
-           </property>
           </widget>
          </item>
         </layout>
@@ -232,9 +217,6 @@
              <horstretch>1</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
-           </property>
-           <property name="statusTip">
-            <string>Podaj telefon stacjnonarny.</string>
            </property>
           </widget>
          </item>
@@ -270,9 +252,6 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="statusTip">
-            <string>Podaj telefon komórkowy.</string>
-           </property>
           </widget>
          </item>
         </layout>
@@ -306,9 +285,6 @@
              <horstretch>1</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
-           </property>
-           <property name="statusTip">
-            <string>Podaj adres email.</string>
            </property>
           </widget>
          </item>

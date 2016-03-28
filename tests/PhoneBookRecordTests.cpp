@@ -27,7 +27,7 @@ TEST(stringConstructorTest, noThrowOnValidString) {
 }
 
 TEST(constructorTest, noThrowOnValidData) {
-    ASSERT_NO_THROW(PhoneBookRecord(1, "Adam", "Giza", "Spokojna 3", "Krakow", "12 5692033", "889764231", "adam.giza@gmail.com"));
+    ASSERT_NO_THROW(PhoneBookRecord(1, "Adam", "Giża", "Spokojna 3", "Kraków", "12 5692033", "889764231", "adam.giza@gmail.com"));
 }
 
 TEST(constructorTest, trimsSpaces) {
