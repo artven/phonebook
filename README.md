@@ -1,12 +1,14 @@
 Aplikacja książki telefonicznej - projekt na zagadnienia zarządzania przedsiębiorstwem. 
 
-1. Make my changes
-  1. Fix bug
-  2. Improve formatting
-    * Make the headings bigger
-2. Push my commits to GitHub
-3. Open a pull request
-  * Describe my changes
-  * Mention all the members of my team
-    * Ask for feedback
+TODO:  
+  - dodać datę urodzenia  
+  - dodać dodać kod pocztowy  
+  - przykładowe dane do bazy  
+  - sprawdzić menu dla operator i usera  
+  - powiadomienia emial  
+  - paski ładowania 
+  - zmiana bazy na mysql  
+  - usuwanie użytkowników  
+  - wyszukiwanie użytkowników po loginie  
+  - paski ładowania  
   
